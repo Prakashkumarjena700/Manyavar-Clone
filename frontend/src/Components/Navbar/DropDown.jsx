@@ -60,7 +60,7 @@ export const AccessoriesDropDown = () => {
 
 
     return (
-        <div className={styles.subMenue}  id={styles.PaddingForAccessoriesSubmenue} onClick={() => setDropdown(!dropDown)} >
+        <div className={styles.subMenue} id={styles.PaddingForAccessoriesSubmenue} onClick={() => setDropdown(!dropDown)} >
             {
                 Accessories.map((ele) => <p key={ele.id} className={ele.id === 1 ? styles.headingFromSubmenue : styles.normalSubmenue} >{ele.title}</p>)
             }
