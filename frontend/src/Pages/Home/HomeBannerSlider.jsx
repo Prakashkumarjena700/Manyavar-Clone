@@ -17,6 +17,7 @@ export default function HomeBannerSlider() {
         <div id='HomeSliderBanner'>
             <div className='HomeBanner-Normal'>
                 <Swiper
+                    loop={true}
                     spaceBetween={0}
                     centeredSlides={true}
                     autoplay={{
