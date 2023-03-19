@@ -2,9 +2,13 @@ import React from 'react'
 import styles from './Home.module.css'
 import HomeBannerSlider from './HomeBannerSlider'
 
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
+
+import { useState } from 'react'
 
 export default function Home() {
+  const [newArrivalToggle, SetNewArrivalToggle] = useState(true)
+
+
   return (
     <div className={styles.homeMainContainer}>
       <HomeBannerSlider />
@@ -44,20 +48,58 @@ export default function Home() {
       </div>
 
       <h1 className={styles.Home_New_Arrival_Headin}>New Arrivals</h1>
-      <Tabs className={styles.Home_newArr_men_women}>
-        <TabList>
-          <Tab>MEN</Tab>
-          <Tab>WOMEN</Tab>
-        </TabList>
-        <TabPanels>
-          <TabPanel>
-            <p>one!</p>
-          </TabPanel>
-          <TabPanel>
-            <p>two!</p>
-          </TabPanel>
-        </TabPanels>
-      </Tabs>
+
+
+      <div className={styles.Home_newArr_men_women}>
+        <button onClick={() => SetNewArrivalToggle(true)} id={newArrivalToggle ? 'newArrival-Active-men' : ""}>Men </button>
+        <button onClick={() => SetNewArrivalToggle(false)} className={newArrivalToggle == 'false' ? 'newArrival-Active-women' : ""}>Women</button>
+      </div>
+      <div>{newArrivalToggle ?
+        <div className={styles.newArrival_card_con}>
+          <div>
+            <img src="https://static01.manyavar.com/uploads/dealimages/11305/detailimages/robust-red-indo-western-wear-cpiw509-307-8.jpg" alt="" />
+            <p>Striking ludo wester maroon</p>
+            <h5>R 15999</h5>
+          </div>
+          <div>
+            <img src="https://static01.manyavar.com/uploads/dealimages/11305/detailimages/robust-red-indo-western-wear-cpiw509-307-8.jpg" alt="" />
+            <p>Striking ludo wester maroon</p>
+            <h5>15999</h5>
+          </div>
+          <div>
+            <img src="https://static01.manyavar.com/uploads/dealimages/11305/detailimages/robust-red-indo-western-wear-cpiw509-307-8.jpg" alt="" />
+            <p>Striking ludo wester maroon</p>
+            <h5>15999</h5>
+          </div>
+          <div>
+            <img src="https://static01.manyavar.com/uploads/dealimages/11305/detailimages/robust-red-indo-western-wear-cpiw509-307-8.jpg" alt="" />
+            <p>Striking ludo wester maroon</p>
+            <h5>15999</h5>
+          </div>
+          <div>
+            <img src="https://static01.manyavar.com/uploads/dealimages/11305/detailimages/robust-red-indo-western-wear-cpiw509-307-8.jpg" alt="" />
+            <p>Striking ludo wester maroon</p>
+            <h5>15999</h5>
+          </div>
+          <div>
+            <img src="https://static01.manyavar.com/uploads/dealimages/11305/detailimages/robust-red-indo-western-wear-cpiw509-307-8.jpg" alt="" />
+            <p>Striking ludo wester maroon</p>
+            <h5>15999</h5>
+          </div>
+          <div>
+            <img src="https://static01.manyavar.com/uploads/dealimages/11305/detailimages/robust-red-indo-western-wear-cpiw509-307-8.jpg" alt="" />
+            <p>Striking ludo wester maroon</p>
+            <h5>15999</h5>
+          </div>
+          <div>
+            <img src="https://static01.manyavar.com/uploads/dealimages/11305/detailimages/robust-red-indo-western-wear-cpiw509-307-8.jpg" alt="" />
+            <p>Striking ludo wester maroon</p>
+            <h5>R 15999</h5>
+          </div>
+        </div> :
+        <div className={styles.newArrival_card_con}>
+          <h1>women</h1>
+        </div>}</div>
     </div>
   )
 }

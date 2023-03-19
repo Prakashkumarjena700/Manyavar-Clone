@@ -55,36 +55,66 @@
 }
 
 .Home_newArr_men_women {
-    border: 1px solid green;
-    text-align: center;
-}
-
-.Home_newArr_men_women>div:nth-child(1) {
-    /* border: 1px solid red; */
-    text-align: center;
+    /* border: 1px solid green; */
     display: flex;
-    gap: 40px;
     justify-content: center;
-    margin-bottom: 20px;
+    gap: 30px;
+    height: 30px;
 }
 
-.Home_newArr_men_women button {
+
+
+.Home_newArr_men_women>button {
     /* border: 1px solid gold; */
     border: none;
     background-color: unset;
     font-style: normal;
-    font-size: 15px;
+    font-size: 18px;
     line-height: 20px;
     color: #8B8B8B;
     cursor: pointer;
     letter-spacing: 0.15em;
-
-    @if $aria-selected=='true' {
-        background-color: 'red'
-    }
+    padding: 5px;
 }
 
-.Home_newArr_men_women button {}
+.Home_newArr_men_women button:hover {
+    border-bottom: 2px solid gray;
+}
+
+.newArrival_card_con {
+    margin-top: 20px;
+    /* border: 1px solid green; */
+    /* height: 600px; */
+    overflow: scroll;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 9px;
+}
+
+.newArrival_card_con>div {
+    width: 350px;
+    height: 600px;
+    /* border: 1px solid red; */
+}
+
+.newArrival_card_con img {
+    width: 100%;
+}
+
+.newArrival_card_con p {
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+.newArrival_card_con h5 {
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+.newArrival_card_con::-webkit-scrollbar {
+    display: none;
+}
+
 
 @media (max-width:1180px) {
     .homeCollectionsDiv {
