@@ -40,7 +40,7 @@
 
 .normalNavbarContainer>div>img {
     width: 52%;
-    z-index: 2;
+    z-index: 3;
 }
 
 .dropDownMainMenue {
@@ -87,6 +87,7 @@
     background-color: #FFF3DD;
     line-height: 26px;
     font-weight: 400;
+    z-index: 2;
 }
 
 .submenueImagesContainer {
