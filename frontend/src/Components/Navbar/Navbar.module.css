@@ -2,3 +2,131 @@
     margin: 0px;
     padding: 0px;
 }
+
+.hamburderNavbarContainer {
+    border: 1px solid blue;
+    display: none;
+}
+
+.hamburderNavbarContainer>div {
+    border: 1px solid red;
+}
+
+.normalNavbarContainer {
+    /* border: 1px solid red; */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 5px 10px;
+    background-color: #FFFBF2;
+}
+
+.normalNavbarContainer>div:first-child {
+    /* border: 1px solid rgb(13, 84, 58); */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.normalNavbarContainer>div:last-child {
+    /* border: 1px solid rgb(0, 255, 162); */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 20px;
+    gap: 10px;
+    color: #696866;
+}
+
+
+.normalNavbarContainer>div>img {
+    width: 52%;
+    z-index: 2;
+}
+
+.dropDownMainMenue {
+    /* border: 1px solid green; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: #3F3F3F;
+}
+
+.dropDownMainMenue p {
+    cursor: pointer;
+}
+
+.dropDownMainMenue p:hover {
+    color: rgb(99, 1, 1);
+}
+
+.headingFromSubmenue {
+    font-weight: bold;
+}
+
+.subMenue .headingFromSubmenue:hover {
+    color: #3F3F3F;
+}
+
+.subMenue .normalSubmenue:hover {
+    color: #E04C19;
+}
+
+.subMenue {
+    /* border: 1px solid blue; */
+    border-top: 20px solid #FFFBF2;
+    text-align: left;
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    left: 0;
+    right: 0;
+    top: 33px;
+    padding: 40px 50px;
+    background-color: #FFF3DD;
+    line-height: 26px;
+    font-weight: 400;
+}
+
+.submenueImagesContainer {
+    /* border: 1px solid green; */
+    width: 68%;
+    position: absolute;
+    right: 0;
+    margin-top: 25px;
+}
+
+.submenueImagesContainer img {
+    margin: 15px;
+    width: 44%;
+}
+
+#PaddingForWomenSubmenue {
+    padding-bottom: 145px;
+}
+
+#PaddingForKidsSubmenue {
+    padding-bottom: 170px;
+}
+
+#PaddingForAccessoriesSubmenue {
+    padding-bottom: 65px;
+}
+
+
+@media (max-width:1200px) {
+    .menSubmenueImagesContainer {
+        width: 65%;
+    }
+}
+
+@media (max-width:1000px) {
+    .normalNavbarContainer {
+        display: none;
+    }
+
+    .hamburderNavbarContainer {
+        display: flex;
+    }
+}
