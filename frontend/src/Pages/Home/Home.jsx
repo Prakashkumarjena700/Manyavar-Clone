@@ -4,6 +4,7 @@ import HomeBannerSlider from './HomeBannerSlider'
 
 
 import { useState } from 'react'
+import Navbar from '../../Components/Navbar/Navbar'
 
 export default function Home() {
   const [newArrivalToggle, SetNewArrivalToggle] = useState(true)
@@ -11,6 +12,7 @@ export default function Home() {
 
   return (
     <div className={styles.homeMainContainer}>
+      <Navbar />
       <HomeBannerSlider />
       <div className={styles.homeCollectionsDiv}>
         <div>
