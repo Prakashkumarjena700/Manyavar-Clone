@@ -1,8 +1,13 @@
 import React from 'react'
+import HamburgerNavbar from './HamburgerNavbar'
+import NormalNavbar from './NormalNavbar'
 
 
 export default function Navbar() {
     return (
-        <div>Navbar</div>
+        <div>
+            <NormalNavbar />
+            <HamburgerNavbar />
+        </div>
     )
 }
