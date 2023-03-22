@@ -27,7 +27,7 @@ export default function NormalNavbar() {
                                     onMouseEnter={() => setMenDropdown(true)}
                                     onMouseLeave={() => setMenDropdown(false)}
                                     key={ele.title}
-                                >   <p>{ele.title}</p>
+                                >   <h2>{ele.title}</h2>
                                     {menDropdown && <MenDropDown />}
                                 </div>
                             )
@@ -38,7 +38,7 @@ export default function NormalNavbar() {
                                     onMouseEnter={() => setWomenDropdown(true)}
                                     onMouseLeave={() => setWomenDropdown(false)}
                                     key={ele.title}
-                                >   <p>{ele.title}</p>
+                                >   <h2>{ele.title}</h2>
                                     {womenDropdown && <WomenDropDown />}
                                 </div>
                             )
@@ -49,7 +49,7 @@ export default function NormalNavbar() {
                                     onMouseEnter={() => setKidsDropdown(true)}
                                     onMouseLeave={() => setKidsDropdown(false)}
                                     key={ele.title}
-                                >   <p>{ele.title}</p>
+                                >   <h2>{ele.title}</h2>
                                     {kidsDropdown && <KidsDropDown />}
                                 </div>
                             )
@@ -60,13 +60,13 @@ export default function NormalNavbar() {
                                     onMouseEnter={() => setAccessoriesDropDown(true)}
                                     onMouseLeave={() => setAccessoriesDropDown(false)}
                                     key={ele.title}
-                                >   <p>{ele.title}</p>
+                                >   <h2>{ele.title}</h2>
                                     {accessoriesDropDown && <AccessoriesDropDown />}
                                 </div>
                             )
                         }
                         return (
-                            <div key={ele.id} >{ele.title}</div>
+                            <div key={ele.id} style={{ cursor: 'pointer' }} >{ele.title}</div>
                         )
                     })
                 }
