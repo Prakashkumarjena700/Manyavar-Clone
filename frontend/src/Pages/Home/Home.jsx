@@ -115,7 +115,7 @@ export default function Home() {
 
         <h2>VIEW ALL</h2>
 
-        <div className={styles.Home_newArr_men_women}>
+        {/* <div className={styles.Home_newArr_men_women}>
           <button onClick={() => {
             SetPiecesKurtaSetToggle(true)
             SetPiecesKurtaToggle(false)
@@ -156,7 +156,7 @@ export default function Home() {
             SetPiecesWesternToggle(false)
             SetPiecesSherwaniToggle(false)
           }} style={PiecesJacketToggle ? { borderBottom: "3px solid grey" } : { borderBottom: 'unset' }} >JACKETS</button>
-        </div>
+        </div> */}
 
         <div>{PiecesKurtasetToggle ?
           <div className={styles.newArrival_card_con}>
