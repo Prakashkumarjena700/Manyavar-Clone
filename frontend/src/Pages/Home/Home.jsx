@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Home.module.css'
 import HomeBannerSlider from './HomeBannerSlider'
-
+import { menData, womenData } from './data'
 
 import { useState } from 'react'
 import Navbar from '../../Components/Navbar/Navbar'
@@ -16,6 +16,7 @@ export default function Home() {
   const [PiecesSherwaniToggle, SetPiecesSherwaniToggle] = useState(false)
   const [PiecesJacketToggle, SetPiecesJacketToggle] = useState(false)
 
+  console.log(menData)
 
   return (
     <div className={styles.homeMainContainer}>
@@ -65,257 +66,48 @@ export default function Home() {
         </div>
         <div>{newArrivalToggle ?
           <div className={styles.newArrival_card_con}>
-            <div>
-              <div className={styles.HomeCard}>
-                <div className={styles.HomeCardImg_Div}>
-                  <img src="https://static01.manyavar.com/uploads/dealimages/11305/detailimages/robust-red-indo-western-wear-cpiw509-307-8.jpg" alt="" />
-                </div>
+            {
+              menData.map((ele) => <div>
+                <div className={styles.HomeCard}>
+                  <div className={styles.HomeCardImg_Div}>
+                    <img src={ele.image} alt="" />
+                  </div>
 
-                <div class={styles.HomeCardoverlay}>
-                  <div class={styles.HomeCardText}>
-                    <p>View</p>
+                  <div class={styles.HomeCardoverlay}>
+                    <div class={styles.HomeCardText}>
+                      <p>View</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <p>Striking ludo wester maroon</p>
-              <h5>R 15999</h5>
-            </div>
-            <div>
-              <div className={styles.HomeCard}>
-                <div className={styles.HomeCardImg_Div}>
-                  <img src="https://static01.manyavar.com/uploads/dealimages/11305/detailimages/robust-red-indo-western-wear-cpiw509-307-8.jpg" alt="" />
-                </div>
-
-                <div class={styles.HomeCardoverlay}>
-                  <div class={styles.HomeCardText}>
-                    <p>View</p>
-                  </div>
-                </div>
-              </div>
-              <p>Striking ludo wester maroon</p>
-              <h5>R 15999</h5>
-            </div>
-            <div>
-              <div className={styles.HomeCard}>
-                <div className={styles.HomeCardImg_Div}>
-                  <img src="https://static01.manyavar.com/uploads/dealimages/11305/detailimages/robust-red-indo-western-wear-cpiw509-307-8.jpg" alt="" />
-                </div>
-
-                <div class={styles.HomeCardoverlay}>
-                  <div class={styles.HomeCardText}>
-                    <p>View</p>
-                  </div>
-                </div>
-              </div>
-              <p>Striking ludo wester maroon</p>
-              <h5>R 15999</h5>
-            </div>
-            <div>
-              <div className={styles.HomeCard}>
-                <div className={styles.HomeCardImg_Div}>
-                  <img src="https://static01.manyavar.com/uploads/dealimages/11305/detailimages/robust-red-indo-western-wear-cpiw509-307-8.jpg" alt="" />
-                </div>
-
-                <div class={styles.HomeCardoverlay}>
-                  <div class={styles.HomeCardText}>
-                    <p>View</p>
-                  </div>
-                </div>
-              </div>
-              <p>Striking ludo wester maroon</p>
-              <h5>R 15999</h5>
-            </div>
-            <div>
-              <div className={styles.HomeCard}>
-                <div className={styles.HomeCardImg_Div}>
-                  <img src="https://static01.manyavar.com/uploads/dealimages/11305/detailimages/robust-red-indo-western-wear-cpiw509-307-8.jpg" alt="" />
-                </div>
-
-                <div class={styles.HomeCardoverlay}>
-                  <div class={styles.HomeCardText}>
-                    <p>View</p>
-                  </div>
-                </div>
-              </div>
-              <p>Striking ludo wester maroon</p>
-              <h5>R 15999</h5>
-            </div>
-            <div>
-              <div className={styles.HomeCard}>
-                <div className={styles.HomeCardImg_Div}>
-                  <img src="https://static01.manyavar.com/uploads/dealimages/11305/detailimages/robust-red-indo-western-wear-cpiw509-307-8.jpg" alt="" />
-                </div>
-
-                <div class={styles.HomeCardoverlay}>
-                  <div class={styles.HomeCardText}>
-                    <p>View</p>
-                  </div>
-                </div>
-              </div>
-              <p>Striking ludo wester maroon</p>
-              <h5>R 15999</h5>
-            </div>
-            <div>
-              <div className={styles.HomeCard}>
-                <div className={styles.HomeCardImg_Div}>
-                  <img src="https://static01.manyavar.com/uploads/dealimages/11305/detailimages/robust-red-indo-western-wear-cpiw509-307-8.jpg" alt="" />
-                </div>
-
-                <div class={styles.HomeCardoverlay}>
-                  <div class={styles.HomeCardText}>
-                    <p>View</p>
-                  </div>
-                </div>
-              </div>
-              <p>Striking ludo wester maroon</p>
-              <h5>R 15999</h5>
-            </div>
-            <div>
-              <div className={styles.HomeCard}>
-                <div className={styles.HomeCardImg_Div}>
-                  <img src="https://static01.manyavar.com/uploads/dealimages/11305/detailimages/robust-red-indo-western-wear-cpiw509-307-8.jpg" alt="" />
-                </div>
-
-                <div class={styles.HomeCardoverlay}>
-                  <div class={styles.HomeCardText}>
-                    <p>View</p>
-                  </div>
-                </div>
-              </div>
-              <p>Striking ludo wester maroon</p>
-              <h5>R 15999</h5>
-            </div>
-
-
-
-
+                <p>{ele.title}</p>
+                <h5>Rs {ele.price}</h5>
+              </div>)
+            }
           </div>
 
           :
 
           <div className={styles.newArrival_card_con}>
-            <div>
-              <div className={styles.HomeCard}>
-                <div className={styles.HomeCardImg_Div}>
-                  <img src="https://static01.manyavar.com/uploads/dealimages/14240/detailimages/enigmatic-rani-bridal-lehenga-unlb4306-425-2.jpg" alt="" />
-                </div>
+            {
+              womenData.map((ele) => <div>
+                <div className={styles.HomeCard}>
+                  <div className={styles.HomeCardImg_Div}>
+                    <img src={ele.image} alt="" />
+                  </div>
 
-                <div class={styles.HomeCardoverlay}>
-                  <div class={styles.HomeCardText}>
-                    <p>View</p>
+                  <div class={styles.HomeCardoverlay}>
+                    <div class={styles.HomeCardText}>
+                      <p>View</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <p>Striking ludo wester maroon</p>
-              <h5>R 15999</h5>
-            </div>
-            <div>
-              <div className={styles.HomeCard}>
-                <div className={styles.HomeCardImg_Div}>
-                  <img src="https://static01.manyavar.com/uploads/dealimages/11305/detailimages/robust-red-indo-western-wear-cpiw509-307-8.jpg" alt="" />
-                </div>
-
-                <div class={styles.HomeCardoverlay}>
-                  <div class={styles.HomeCardText}>
-                    <p>View</p>
-                  </div>
-                </div>
-              </div>
-              <p>Striking ludo wester maroon</p>
-              <h5>R 15999</h5>
-            </div>
-            <div>
-              <div className={styles.HomeCard}>
-                <div className={styles.HomeCardImg_Div}>
-                  <img src="https://static01.manyavar.com/uploads/dealimages/11305/detailimages/robust-red-indo-western-wear-cpiw509-307-8.jpg" alt="" />
-                </div>
-
-                <div class={styles.HomeCardoverlay}>
-                  <div class={styles.HomeCardText}>
-                    <p>View</p>
-                  </div>
-                </div>
-              </div>
-              <p>Striking ludo wester maroon</p>
-              <h5>R 15999</h5>
-            </div>
-            <div>
-              <div className={styles.HomeCard}>
-                <div className={styles.HomeCardImg_Div}>
-                  <img src="https://static01.manyavar.com/uploads/dealimages/11305/detailimages/robust-red-indo-western-wear-cpiw509-307-8.jpg" alt="" />
-                </div>
-
-                <div class={styles.HomeCardoverlay}>
-                  <div class={styles.HomeCardText}>
-                    <p>View</p>
-                  </div>
-                </div>
-              </div>
-              <p>Striking ludo wester maroon</p>
-              <h5>R 15999</h5>
-            </div>
-            <div>
-              <div className={styles.HomeCard}>
-                <div className={styles.HomeCardImg_Div}>
-                  <img src="https://static01.manyavar.com/uploads/dealimages/11305/detailimages/robust-red-indo-western-wear-cpiw509-307-8.jpg" alt="" />
-                </div>
-
-                <div class={styles.HomeCardoverlay}>
-                  <div class={styles.HomeCardText}>
-                    <p>View</p>
-                  </div>
-                </div>
-              </div>
-              <p>Striking ludo wester maroon</p>
-              <h5>R 15999</h5>
-            </div>
-            <div>
-              <div className={styles.HomeCard}>
-                <div className={styles.HomeCardImg_Div}>
-                  <img src="https://static01.manyavar.com/uploads/dealimages/11305/detailimages/robust-red-indo-western-wear-cpiw509-307-8.jpg" alt="" />
-                </div>
-
-                <div class={styles.HomeCardoverlay}>
-                  <div class={styles.HomeCardText}>
-                    <p>View</p>
-                  </div>
-                </div>
-              </div>
-              <p>Striking ludo wester maroon</p>
-              <h5>R 15999</h5>
-            </div>
-            <div>
-              <div className={styles.HomeCard}>
-                <div className={styles.HomeCardImg_Div}>
-                  <img src="https://static01.manyavar.com/uploads/dealimages/11305/detailimages/robust-red-indo-western-wear-cpiw509-307-8.jpg" alt="" />
-                </div>
-
-                <div class={styles.HomeCardoverlay}>
-                  <div class={styles.HomeCardText}>
-                    <p>View</p>
-                  </div>
-                </div>
-              </div>
-              <p>Striking ludo wester maroon</p>
-              <h5>R 15999</h5>
-            </div>
-            <div>
-              <div className={styles.HomeCard}>
-                <div className={styles.HomeCardImg_Div}>
-                  <img src="https://static01.manyavar.com/uploads/dealimages/11305/detailimages/robust-red-indo-western-wear-cpiw509-307-8.jpg" alt="" />
-                </div>
-
-                <div class={styles.HomeCardoverlay}>
-                  <div class={styles.HomeCardText}>
-                    <p>View</p>
-                  </div>
-                </div>
-              </div>
-              <p>Striking ludo wester maroon</p>
-              <h5>R 15999</h5>
-            </div>
-
-          </div>}</div>
+                <p>{ele.title}</p>
+                <h5>Rs {ele.price}</h5>
+              </div>)
+            }
+          </div>
+        }
+        </div>
 
       </div>
       <div>

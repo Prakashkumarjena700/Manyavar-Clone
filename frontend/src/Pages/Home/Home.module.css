@@ -87,8 +87,7 @@
     /* border: 1px solid green; */
     /* height: 600px; */
     overflow: scroll;
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
+    display: flex;
     gap: 9px;
 }
 
