@@ -88,13 +88,45 @@
     grid-template-columns: repeat(3, 1fr);
     padding: 5px 10px;
     background-color: #FFFBF2;
+    width: 100%;
+    z-index: 100;
+}
+
+.headingLogoContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.headingLogoContainer>img {
+    margin: 17px auto;
+    width: 300px;
+
+}
+
+.headingLogoContainer>div:last-child {
+    display: flex;
+    /* border: 1px solid hotpink; */
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 20px;
+    gap: 10px;
+    color: #696866;
+    padding-right: 10px;
 }
 
 .normalNavbarContainer h2 {
     /* border: 1px solid green; */
-    padding: 0px 21px;
     cursor: pointer;
 }
+
+.normalNavbarContainer>div:nth-child(2) {
+    /* border: 1px solid blue; */
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    text-align: center;
+    padding: 0px 20px;
+}
+
 
 .normalNavbarContainer>div:first-child {
     /* border: 1px solid rgb(13, 84, 58); */
@@ -115,8 +147,9 @@
 
 
 .normalNavbarContainer>div>img {
-    width: 52%;
+    width: 6.5%;
     z-index: 3;
+    margin: 2px 0px 2px 30px;
 }
 
 .dropDownMainMenue {
@@ -158,7 +191,6 @@
     grid-template-columns: repeat(6, 1fr);
     left: 0;
     right: 0;
-    top: 33px;
     padding: 40px 50px;
     background-color: #FFF3DD;
     line-height: 26px;
@@ -201,6 +233,10 @@
 
 @media (max-width:1000px) {
     .normalNavbarContainer {
+        display: none;
+    }
+
+    .headingLogoContainer {
         display: none;
     }
 
