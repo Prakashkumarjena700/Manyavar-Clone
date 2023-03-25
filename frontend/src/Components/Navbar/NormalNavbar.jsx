@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styles from "./Navbar.module.css"
+import { Link } from 'react-router-dom'
 
 import { FiSearch, FiShoppingCart, FiUser } from 'react-icons/fi';
 import { AiOutlineHeart } from 'react-icons/ai';
@@ -40,14 +41,18 @@ export default function NormalNavbar() {
                 <div></div>
                 <img src="https://static01.manyavar.com/uploads/images/Manvayar-Crest-Mohey_Horizontal_3D_logo%201.png" alt="" />
                 <div>
-                    <FiSearch /><FiUser /><AiOutlineHeart /><FiShoppingCart />
+                    <Link> <FiSearch /></Link>
+                    <Link to='/register'><FiUser /></Link>
+                    <Link><AiOutlineHeart /></Link>
+                    <Link> <FiShoppingCart /></Link>
+
                 </div>
             </div>
             <div style={{ top: isFixed ? 0 : 200, position: isFixed ? "fixed" : "static" }} className={styles.normalNavbarContainer} >
                 <div><motion.img
                     whileInView={{ y: [-10, 0] }}
                     src={isFixed && 'https://static01.manyavar.com/uploads/images/manvayar-logo-icon-new.png'} alt="" /></div>
-                <div style={!isFixed ? {  paddingBottom:'5px'} : {}} className={styles.dropDownMainMenue} >
+                <div style={!isFixed ? { paddingBottom: '5px' } : {}} className={styles.dropDownMainMenue} >
                     {
                         mainItem.map((ele) => {
                             if (ele.title === 'MEN') {
@@ -100,7 +105,9 @@ export default function NormalNavbar() {
                         })
                     }
                 </div>
-                {isFixed ? <motion.div whileInView={{ y: [-10, 0] }}  ><FiSearch /><FiUser /><AiOutlineHeart /><FiShoppingCart /></motion.div> : <div></div>}
+                {isFixed ? <motion.div whileInView={{ y: [-10, 0] }}  ><Link><FiSearch /></Link><Link to='/register'><FiUser /></Link>
+                    <Link><AiOutlineHeart /></Link>
+                    <Link> <FiShoppingCart /></Link></motion.div> : <div></div>}
             </div>
         </>
     )
