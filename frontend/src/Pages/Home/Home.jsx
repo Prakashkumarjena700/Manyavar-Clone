@@ -6,6 +6,7 @@ import { menData, womenData } from './data'
 import { useState } from 'react'
 import Navbar from '../../Components/Navbar/Navbar'
 import HomeCardSlider from './HomeCardSlider'
+import Footer from '../../Components/Footer/Footer'
 
 export default function Home() {
   const [newArrivalToggle, SetNewArrivalToggle] = useState(true)
@@ -117,9 +118,6 @@ export default function Home() {
 
 
         <div className={styles.Home_newArr_con_2_buttons}>
-
-         <div className={styles.Home_newArr_men_women}>
-
           <button onClick={() => {
             SetPiecesKurtaSetToggle(true)
             SetPiecesKurtaToggle(false)
@@ -160,34 +158,12 @@ export default function Home() {
             SetPiecesWesternToggle(false)
             SetPiecesSherwaniToggle(false)
           }} style={PiecesJacketToggle ? { borderBottom: "3px solid grey" } : { borderBottom: 'unset' }} >JACKETS</button>
-        </div> 
-
-        <div>{PiecesKurtasetToggle ?
-          <div className={styles.newArrival_card_con}>
-            {
-              menData.map((ele) => <div key={ele.image} className={styles.container_2_card}>
-                <div className={styles.HomeCard}>
-                  <div className={styles.HomeCardImg_Div}>
-                    <img src={ele.image} alt="" />
-                  </div>
-
-                  <div className={styles.HomeCardoverlay}>
-                    <div className={styles.HomeCardText}>
-                      <p>View</p>
-                    </div>
-                  </div>
-                </div>
-                <p>{ele.title}</p>
-                <h5>Rs {ele.price}</h5>
-              </div>)
-            }
-          </div>
-
-          : PiecesKurtaToggle ?
-
+        </div>
+        <div className={styles.Home_newArr_con_2_div}>
+          <div>{PiecesKurtasetToggle ?
             <div className={styles.newArrival_card_con}>
               {
-                womenData.map((ele) => <div key={ele.image}>
+                menData.map((ele) => <div key={ele.image} className={styles.container_2_card}>
                   <div className={styles.HomeCard}>
                     <div className={styles.HomeCardImg_Div}>
                       <img src={ele.image} alt="" />
@@ -204,10 +180,12 @@ export default function Home() {
                 </div>)
               }
             </div>
-            : PiecesWesternToggle ?
+
+            : PiecesKurtaToggle ?
+
               <div className={styles.newArrival_card_con}>
                 {
-                  menData.map((ele) => <div key={ele.image}>
+                  womenData.map((ele) => <div key={ele.image}>
                     <div className={styles.HomeCard}>
                       <div className={styles.HomeCardImg_Div}>
                         <img src={ele.image} alt="" />
@@ -224,27 +202,7 @@ export default function Home() {
                   </div>)
                 }
               </div>
-              : PiecesSherwaniToggle ?
-                <div className={styles.newArrival_card_con}>
-                  {
-                    womenData.map((ele) => <div key={ele.image}>
-                      <div className={styles.HomeCard}>
-                        <div className={styles.HomeCardImg_Div}>
-                          <img src={ele.image} alt="" />
-                        </div>
-
-                        <div className={styles.HomeCardoverlay}>
-                          <div className={styles.HomeCardText}>
-                            <p>View</p>
-                          </div>
-                        </div>
-                      </div>
-                      <p>{ele.title}</p>
-                      <h5>Rs {ele.price}</h5>
-                    </div>)
-                  }
-
-                </div> :
+              : PiecesWesternToggle ?
                 <div className={styles.newArrival_card_con}>
                   {
                     menData.map((ele) => <div key={ele.image}>
@@ -263,33 +221,75 @@ export default function Home() {
                       <h5>Rs {ele.price}</h5>
                     </div>)
                   }
-
                 </div>
-        }
-        </div>
+                : PiecesSherwaniToggle ?
+                  <div className={styles.newArrival_card_con}>
+                    {
+                      womenData.map((ele) => <div key={ele.image}>
+                        <div className={styles.HomeCard}>
+                          <div className={styles.HomeCardImg_Div}>
+                            <img src={ele.image} alt="" />
+                          </div>
 
+                          <div className={styles.HomeCardoverlay}>
+                            <div className={styles.HomeCardText}>
+                              <p>View</p>
+                            </div>
+                          </div>
+                        </div>
+                        <p>{ele.title}</p>
+                        <h5>Rs {ele.price}</h5>
+                      </div>)
+                    }
+
+                  </div> :
+                  <div className={styles.newArrival_card_con}>
+                    {
+                      menData.map((ele) => <div key={ele.image}>
+                        <div className={styles.HomeCard}>
+                          <div className={styles.HomeCardImg_Div}>
+                            <img src={ele.image} alt="" />
+                          </div>
+
+                          <div className={styles.HomeCardoverlay}>
+                            <div className={styles.HomeCardText}>
+                              <p>View</p>
+                            </div>
+                          </div>
+                        </div>
+                        <p>{ele.title}</p>
+                        <h5>Rs {ele.price}</h5>
+                      </div>)
+                    }
+
+                  </div>
+          }
+          </div>
+
+        </div >
+        <div className={styles.HomeContainer3}>
+          <h1 className={styles.Home_New_Arrival_Headin}>Attending a Wedding?</h1>
+          <p>Like Ranveer Says, Shaadi Hai? #Taiyaar Hokar Aayiye</p>
+          <div className={styles.Attending_Wedding}>
+            <div>
+              <img className={styles.Container3_img_1} src="https://manyavar.scene7.com/is/image/manyavarstage/Shop%20as%20a%20Groom%20jpg_11-11-2022-04-47?$R%2DD%2DHP%2DAW$" alt="" />
+              <img className={styles.Container3_img_2} src="https://manyavar.scene7.com/is/image/manyavarstage/As%20a%20the%20groom%20jpg_11-11-2022-10-26?$R%2DM%2DHP%2DAW$" alt="" />
+            </div>
+            <div>
+              <img className={styles.Container3_img_1} src="https://manyavar.scene7.com/is/image/manyavarstage/Shop%20as%20a%20Guest%20jpg_11-11-2022-04-47?$R%2DD%2DHP%2DAW$" alt="" />
+              <img className={styles.Container3_img_2} src="https://manyavar.scene7.com/is/image/manyavarstage/As%20a%20guest%20jpg_11-11-2022-10-26?$R%2DM%2DHP%2DAW$" alt="" />
+            </div>
+          </div>
+        </div>
+        <div className={styles.moheyBanner}>
+          <img src="https://static01.manyavar.com/uploads/Newhometemplate/images//Manvayar-Crest-Mohey_Horizontal.png" alt="" />
+          <div>
+            <img className={styles.mohey_image1} src="https://manyavar.scene7.com/is/image/manyavarstage/Mohey%20Banner%20Dektop%20jpg_11-11-2022-04-58?$R%2DD%2DHP%2DMB$" alt="" />
+            <img className={styles.mohey_image2} src="https://manyavar.scene7.com/is/image/manyavarstage/Lehenga%20Hero%20Banner%20_Mobile%20jpg_09-11-2022-09-18?$R%2DM%2DHP%2FMLP%2FWLP%2DB$" alt="" />
+          </div>
+        </div>
       </div >
-      <div className={styles.HomeContainer3}>
-        <h1 className={styles.Home_New_Arrival_Headin}>Attending a Wedding?</h1>
-        <p>Like Ranveer Says, Shaadi Hai? #Taiyaar Hokar Aayiye</p>
-        <div className={styles.Attending_Wedding}>
-          <div>
-            <img className={styles.Container3_img_1} src="https://manyavar.scene7.com/is/image/manyavarstage/Shop%20as%20a%20Groom%20jpg_11-11-2022-04-47?$R%2DD%2DHP%2DAW$" alt="" />
-            <img className={styles.Container3_img_2} src="https://manyavar.scene7.com/is/image/manyavarstage/As%20a%20the%20groom%20jpg_11-11-2022-10-26?$R%2DM%2DHP%2DAW$" alt="" />
-          </div>
-          <div>
-            <img className={styles.Container3_img_1} src="https://manyavar.scene7.com/is/image/manyavarstage/Shop%20as%20a%20Guest%20jpg_11-11-2022-04-47?$R%2DD%2DHP%2DAW$" alt="" />
-            <img className={styles.Container3_img_2} src="https://manyavar.scene7.com/is/image/manyavarstage/As%20a%20guest%20jpg_11-11-2022-10-26?$R%2DM%2DHP%2DAW$" alt="" />
-          </div>
-        </div>
-      </div>
-      <div className={styles.moheyBanner}>
-        <img src="https://static01.manyavar.com/uploads/Newhometemplate/images//Manvayar-Crest-Mohey_Horizontal.png" alt="" />
-        <div>
-          <img className={styles.mohey_image1} src="https://manyavar.scene7.com/is/image/manyavarstage/Mohey%20Banner%20Dektop%20jpg_11-11-2022-04-58?$R%2DD%2DHP%2DMB$" alt="" />
-          <img className={styles.mohey_image2} src="https://manyavar.scene7.com/is/image/manyavarstage/Lehenga%20Hero%20Banner%20_Mobile%20jpg_09-11-2022-09-18?$R%2DM%2DHP%2FMLP%2FWLP%2DB$" alt="" />
-        </div>
-      </div>
+      <Footer />
     </div >
   )
 }
