@@ -1,0 +1,13 @@
+.RegisterMainContainer {
+    border: 1px solid red;
+    height: 100vh;
+}
+
+.register_waveImg {
+    width: 100%;
+}
+
+.register_Logo_img {
+    width: 30%;
+    margin: auto;
+}

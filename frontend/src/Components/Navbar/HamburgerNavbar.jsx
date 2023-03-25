@@ -30,7 +30,7 @@ export default function HamburgerNavbar() {
     return (
         <div className={styles.hamburderNavbarContainer} >
             <div>
-                <button ref={btnRef} colorScheme='teal' onClick={onOpen}>
+                <button ref={btnRef} onClick={onOpen}>
                     {hamburger && <RxHamburgerMenu onClick={() => setHamburger(!hamburger)} />}
                 </button>
                 <Drawer
