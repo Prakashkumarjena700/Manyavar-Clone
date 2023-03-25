@@ -260,6 +260,41 @@
 
 .moheyBanner {}
 
+.container_4 {
+    /* border: 1px solid red; */
+    background-color: #fff2dc;
+}
+
+.contaoner_5 {
+    padding: 50px 20px;
+}
+
+.container_6>p {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 15px;
+    font-weight: normal;
+    color: #8B8B8B;
+}
+
+.container_6_card_parent {
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 10px 20px;
+    gap: 30px;
+}
+
+.container_6_card_parent>div:nth-child(2) {
+    /* border: 1px solid red; */
+    position: relative;
+    bottom: 50px;
+}
+
+.container5_img_2 {
+    display: none;
+}
+
 @media (max-width:1180px) {
     .homeCollectionsDiv {
         width: 100%;
@@ -393,5 +428,33 @@
         display: flex;
     }
 
+    .container_6_card_parent {
+        /* border: 1px solid red; */
+        margin-top: 0px;
+        overflow: scroll;
+        gap: 0px;
+        padding: 0px;
+    }
+
+    .container_6_card_parent>div {
+        /* border: 1px solid rebeccapurple; */
+        width: 260px;
+    }
+
+    .container_6_card_parent>div:nth-child(2) {
+        position: unset;
+    }
+
+    .container5_img_1 {
+        display: none;
+    }
+
+    .container5_img_2 {
+        display: flex;
+    }
+
+    .contaoner_5 {
+        padding: 0px;
+    }
 
 }

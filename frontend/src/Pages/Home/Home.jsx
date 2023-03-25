@@ -17,7 +17,6 @@ export default function Home() {
   const [PiecesSherwaniToggle, SetPiecesSherwaniToggle] = useState(false)
   const [PiecesJacketToggle, SetPiecesJacketToggle] = useState(false)
 
-  console.log(menData)
 
   return (
     <div className={styles.homeMainContainer}>
@@ -289,6 +288,49 @@ export default function Home() {
           </div>
         </div>
       </div >
+      <div className={styles.container_4}>
+        <h1 className={styles.Home_New_Arrival_Headin}>Pieces Customers Love</h1>
+        <div className={styles.home_viewAll}>VIEW ALL</div>
+        <div className={styles.newArrival_card_con}>
+          {
+            womenData.map((ele) => <div key={ele.image}>
+              <div className={styles.HomeCard}>
+                <div className={styles.HomeCardImg_Div}>
+                  <img src={ele.image} alt="" />
+                </div>
+
+                <div className={styles.HomeCardoverlay}>
+                  <div className={styles.HomeCardText}>
+                    <p>View</p>
+                  </div>
+                </div>
+              </div>
+              <p>{ele.title}</p>
+              <h5>Rs {ele.price}</h5>
+            </div>)
+          }
+        </div>
+      </div>
+      <div className={styles.contaoner_5}>
+
+        <img className={styles.container5_img_1} src="https://manyavar.scene7.com/is/image/manyavarstage/Book%20an%20appiontment%20JPG_19-10-2022-12-23?$R%2DD%2DHP%2DBAA$" alt="" />
+        <img className={styles.container5_img_2} src="https://manyavar.scene7.com/is/image/manyavarstage/Book%20an%20appointment%20jpg_11-11-2022-11-26?$R%2DM%2DHP%2DBAA$" alt="" />
+      </div>
+      <div className={styles.container_6}>
+        <h1 className={styles.Home_New_Arrival_Headin}>Shop By Collections</h1>
+        <p>A wedding is a beautiful life event with many intricate traditions. Every occasion calls for that perfect celebration outfit, select your from below.</p>
+        <div className={styles.container_6_card_parent}>
+          <div>
+            <img src="https://manyavar.scene7.com/is/image/manyavarstage/Sangeet%20jpg_11-11-2022-05-281?$R%2DD%2FM%2DHP%2DSBC$" alt="" />
+          </div>
+          <div>
+            <img src="https://manyavar.scene7.com/is/image/manyavarstage/Engagement%20jpg_11-11-2022-05-281?$R%2DD%2FM%2DHP%2DSBC$" alt="" />
+          </div>
+          <div>
+            <img src="https://manyavar.scene7.com/is/image/manyavarstage/Reception%20jpg_11-11-2022-05-281?$R%2DD%2FM%2DHP%2DSBC$" alt="" />
+          </div>
+        </div>
+      </div>
       <Footer />
     </div >
   )
