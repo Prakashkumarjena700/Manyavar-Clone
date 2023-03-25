@@ -47,7 +47,7 @@
     font-family: "playfairdisplay";
     font-style: normal;
     font-weight: lighter;
-    font-size: 50px;
+    font-size: 45px;
     transform: scale(1.2);
     text-align: center;
     color: #535353;
@@ -60,9 +60,8 @@
     display: flex;
     justify-content: center;
     gap: 30px;
-    height: 30px;
+    /* height: 30px; */
 }
-
 
 
 .Home_newArr_men_women>button {
@@ -78,9 +77,10 @@
     padding: 5px;
 }
 
+/* 
 .Home_newArr_men_women button:hover {
     border-bottom: 2px solid gray;
-}
+} */
 
 .newArrival_card_con {
     margin-top: 20px;
@@ -166,7 +166,7 @@
 }
 
 .Attending_Wedding {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
@@ -177,11 +177,88 @@
 
 .moheyBanner {
     text-align: center;
+    /* border: 1px solid red; */
+}
+
+.moheyBanner>img {
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 
 .moheyBanner>div>img {
     width: 100%;
 }
+
+.mohey_image2 {
+    display: none;
+}
+
+.HomeContainer2 {
+    /* border: 1px solid red; */
+}
+
+.Home_newArr_con_2_buttons {
+    width: 50%;
+    margin: auto;
+    /* border: 1px solid green; */
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+
+.Home_newArr_con_2_buttons>button {
+    /* border: 1px solid red; */
+    color: #8B8B8B;
+}
+
+.container_1_cards>h5 {
+    margin: 0px;
+    margin-left: 5px;
+    font-size: 14px;
+    font-weight: bolder;
+}
+
+.container_1_cards>p {
+    font-size: 14px;
+}
+
+.container_2_card>h5 {
+    margin: 0px;
+    margin-left: 5px;
+    font-size: 14px;
+    font-weight: bolder;
+}
+
+.container_2_card>p {
+    font-size: 14px;
+}
+
+.home_viewAll {
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 20px;
+    /* border: 1px solid green; */
+    border-bottom: 2px solid black;
+    font-size: 16px;
+
+}
+
+.HomeContainer3>p {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 15px;
+    font-weight: normal;
+    color: #8B8B8B;
+}
+
+.Container3_img_2 {
+    display: none;
+}
+
+.moheyBanner {}
 
 @media (max-width:1180px) {
     .homeCollectionsDiv {
@@ -201,6 +278,11 @@
 
     .homeCollectionsDiv::-webkit-scrollbar {
         display: none;
+    }
+
+    .Home_newArr_con_2_buttons {
+        /* border: 1px solid red; */
+        width: 90%;
     }
 }
 
@@ -229,4 +311,87 @@
         letter-spacing: 3px;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
+
+    .Home_newArr_men_women {
+        border-top: 1px solid rgb(199, 199, 199);
+        padding-top: 10px;
+    }
+
+    .Home_newArr_men_women>button {
+        font-size: 12px;
+    }
+
+    .Home_newArr_con_2_buttons {
+        border-top: 1px solid rgb(192, 189, 189);
+        padding-top: 10px;
+        width: 100%;
+        overflow: scroll;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 45px;
+
+    }
+
+    .Home_newArr_con_2_buttons>button {
+        /* border: 1px solid green; */
+    }
+
+    .Home_newArr_con_2_buttons>button:first-child {
+        /* border: 1px solid red; */
+        width: 120px;
+    }
+
+    .Home_newArr_con_2_buttons>button:last-child {
+        /* border: 1px solid red; */
+        width: 120px;
+    }
+
+    .Home_newArr_con_2_buttons::-webkit-scrollbar {
+        display: none;
+    }
+
+    .Home_New_Arrival_Headin {
+        font-size: 22px;
+    }
+
+    .container_1_cards>h5 {
+        margin: 0px;
+        margin-left: 5px;
+        font-size: 14px;
+        font-weight: bolder;
+    }
+
+    .container_1_cards>p {
+        font-size: 14px;
+    }
+
+    .newArrival_card_con {
+        /* border: 1px solid red; */
+        gap: 0px;
+    }
+
+    .HomeContainer3>p {
+        font-size: 12px;
+    }
+
+    .Attending_Wedding {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .Container3_img_2 {
+        display: flex;
+    }
+
+    .Container3_img_1 {
+        display: none;
+    }
+
+    .mohey_image1 {
+        display: none;
+    }
+
+    .mohey_image2 {
+        display: flex;
+    }
+
+
 }
