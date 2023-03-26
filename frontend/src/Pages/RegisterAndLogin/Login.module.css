@@ -1,10 +1,13 @@
 .RegisterMainContainer {
     /* border: 1px solid red; */
     /* height: 100vh; */
+    /* background-color: #fefbf2; */
 }
 
 .register_waveImg {
+    /* border: 1px solid red; */
     width: 100%;
+
 }
 
 .register_Logo_img {
@@ -116,8 +119,8 @@
 }
 
 .signup_btn>button {
-    width: 30%;
-    background-color: grey;
+    width: 40%;
+    background-color: rgb(127, 13, 13);
     color: white;
     padding: 10px 20px;
 }
@@ -140,6 +143,17 @@
 .Register_login_btn a {
     text-decoration: underline;
     color: #b66162;
+}
+
+.forget_OTP {
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+}
+
+.forget_OTP>a {
+    font-size: 12px;
+    color: #9f813f;
 }
 
 @media (max-width:1180px) {
