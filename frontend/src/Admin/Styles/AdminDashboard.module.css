@@ -4,16 +4,181 @@
 }
 
 .AdminDashboardContainer {
-    border: 1px solid green;
+    /* border: 1px solid green; */
     display: flex;
 }
 
 .ADMenueContainer {
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     width: 20%;
+    background-color: maroon;
+    color: white;
+}
+
+.ADMenueContainer>img {
+    width: 90%;
+    margin: 20px auto;
+}
+
+.ADMenueContainer h4 {
+    text-align: center;
+    margin: 0px 10px;
+}
+
+.activeonAdmin {
+    background-color: white;
+    color: maroon;
 }
 
 .ADResultContainer {
-    border: 1px solid yellow;
+    /* border: 1px solid yellow; */
     width: 80%;
+}
+
+.ADMenueContainer>div img {
+    width: 60%;
+    margin: auto;
+}
+
+.ADMenueContainer>div:last-child {
+    /* border: 1px solid rgb(0, 255, 13); */
+    margin-top: 20px;
+}
+
+.ADMenueContainer>div:last-child button {
+    float: right;
+    width: 90%;
+    text-align: left;
+    padding: 10px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.DashboardContainerFirstDiv {
+    /* border: 1px solid maroon; */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.DashboardContainerFirstDiv>div:nth-child(1) {
+    /* border: 1px solid green; */
+    display: grid;
+    padding: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    height: 60%;
+}
+
+.DashboardContainerFirstDiv>div:nth-child(1)>div h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.DashboardContainerFirstDiv>div:nth-child(1)>div {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    padding: 10px;
+}
+
+.chart {
+    /* border: 1px solid yellow; */
+    margin: auto;
+}
+
+.ADMenueContainer span {
+    display: none;
+}
+
+@media (max-width:780px) {
+    .chart {
+        width: 95%;
+    }
+
+    .DashboardContainerFirstDiv {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .DashboardContainerFirstDiv>div:nth-child(1) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .AdminDashboardContainer {
+        flex-direction: column;
+    }
+
+    .ADMenueContainer {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .ADMenueContainer>img {
+        display: none;
+    }
+
+    .ADMenueContainer>div:last-child {
+        margin-top: 0px;
+        display: flex;
+        padding: 0px 20px;
+    }
+
+    .ADMenueContainer>div:nth-child(2) {
+        /* border: 1px solid white; */
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .ADMenueContainer>div:last-child button {
+        text-align: center;
+        border-bottom-left-radius: 0px;
+        border-top-right-radius: 20px;
+    }
+
+    .ADMenueContainer>div:nth-child(2) h4 {
+        text-align: left;
+    }
+
+    .ADMenueContainer>div:nth-child(2) img {
+        width: 100px;
+    }
+}
+
+@media (max-width:500px) {
+    .ADMenueContainer span {
+        display: contents;
+    }
+
+    .ADMenueContainer p {
+        display: none;
+    }
+
+    .ADMenueContainer span {
+        display: flex;
+        justify-content: center;
+    }
+
+    .ADMenueContainer>div:nth-child(2) img {
+        width: 80px;
+    }
+
+    .ADMenueContainer>div:last-child button {
+        padding: 7px;
+    }
+    .DashboardContainerFirstDiv>div:nth-child(1) {
+        gap: 15px;
+        padding: 15px;
+    }
+}
+
+@media (max-width:430px) {
+    .DashboardContainerFirstDiv h2 {
+        font-size: 13px;
+    }
+
+    .DashboardContainerFirstDiv>div:nth-child(1) {
+        gap: 10px;
+        padding: 10px;
+    }
 }
