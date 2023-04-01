@@ -64,11 +64,10 @@ export default function Login() {
                     <button>LOGIN</button>
                 </div>
                 <div className={styles.Register_login_btn}>
-                    <p>Not a member?</p><Link>REGISTER NOW</Link>
+                    <p>Not a member?</p><Link to='/register'>REGISTER NOW</Link>
                 </div>
             </div>
 
         </div>
     )
 }
-
