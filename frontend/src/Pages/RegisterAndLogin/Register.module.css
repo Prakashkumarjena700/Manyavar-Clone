@@ -82,9 +82,16 @@
 
 .register_password {
     display: grid;
-    grid-template-columns: repeat(2, 90% 10%);
+    grid-template-columns: repeat(3, 90% 5% 5%);
     border-bottom: 1px solid grey;
     margin-bottom: 20px;
+}
+
+.register_password>div {
+    display: flex;
+    align-items: center;
+
+    justify-content: center;
 }
 
 .register_password>input {
