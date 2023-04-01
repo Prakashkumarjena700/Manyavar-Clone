@@ -7,10 +7,14 @@ import Autocomplete from '@mui/material/Autocomplete';
 import { style } from '@mui/system';
 import { Link } from 'react-router-dom'
 
-import { useToast } from '@chakra-ui/react'
+import { Button, Spinner, useToast } from '@chakra-ui/react'
+
 
 import { BsFillEyeFill } from 'react-icons/bs';
 import { BsFillEyeSlashFill } from 'react-icons/bs';
+import { TiTick } from 'react-icons/ti';
+
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -26,19 +30,22 @@ export default function Register() {
     const [gender, setGender] = useState('');
     const [agree, setAgree] = useState(false)
 
+    const [loading, setLoading] = useState(false)
+
     const toast = useToast()
 
-    // const handleInputChange = (event) => {
-    //     setPassword(event.target.value);
-    //     setEmail(event.target.value);
-    //     setFname(event.target.value);
-    //     setLname(event.target.value);
-    //     setGender(event.target.value);
-    // };
+    const navigate = useNavigate()
 
     const handleShowPassword = () => {
         setShowPassword(!showPassword);
     };
+
+    function hasSpecialChar(password) {
+        var regex = /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/g;
+        return regex.test(password);
+    }
+
+    var hasPassword = hasSpecialChar(password);
 
     const SignUpFuction = async () => {
         let obj = {
@@ -47,35 +54,80 @@ export default function Register() {
             firstname, lastname, email, password, gender
         }
 
-        await fetch(`https://proud-lamb-suspenders.cyclic.app/users/register`, {
-            method: "POST",
-            body: JSON.stringify(obj),
-            headers: {
-                "Content-type": "application/json"
-            }
-        }).then((res) => res.json())
-            .then((res) => {
-                toast({
-                    position: 'top',
-                    title: 'Account created.',
-                    description: "We've created your account for you.",
-                    status: 'success',
-                    duration: 5000,
-                    isClosable: true,
-                })
-                console.log(res)
+        if (firstname == "" && lastname == "" && email == "" && password == "" && gender == "") {
+            toast({
+                position: 'top',
+                title: 'Please check all the details.',
+                status: 'error',
+                duration: 5000,
+                isClosable: true,
             })
-            .catch((err) => {
-                toast({
-                    position: 'top',
-                    title: 'Something went wrong!.',
-                    description: "Please try again!",
-                    status: 'error',
-                    duration: 5000,
-                    isClosable: true,
-                })
-                console.log(err)
+        } else if (firstname == "" || lastname == "" || email == "" || password == "" || gender == "") {
+            toast({
+                position: 'top',
+                title: 'Something went wrong!.',
+                description: "Please check again!",
+                status: 'error',
+                duration: 5000,
+                isClosable: true,
             })
+        } else if (!hasPassword) {
+            toast({
+                position: 'top',
+                title: 'password contains at least one special character',
+                description: "! @ # $ % ^ & * ( ) _ + - = [ ] { } ; : ' \ | , < > . / ?",
+                status: 'warning',
+                duration: 5000,
+                isClosable: true,
+            })
+        } else {
+            setLoading(true)
+            await fetch(`https://proud-lamb-suspenders.cyclic.app/users/register`, {
+                method: "POST",
+                body: JSON.stringify(obj),
+                headers: {
+                    "Content-type": "application/json"
+                }
+            }).then((res) => res.json())
+                .then((res) => {
+                    if (res.msg == "new user has been register") {
+                        setLoading(false)
+                        toast({
+                            position: 'top',
+                            title: 'Account created.',
+                            description: "We've created your account for you.",
+                            status: 'success',
+                            duration: 5000,
+                            isClosable: true,
+                        })
+                        console.log(res)
+                    } else {
+                        setLoading(false)
+                        toast({
+                            position: 'top',
+                            title: "Already have an account Please login",
+                            status: 'info',
+                            duration: 5000,
+                            isClosable: true,
+                        })
+                        navigate('/login')
+                    }
+
+                })
+                .catch((err) => {
+                    setLoading(false)
+                    toast({
+                        position: 'top',
+                        title: 'Something went wrong!.',
+                        description: "Please try again!",
+                        status: 'error',
+                        duration: 5000,
+                        isClosable: true,
+                    })
+                })
+        }
+
+
     }
 
     return (
@@ -116,6 +168,10 @@ export default function Register() {
                         <button onClick={handleShowPassword}>
                             {showPassword ? <BsFillEyeFill /> : <BsFillEyeSlashFill />}
                         </button>
+                        <div>
+
+                            {hasPassword ? <TiTick color='#02DD30' size="20px" /> : ""}
+                        </div>
                     </div>
                 </div>
 
@@ -126,7 +182,11 @@ export default function Register() {
                 </div>
 
                 <div className={agree ? styles.signup_btn : styles.signup_disable}>
-                    <button disabled={!agree} onClick={SignUpFuction}>SIGNUP</button>
+                    <button disabled={!agree} onClick={SignUpFuction} loading
+                        loadingText='Submitting'
+                        colorScheme='teal'
+                        variant='outline'>{loading ? <Spinner /> : "SIGNUP"}</button>
+
                 </div>
                 <div className={styles.Register_login_btn}>
                     <p>Already a member?</p><Link to='/login'>LOGIN</Link>
