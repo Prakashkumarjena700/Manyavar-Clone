@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 
 import styles from "./Styles/AdminDashboard.module.css"
 
+import { useNavigate } from 'react-router-dom'
+
 import maleUserLogo from "../Assets/maleUserLogo.webp"
 import manyavarFullLogo from "../Assets/manyavarFullLogo.webp"
 
@@ -21,10 +23,12 @@ export default function AdminDashboard() {
   const [inventory, setInventory] = useState(false)
   const [users, setUsers] = useState(false)
 
+  const navigate = useNavigate()
+
   return (
     <div className={styles.AdminDashboardContainer} >
       <div className={styles.ADMenueContainer}  >
-        <img src={manyavarFullLogo} alt="" />
+        <img onClick={()=>navigate('/')} src={manyavarFullLogo} alt="" />
         <div>
           <div>
             <img src={maleUserLogo} alt="" />
