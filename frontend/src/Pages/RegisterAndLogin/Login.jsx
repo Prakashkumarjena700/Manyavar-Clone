@@ -5,24 +5,109 @@ import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import Autocomplete from '@mui/material/Autocomplete';
 import { style } from '@mui/system';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { BsFillEyeFill } from 'react-icons/bs';
 import { BsFillEyeSlashFill } from 'react-icons/bs';
 
+import { Button, Spinner, useToast } from '@chakra-ui/react'
+
+import Cookies from 'js-cookie';
+
 export default function Login() {
-
-
     const [showPassword, setShowPassword] = useState(false);
-    const [password, setPassword] = useState('');
 
-    const handleInputChange = (event) => {
-        setPassword(event.target.value);
-    };
+    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('')
+
+    const [loading, setLoading] = useState(false)
+
+    const toast = useToast()
+    const navigate = useNavigate()
 
     const handleShowPassword = () => {
         setShowPassword(!showPassword);
     };
+
+    const SignUpFunc = async () => {
+        let obj = {
+            email, password
+        }
+        if (email == "" && password == "") {
+            toast({
+                position: 'top',
+                title: 'Please check all the Inputs.',
+                status: 'error',
+                duration: 5000,
+                isClosable: true,
+            })
+        } else if (email == "" && password !== "") {
+            toast({
+                position: 'top',
+                title: 'Please check your email.',
+                status: 'error',
+                duration: 5000,
+                isClosable: true,
+            })
+        } else if (password == "" && email !== "") {
+            toast({
+                position: 'top',
+                title: 'Please check your password..',
+                status: 'error',
+                duration: 5000,
+                isClosable: true,
+            })
+        } else {
+            await fetch(`https://proud-lamb-suspenders.cyclic.app/users/login`, {
+                method: "POST",
+                body: JSON.stringify(obj),
+                headers: {
+                    "Content-type": "application/json"
+                }
+            })
+                .then(res => res.json())
+                .then(res => {
+                    if (res.msg == "Login sucessful") {
+                        toast({
+                            position: 'top',
+                            title: `Hello ${res.firstname}`,
+                            description: "Your Login Successful",
+                            status: 'success',
+                            duration: 5000,
+                            isClosable: true,
+                        })
+                        navigate('/')
+                        const token = res.token;
+                        const expirationTime = new Date(new Date().getTime() + 3600 * 1000); // expires in 1 hour
+                        Cookies.set('token', token, { expires: expirationTime });
+                        Cookies.set('isAuth', true, { expires: expirationTime });
+                    }
+                    else if (res.msg == "Wrong crediential") {
+                        toast({
+                            position: 'top',
+                            title: 'Wrong Crediential',
+                            description: "Please check your email or password.",
+                            status: 'warning',
+                            duration: 5000,
+                            isClosable: true,
+                        })
+                    }
+                    console.log(res)
+                })
+                .catch(err => {
+                    toast({
+                        position: 'top',
+                        title: 'Wrong Crediential',
+                        description: "Please check your email or password.",
+                        status: 'warning',
+                        duration: 5000,
+                        isClosable: true,
+                    })
+                    console.log(err)
+                })
+        }
+
+    }
 
     return (
         <div className={styles.RegisterMainContainer}>
@@ -47,10 +132,10 @@ export default function Login() {
                 <p>SIGN IN WITH EMAIL</p>
 
                 <div className={styles.Register_input_box_div}>
-                    <input type="text" placeholder='EMAIL*' />
+                    <input type="text" onChange={(e) => setEmail(e.target.value)} placeholder='EMAIL*' />
                     <div className={styles.register_password}>
                         <input type={showPassword ? 'text' : 'password'}
-                            onChange={handleInputChange} placeholder='PASSWORD*' />
+                            onChange={(e) => setPassword(e.target.value)} placeholder='PASSWORD*' />
 
                         <button onClick={handleShowPassword}>
                             {showPassword ? <BsFillEyeFill /> : <BsFillEyeSlashFill />}
@@ -61,7 +146,7 @@ export default function Login() {
                     <Link>Forgot Password?</Link><Link>Login with OTP</Link>
                 </div>
                 <div className={styles.signup_btn}>
-                    <button>LOGIN</button>
+                    <button onClick={SignUpFunc}>LOGIN</button>
                 </div>
                 <div className={styles.Register_login_btn}>
                     <p>Not a member?</p><Link to='/register'>REGISTER NOW</Link>
