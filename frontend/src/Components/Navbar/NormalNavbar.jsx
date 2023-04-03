@@ -4,11 +4,14 @@ import { Link } from 'react-router-dom'
 
 import { FiSearch, FiShoppingCart, FiUser } from 'react-icons/fi';
 import { AiOutlineHeart } from 'react-icons/ai';
+import { BsFillCheckCircleFill } from 'react-icons/bs';
 
 import { motion } from 'framer-motion'
 
 import { MenDropDown, WomenDropDown, KidsDropDown, AccessoriesDropDown } from "./DropDown"
 import { mainItem } from './NavItem';
+
+import Cookies from 'js-cookie';
 
 
 export default function NormalNavbar() {
@@ -18,6 +21,8 @@ export default function NormalNavbar() {
     const [accessoriesDropDown, setAccessoriesDropDown] = useState(false)
 
     const [isFixed, setIsFixed] = useState(false);
+
+    let isAuth = Cookies.get('isAuth');
 
     useEffect(() => {
         function handleScroll() {
@@ -42,7 +47,8 @@ export default function NormalNavbar() {
                 <img src="https://static01.manyavar.com/uploads/images/Manvayar-Crest-Mohey_Horizontal_3D_logo%201.png" alt="" />
                 <div>
                     <Link> <FiSearch /></Link>
-                    <Link to='/register'><FiUser /></Link>
+                    {/* <Link to='/register'><FiUser /></Link> */}
+                    <Link className={styles.Nav_userIcon_div} to={isAuth ? '/userprofile' : '/register'}><FiUser />{isAuth ? <BsFillCheckCircleFill color='green' size='12' className={styles.nav_user_tick} /> : ""}</Link>
                     <Link><AiOutlineHeart /></Link>
                     <Link> <FiShoppingCart /></Link>
 
@@ -105,7 +111,7 @@ export default function NormalNavbar() {
                         })
                     }
                 </div>
-                {isFixed ? <motion.div whileInView={{ y: [-10, 0] }}  ><Link><FiSearch /></Link><Link to='/register'><FiUser /></Link>
+                {isFixed ? <motion.div whileInView={{ y: [-10, 0] }}  ><Link><FiSearch /></Link><Link className={styles.Nav_userIcon_div} to={isAuth ? '/userprofile' : '/register'}><FiUser />{isAuth ? <BsFillCheckCircleFill color='green' size='12' className={styles.nav_user_tick} /> : ""}</Link>
                     <Link><AiOutlineHeart /></Link>
                     <Link> <FiShoppingCart /></Link></motion.div> : <div></div>}
             </div>

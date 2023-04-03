@@ -100,7 +100,8 @@ export default function Register() {
                             duration: 5000,
                             isClosable: true,
                         })
-                        console.log(res)
+                        navigate('/login')
+
                     } else {
                         setLoading(false)
                         toast({
