@@ -58,6 +58,7 @@ export default function Login() {
                 isClosable: true,
             })
         } else {
+            setLoading(true)
             await fetch(`https://proud-lamb-suspenders.cyclic.app/users/login`, {
                 method: "POST",
                 body: JSON.stringify(obj),
@@ -67,6 +68,7 @@ export default function Login() {
             })
                 .then(res => res.json())
                 .then(res => {
+                    setLoading(false)
                     if (res.msg == "Login sucessful") {
                         toast({
                             position: 'top',
@@ -81,6 +83,8 @@ export default function Login() {
                         const expirationTime = new Date(new Date().getTime() + 3600 * 1000); // expires in 1 hour
                         Cookies.set('token', token, { expires: expirationTime });
                         Cookies.set('isAuth', true, { expires: expirationTime });
+
+                        localStorage.setItem('user', JSON.stringify(res))
                     }
                     else if (res.msg == "Wrong crediential") {
                         toast({
@@ -95,6 +99,7 @@ export default function Login() {
                     console.log(res)
                 })
                 .catch(err => {
+                    setLoading(false)
                     toast({
                         position: 'top',
                         title: 'Wrong Crediential',
@@ -146,7 +151,7 @@ export default function Login() {
                     <Link>Forgot Password?</Link><Link>Login with OTP</Link>
                 </div>
                 <div className={styles.signup_btn}>
-                    <button onClick={SignUpFunc}>LOGIN</button>
+                    <button onClick={SignUpFunc}>{loading ? <Spinner /> : 'LOGIN'}</button>
                 </div>
                 <div className={styles.Register_login_btn}>
                     <p>Not a member?</p><Link to='/register'>REGISTER NOW</Link>
