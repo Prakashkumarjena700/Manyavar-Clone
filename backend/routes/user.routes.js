@@ -48,16 +48,16 @@ userRoute.post("/login", async (req, res) => {
             bcrypt.compare(password, user[0].password, (err, result) => {
                 if (result) {
                     const token = jwt.sign({ userID: user[0]._id }, "manyavar")
-                    res.send({ "msg": "Login sucessful", token, email: user[0].email, firstname: user[0].firstname, lastname: user[0].lastname, role: user[0].role, registerdate: user[0].registerdate, avatar: user[0].avatar, gender: user[0].gender, isAuth: true })
+                    res.send({ "msg": "Login sucessful", token, user })
                 } else {
-                    res.send({ "msg": "Wrong crediential", isAuth: false })
+                    res.send({ "msg": "Wrong crediential" })
                 }
             });
         } else {
-            res.send({ "msg": "Wrong crediential", isAuth: false })
+            res.send({ "msg": "Wrong crediential" })
         }
     } catch (err) {
-        res.send({ "msg": "Something Wrong", isAuth: false })
+        res.send({ "msg": "Something Wrong" })
     }
 })
 
@@ -77,7 +77,7 @@ userRoute.delete("/delete/:_id", async (req, res) => {
     try {
         let _id = req.params._id
         await userModel.findByIdAndDelete({ _id })
-        res.send({"msg":"User has been delete"})
+        res.send({ "msg": "User has been delete" })
     } catch (err) {
         res.send('Err')
         console.log(err)
