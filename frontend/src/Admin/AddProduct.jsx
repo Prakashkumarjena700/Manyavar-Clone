@@ -22,6 +22,12 @@ export default function AddProduct() {
   const [description, setDescription] = useState('')
   const [address, setAddress] = useState('')
   const [email, setEmail] = useState('')
+  const [img1, setImg1] = useState('')
+  const [img2, setImg2] = useState('')
+  const [img3, setImg3] = useState('')
+  const [img4, setImg4] = useState('')
+  const [img5, setImg5] = useState('')
+
 
   const handleCheckboxChange = (event) => {
     const checkedValue = event.target.value;
@@ -48,7 +54,12 @@ export default function AddProduct() {
       features: features.split(','),
       description,
       address,
-      email
+      email,
+      img1,
+      img2,
+      img3,
+      img4,
+      img5
     }
     console.log(obj)
   }
@@ -139,8 +150,13 @@ export default function AddProduct() {
         <input type="text" placeholder='Description' onChange={(e) => setDescription(e.target.value)} />
         <input type="text" placeholder='Address' onChange={(e) => setAddress(e.target.value)} />
         <input type="email" placeholder='Email' onChange={(e) => setEmail(e.target.value)} />
+        <input type="text" placeholder='Image1' onChange={(e) => setImg1(e.target.value)} />
+        <input type="text" placeholder='Image2' onChange={(e) => setImg2(e.target.value)} />
+        <input type="text" placeholder='Image3' onChange={(e) => setImg3(e.target.value)} />
+        <input type="text" placeholder='Image4' onChange={(e) => setImg4(e.target.value)} />
+        <input type="text" placeholder='Image5' onChange={(e) => setImg5(e.target.value)} />
+        <button className={styles.addBtn} onClick={AddProduct} >Add Product</button>
       </div>
-      <button className={styles.addBtn} onClick={AddProduct} >Add Product</button>
     </div>
   )
 }
