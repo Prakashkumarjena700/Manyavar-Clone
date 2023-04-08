@@ -182,6 +182,7 @@
     gap: 10px;
     padding: 10px;
     grid-template-columns: repeat(4, 1fr);
+    width: 100%;
 }
 
 .SkelitonContainer>div>div {
@@ -200,7 +201,7 @@
 }
 
 .UserResultContainer>div {
-    box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     padding: 5px;
     border-radius: 5px;
 }
@@ -273,8 +274,69 @@
     padding-top: 20px;
 }
 
-.InventoryCardContainer {
-    border: 1px solid hotpink;
+.ProductsSkelitonContainer {
+    /* border: 1px solid rebeccapurple; */
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.ProductsSkelitonCard {
+    /* box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; */
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.ProductsSkelitonCard>div:nth-child(1) {
+    /* border: 1px solid rgb(0, 94, 128); */
+    display: flex;
+    gap: 5px;
+}
+
+.ProductsSkelitonCard>div>div:nth-child(1) {
+    /* border: 1px solid rgb(111, 128, 0); */
+    width: 30%;
+}
+
+.ProductsSkelitonCard>div>div:nth-child(2) {
+    /* border: 1px solid rgb(0, 109, 128); */
+    width: 70%;
+}
+
+.ProductsSkelitonCard>div:nth-child(2) {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 5px;
+    gap: 5px;
+}
+
+.ProductsSkelitonCard h2 {
+    height: 29px;
+}
+
+.ProductsSkelitonCard img {
+    height: 95%;
+}
+
+.ProductsBtns {
+    /* border: 1px solid lawngreen; */
+    background-color: #FFC100;
+    padding: 10px 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.ProductsBtns svg {
+    cursor: pointer;
+}
+
+.viewMoreproductModal>div:nth-child(1) {
+    /* border: 1px solid green; */
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
 }
 
 @media (max-width:780px) {

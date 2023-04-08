@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import styles from "./Styles/AdminDashboard.module.css"
 
 import mehelLogo from "../Assets/mehelLogo.webp"
-import Skeliton from './Skeliton'
+import  Skeliton from './UsersSkeliton'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { getUser } from '../Redux/admin/action'
