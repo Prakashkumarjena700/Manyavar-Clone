@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 import styles from "./Styles/AdminDashboard.module.css"
 
-import { Popover, PopoverTrigger, PopoverContent, PopoverHeader, PopoverBody, PopoverArrow, PopoverCloseButton } from '@chakra-ui/react'
+import { Popover, PopoverTrigger, PopoverContent, PopoverHeader, PopoverBody, PopoverArrow, PopoverCloseButton, useToast, Spinner } from '@chakra-ui/react'
 
 import mehelLogo from "../Assets/mehelLogo.webp"
 
-
+import { addProduct } from '../Redux/admin/action'
 
 
 export default function AddProduct() {
@@ -28,7 +29,6 @@ export default function AddProduct() {
   const [img4, setImg4] = useState('')
   const [img5, setImg5] = useState('')
 
-
   const handleCheckboxChange = (event) => {
     const checkedValue = event.target.value;
     const isChecked = event.target.checked;
@@ -39,6 +39,14 @@ export default function AddProduct() {
       setCheckedItems(checkedItems.filter((item) => item !== checkedValue));
     }
   };
+
+  const addProductstatus = useSelector((store) => store.adminManager)
+
+  const dispatch = useDispatch()
+
+
+  const toast = useToast()
+
 
   const AddProduct = () => {
     const obj = {
@@ -61,16 +69,50 @@ export default function AddProduct() {
       img4,
       img5
     }
-    console.log(obj)
+    addProduct(dispatch, obj)
+    if (addProductstatus.addProductResult.sucess) {
+      toast({
+        title: 'Product has been added.',
+        description: "Product has been reflected on the product page",
+        status: 'success',
+        duration: 3000,
+        isClosable: true,
+        position: 'top',
+      })
+      setName('')
+      setCategory('')
+      setGender('')
+      setOccasion('')
+      setCollections('')
+      setPrice('')
+      setColor('')
+      setFeauters('')
+      setDescription('')
+      setAddress('')
+      setEmail('')
+      setImg1('')
+      setImg2('')
+      setImg3('')
+      setImg4('')
+      setImg5('')
+    } else {
+      toast({
+        title: 'Product not added.',
+        description: "Something went wrong ..",
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+        position: 'top',
+      })
+    }
   }
-
 
   return (
     <div className={styles.AddProductContainer}>
       <img src={mehelLogo} alt="" />
       <div className={styles.FormContainer} >
-        <input type="text" placeholder='Name' onChange={(e) => setName(e.target.value)} />
-        <select onChange={(e) => setCategory(e.target.value)} >
+        <input type="text" value={name} placeholder='Name' onChange={(e) => setName(e.target.value)} />
+        <select value={category} onChange={(e) => setCategory(e.target.value)} >
           <option value="">Category</option>
           <option value="Kurta">Kurta</option>
           <option value="Kurta Sets">Kurta Sets</option>
@@ -98,13 +140,13 @@ export default function AddProduct() {
           <option value="Sherwani Inner Kurta">Sherwani Inner Kurta</option>
           <option value="Socks">Socks</option>
         </select>
-        <select onChange={(e) => setGender(e.target.value)} >
+        <select value={gender} onChange={(e) => setGender(e.target.value)} >
           <option value="">Whome</option>
           <option value="men">Men</option>
           <option value="women">Women</option>
           <option value="kids">Kids</option>
         </select>
-        <select onChange={(e) => setOccasion(e.target.value)} >
+        <select value={occasion} onChange={(e) => setOccasion(e.target.value)} >
           <option value="">Occassion</option>
           <option value="Wedding">Wedding</option>
           <option value="Reception">Reception</option>
@@ -112,7 +154,7 @@ export default function AddProduct() {
           <option value="Sangeet">Sangeet</option>
           <option value="Haldi">Haldi</option>
         </select>
-        <select onChange={(e) => setCollections(e.target.value)} >
+        <select value={collections} onChange={(e) => setCollections(e.target.value)} >
           <option value="">Collection</option>
           <option value="Festive">Festive</option>
           <option value="Formal">Formal</option>
@@ -144,18 +186,18 @@ export default function AddProduct() {
             </PopoverBody>
           </PopoverContent>
         </Popover>
-        <input type="number" placeholder='Price' onChange={(e) => setPrice(e.target.value)} />
-        <input type="text" placeholder='Color' onChange={(e) => setColor(e.target.value)} />
-        <input type="text" placeholder='Features' onChange={(e) => setFeauters(e.target.value)} />
-        <input type="text" placeholder='Description' onChange={(e) => setDescription(e.target.value)} />
-        <input type="text" placeholder='Address' onChange={(e) => setAddress(e.target.value)} />
-        <input type="email" placeholder='Email' onChange={(e) => setEmail(e.target.value)} />
-        <input type="text" placeholder='Image1' onChange={(e) => setImg1(e.target.value)} />
-        <input type="text" placeholder='Image2' onChange={(e) => setImg2(e.target.value)} />
-        <input type="text" placeholder='Image3' onChange={(e) => setImg3(e.target.value)} />
-        <input type="text" placeholder='Image4' onChange={(e) => setImg4(e.target.value)} />
-        <input type="text" placeholder='Image5' onChange={(e) => setImg5(e.target.value)} />
-        <button className={styles.addBtn} onClick={AddProduct} >Add Product</button>
+        <input type="number" value={price} placeholder='Price' onChange={(e) => setPrice(e.target.value)} />
+        <input type="text" value={color} placeholder='Color' onChange={(e) => setColor(e.target.value)} />
+        <input type="text" value={features} placeholder='Features' onChange={(e) => setFeauters(e.target.value)} />
+        <input type="text" value={description} placeholder='Description' onChange={(e) => setDescription(e.target.value)} />
+        <input type="text" value={address} placeholder='Address' onChange={(e) => setAddress(e.target.value)} />
+        <input type="email" value={email} placeholder='Email' onChange={(e) => setEmail(e.target.value)} />
+        <input type="text" value={img1} placeholder='Image1' onChange={(e) => setImg1(e.target.value)} />
+        <input type="text" value={img2} placeholder='Image2' onChange={(e) => setImg2(e.target.value)} />
+        <input type="text" value={img3} placeholder='Image3' onChange={(e) => setImg3(e.target.value)} />
+        <input type="text" value={img4} placeholder='Image4' onChange={(e) => setImg4(e.target.value)} />
+        <input type="text" value={img5} placeholder='Image5' onChange={(e) => setImg5(e.target.value)} />
+        <button className={styles.addBtn} onClick={AddProduct} >{addProductstatus.addProductLoading ? <Spinner size='sm' /> : 'Add Product'}</button>
       </div>
     </div>
   )
