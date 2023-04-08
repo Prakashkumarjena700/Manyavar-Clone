@@ -68,11 +68,12 @@ export default function Login() {
             })
                 .then(res => res.json())
                 .then(res => {
+                    console.log(res)
                     setLoading(false)
                     if (res.msg == "Login sucessful") {
                         toast({
                             position: 'top',
-                            title: `Hello ${res.firstname}`,
+                            title: `Hello ${res.user[0].firstname}`,
                             description: "Your Login Successful",
                             status: 'success',
                             duration: 5000,
@@ -84,7 +85,7 @@ export default function Login() {
                         Cookies.set('token', token, { expires: expirationTime });
                         Cookies.set('isAuth', true, { expires: expirationTime });
 
-                        localStorage.setItem('user', JSON.stringify(res))
+                        localStorage.setItem('user', JSON.stringify(res.user[0]))
                     }
                     else if (res.msg == "Wrong crediential") {
                         toast({

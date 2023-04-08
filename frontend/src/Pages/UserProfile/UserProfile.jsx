@@ -1,10 +1,14 @@
 import React from 'react'
+import { useEffect } from 'react'
 import { useState } from 'react'
 import { json } from 'react-router-dom'
 import Navbar from '../../Components/Navbar/Navbar'
 import styles from '../UserProfile/UserProfile.module.css'
 
 export default function UserProfile() {
+
+    const [user, setUser] = useState({})
+
     const [profile, setProfile] = useState(true)
     const [address, setAddress] = useState(false)
     const [order, setOrder] = useState(false)
@@ -20,41 +24,71 @@ export default function UserProfile() {
 
     const [edit, setEdit] = useState(false)
 
-    const user = JSON.parse(localStorage.getItem('user'))
+    const userID = JSON.parse(localStorage.getItem('user'))
+
     // console.log(user)
+    useEffect(() => {
+        GetData()
+    }, [])
+
+    const GetData = async () => {
+        await fetch(`https://proud-lamb-suspenders.cyclic.app/users/${userID._id}`)
+            .then((res) => res.json())
+            .then((res) => {
+                setUser(res[0])
+                console.log(res[0])
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
+
 
     const editBTNFunc = () => {
-
         setEdit(true)
-
 
     }
     const editSaveFunc = async () => {
+        const formData = new FormData();
+        formData.append('file', avatar);
+        formData.append('upload_preset', 'manyavar');
+
+        const response = await fetch(
+            `https://api.cloudinary.com/v1_1/drijzhqfp/image/upload`,
+            {
+                method: 'POST',
+                body: formData,
+            }
+        );
+
+        const data = await response.json();
+        console.log(data);
+        console.log(data.secure_url)
 
         let obj = {
-            firstname, lastname, email, mobile, avatar
+            firstname: firstname || user.firstname,
+            lastname: lastname || user.lastname,
+            email: email || user.email,
+            mobile: mobile || user.mobile,
+            avatar: data.secure_url
         }
-        console.log(obj)
-
-
+        await fetch(`https://proud-lamb-suspenders.cyclic.app/users/edit/${user._id}`, {
+            method: 'PATCH',
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(obj)
+        }).then(res => res.json())
+            .then(res => {
+                setEdit(false)
+                alert('Updated')
+                GetData()
+                console.log(res)
+            })
+            .catch(err => console.log(err))
     }
 
-    const imageUpload = async () => {
-        //     const formData = new FormData();
-        //     formData.append('file', avatar);
-        //     formData.append('upload_preset', 'manyavar');
 
-        //     const response = await fetch(
-        //         `https://api.cloudinary.com/v1_1/drijzhqfp/image/upload`,
-        //         {
-        //             method: 'POST',
-        //             body: formData,
-        //         }
-        //     );
-
-        //     const data = await response.json();
-        //     console.log(data);
-    }
 
     return (
         <div className={styles.profile_main_container}>
@@ -73,6 +107,7 @@ export default function UserProfile() {
                         setOrder(false)
                         setWishlist(false)
                         setPassword(false)
+                        setEdit(false)
                     }}>PROFILE</button>
 
                     <button onClick={() => {
@@ -117,7 +152,7 @@ export default function UserProfile() {
                             !edit ?
                                 <div className={styles.profile_container_grid}>
                                     <div className={styles.profile_image_con}>
-                                        <img src="https://cdn.yellowmessenger.com/iUvAtk9OeYT71599818865807.png" alt="" />
+                                        <img src={user.avatar} alt="" />
                                     </div>
                                     <div >
                                         <div className={styles.profile_detail_heading}>
@@ -134,15 +169,15 @@ export default function UserProfile() {
                                         </div>
                                         <div className={styles.profile_detail}>
                                             <p>{user.email}</p>
-                                            <p></p>
+                                            <p>{user.mobile}</p>
                                         </div>
                                     </div>
                                 </div> :
                                 <div className={styles.profile_edit_container}>
-                                    <input type="text" placeholder='Saikh' onChange={(e) => setFname(e.target.value)} />
-                                    <input type="text" placeholder='Saikh' onChange={(e) => setLname(e.target.value)} />
-                                    <input type="text" placeholder='Saikh' onChange={(e) => setEmail(e.target.value)} />
-                                    <input type="text" placeholder='Saikh' onChange={(e) => setMobile(e.target.value)} />
+                                    <input type="text" placeholder={user.firstname} onChange={(e) => setFname(e.target.value)} />
+                                    <input type="text" placeholder={user.lastname} onChange={(e) => setLname(e.target.value)} />
+                                    <input type="text" placeholder={user.email} onChange={(e) => setEmail(e.target.value)} />
+                                    <input type="text" placeholder={user.mobile} onChange={(e) => setMobile(e.target.value)} />
                                     <input type="file" onChange={(e) => setAvatar(e.target.files[0])} />
                                 </div>
                         }
@@ -156,7 +191,7 @@ export default function UserProfile() {
                     {address ? <div>
                         address
                         <input type="file" onChange={(e) => setAvatar(e.target.files[0])} />
-                        <button onClick={imageUpload}>Upload</button>
+                        {/* <button onClick={imageUpload}>Upload</button> */}
 
                     </div> : ""}
                     {order ? <div>ORDERS</div> : ""}
