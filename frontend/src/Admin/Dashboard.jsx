@@ -1,27 +1,36 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import styles from "./Styles/AdminDashboard.module.css"
 import { CChart } from '@coreui/react-chartjs'
 
 import mehelLogo from "../Assets/mehelLogo.webp"
+import { getProducts } from '../Redux/admin/action'
 
-import { FaUsers } from "react-icons/fa"
 import { RiAdminLine } from "react-icons/ri"
-import { AiOutlineHeart ,AiOutlineShoppingCart} from "react-icons/ai"
+import { AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai"
 import { BsListCheck } from "react-icons/bs"
 import { MdShoppingCartCheckout } from 'react-icons/md'
 import { HiOutlineUsers } from 'react-icons/hi'
 
+import { useDispatch, useSelector } from 'react-redux'
+
 export default function Dashboard() {
     const [usersCount, setUserCount] = useState(0)
     const [adminCount, setAdminCount] = useState(0)
-    const [productsCount, setProductsCount] = useState(0)
     const [cartCount, setCartCount] = useState(0)
     const [wishListCount, setWishListCount] = useState(0)
 
+    const priductList = useSelector((store) => store.adminManager.productsList)
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        getProducts(dispatch)
+    })
+
     return (
         <div className={styles.DashboardContainer} >
-            <img style={{marginTop:'20px'}} src={mehelLogo} alt="" />
+            <img style={{ marginTop: '20px' }} src={mehelLogo} alt="" />
 
             <div className={styles.DashboardContainerFirstDiv} >
                 <div>
@@ -35,7 +44,7 @@ export default function Dashboard() {
                     </div>
                     <div>
                         <h2>Produts<BsListCheck /></h2>
-                        <p>{productsCount}</p>
+                        <p>{priductList.length}</p>
                     </div>
                     <div>
                         <h2>Cart<AiOutlineShoppingCart /></h2>

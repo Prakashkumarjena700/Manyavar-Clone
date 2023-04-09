@@ -2,7 +2,8 @@ import {
     GET_USERS_ERROR, GET_USERS_LOADING, GET_USERS_SUCCESS,
     GET_PRODUCTS_ERROR, GET_PRODUCTS_LOADING, GET_PRODUCTS_SUCCESS,
     ADD_PRODUCTS_ERROR, ADD_PRODUCTS_LOADING, ADD_PRODUCTS_SUCCESS,
-    UPDATE_PRODUCTS_ERROR, UPDATE_PRODUCTS_LOADING, UPDATE_PRODUCTS_SUCCESS
+    UPDATE_PRODUCTS_ERROR, UPDATE_PRODUCTS_LOADING, UPDATE_PRODUCTS_SUCCESS,
+    DELETE_PRODUCTS_ERROR, DELETE_PRODUCTS_LOADING, DELETE_PRODUCTS_SUCCESS
 } from './action.type'
 
 const initialState = {
@@ -17,7 +18,11 @@ const initialState = {
     addProductResult: '',
     updateProductLoading: false,
     updateProductError: false,
-    updateProductResult: ''
+    updateProductResult: false,
+    deleteProductLoading: false,
+    deleteProductError: false,
+    deleteProductResult: false
+
 }
 
 export const adminReducer = (state = initialState, { type, payload }) => {
@@ -104,6 +109,28 @@ export const adminReducer = (state = initialState, { type, payload }) => {
                 ...state,
                 updateProductLoading: false,
                 updateProductResult: payload
+            }
+        }
+        case DELETE_PRODUCTS_ERROR: {
+            return {
+                ...state,
+                deleteProductLoading: false,
+                deleteProductError: true
+            }
+        }
+        case DELETE_PRODUCTS_LOADING: {
+            return {
+                ...state,
+                deleteProductLoading: true,
+                deleteProductError: false
+            }
+        }
+        case DELETE_PRODUCTS_SUCCESS: {
+            return {
+                ...state,
+                deleteProductLoading: false,
+                deleteProductError: false,
+                deleteProductResult: payload
             }
         }
         default: {

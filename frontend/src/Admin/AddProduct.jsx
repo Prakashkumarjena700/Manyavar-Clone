@@ -197,7 +197,7 @@ export default function AddProduct() {
         <input type="text" value={img3} placeholder='Image3' onChange={(e) => setImg3(e.target.value)} />
         <input type="text" value={img4} placeholder='Image4' onChange={(e) => setImg4(e.target.value)} />
         <input type="text" value={img5} placeholder='Image5' onChange={(e) => setImg5(e.target.value)} />
-        <button className={styles.addBtn} onClick={AddProduct} >{addProductstatus.addProductLoading ? <Spinner size='sm' /> : 'Add Product'}</button>
+        <button className={styles.addBtn} onClick={AddProduct} >{addProductstatus.addProductLoading ? <p style={{textAlign:'center'}} ><Spinner size='sm' /></p> : 'Add Product'}</button>
       </div>
     </div>
   )
