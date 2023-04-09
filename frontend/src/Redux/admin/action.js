@@ -2,7 +2,8 @@ import {
     GET_USERS_ERROR, GET_USERS_LOADING, GET_USERS_SUCCESS,
     GET_PRODUCTS_ERROR, GET_PRODUCTS_LOADING, GET_PRODUCTS_SUCCESS,
     ADD_PRODUCTS_ERROR, ADD_PRODUCTS_LOADING, ADD_PRODUCTS_SUCCESS,
-    UPDATE_PRODUCTS_ERROR, UPDATE_PRODUCTS_LOADING, UPDATE_PRODUCTS_SUCCESS
+    UPDATE_PRODUCTS_ERROR, UPDATE_PRODUCTS_LOADING, UPDATE_PRODUCTS_SUCCESS,
+    DELETE_PRODUCTS_ERROR, DELETE_PRODUCTS_LOADING, DELETE_PRODUCTS_SUCCESS
 } from './action.type'
 
 export const getUser = async (dispatch) => {
@@ -59,5 +60,18 @@ export const updateProduct = async (dispatch, id, obj) => {
         dispatch({ type: UPDATE_PRODUCTS_SUCCESS, payload: actualUpdateResult })
     } catch (e) {
         dispatch({ type: UPDATE_PRODUCTS_ERROR, payload: e.message })
+    }
+}
+
+export const deleteProduct = async (dispatch, id) => {
+    dispatch({ type: DELETE_PRODUCTS_LOADING })
+    try {
+        let deleteResult = await fetch(`https://proud-lamb-suspenders.cyclic.app/products/delete/${id}`, {
+            method: 'DELETE'
+        })
+        let deleteUpdateResult = await deleteResult.json()
+        dispatch({ type: DELETE_PRODUCTS_SUCCESS, payload: deleteUpdateResult })
+    } catch (e) {
+        dispatch({ type: DELETE_PRODUCTS_ERROR, payload: e.message })
     }
 }

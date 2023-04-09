@@ -14,6 +14,11 @@ export const UPDATE_PRODUCTS_LOADING = 'update/products/loading'
 export const UPDATE_PRODUCTS_ERROR = 'update/products/error'
 export const UPDATE_PRODUCTS_SUCCESS = 'update/products/success'
 
+export const DELETE_PRODUCTS_LOADING = 'delete/products/loading'
+export const DELETE_PRODUCTS_ERROR = 'delete/products/error'
+export const DELETE_PRODUCTS_SUCCESS = 'delete/products/success'
+
+
 
 
 

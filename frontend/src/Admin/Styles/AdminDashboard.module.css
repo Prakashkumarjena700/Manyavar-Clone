@@ -324,6 +324,7 @@
     /* border: 1px solid lawngreen; */
     background-color: #FFC100;
     padding: 10px 5px;
+    height: 40px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }
