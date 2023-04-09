@@ -5,6 +5,10 @@ import { json } from 'react-router-dom'
 import Navbar from '../../Components/Navbar/Navbar'
 import styles from '../UserProfile/UserProfile.module.css'
 
+import { Spinner } from '@chakra-ui/react'
+
+import { GrFormClose } from 'react-icons/gr';
+
 export default function UserProfile() {
 
     const [user, setUser] = useState({})
@@ -20,6 +24,8 @@ export default function UserProfile() {
     const [email, setEmail] = useState("")
     const [mobile, setMobile] = useState("")
     const [avatar, setAvatar] = useState("")
+
+    const [loading, setLoading] = useState(false)
 
 
     const [edit, setEdit] = useState(false)
@@ -49,6 +55,7 @@ export default function UserProfile() {
 
     }
     const editSaveFunc = async () => {
+        setLoading(true)
         const formData = new FormData();
         formData.append('file', avatar);
         formData.append('upload_preset', 'manyavar');
@@ -80,15 +87,35 @@ export default function UserProfile() {
             body: JSON.stringify(obj)
         }).then(res => res.json())
             .then(res => {
+                setLoading(false)
                 setEdit(false)
                 alert('Updated')
                 GetData()
                 console.log(res)
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                setLoading(false)
+                console.log(err)
+            })
     }
 
 
+    const [isOpen, setIsOpen] = useState(false);
+
+    const handleClick = () => {
+        setIsOpen(!isOpen);
+    };
+
+    const handleSave = () => {
+        setIsOpen(false);
+        // do something with the saved data
+    };
+
+    const handleOutsideClick = (e) => {
+        if (e.target.className === 'modal') {
+            setIsOpen(false);
+        }
+    };
 
     return (
         <div className={styles.profile_main_container}>
@@ -101,7 +128,7 @@ export default function UserProfile() {
             </div>
             <div className={styles.profile_container_2}>
                 <div className={styles.profile_con2_child_1}>
-                    <button onClick={() => {
+                    <button className={profile ? styles.active_profile : ""} onClick={() => {
                         setProfile(true)
                         setAddress(false)
                         setOrder(false)
@@ -110,7 +137,7 @@ export default function UserProfile() {
                         setEdit(false)
                     }}>PROFILE</button>
 
-                    <button onClick={() => {
+                    <button className={address ? styles.active_adress : ""} onClick={() => {
                         setProfile(false)
                         setAddress(true)
                         setOrder(false)
@@ -118,7 +145,7 @@ export default function UserProfile() {
                         setPassword(false)
                     }}>MY ADDRESS</button>
 
-                    <button onClick={() => {
+                    <button className={order ? styles.active_order : ""} onClick={() => {
                         setProfile(false)
                         setAddress(false)
                         setOrder(true)
@@ -126,7 +153,7 @@ export default function UserProfile() {
                         setPassword(false)
                     }}>MY ORDERS</button>
 
-                    <button onClick={() => {
+                    <button className={wishlist ? styles.active_wishlist : ""} onClick={() => {
                         setProfile(false)
                         setAddress(false)
                         setOrder(false)
@@ -134,7 +161,7 @@ export default function UserProfile() {
                         setPassword(false)
                     }}>MY WISHLIST</button>
 
-                    <button onClick={() => {
+                    <button className={password ? styles.active_password : ""} onClick={() => {
                         setProfile(false)
                         setAddress(false)
                         setOrder(false)
@@ -145,7 +172,7 @@ export default function UserProfile() {
                 </div>
                 <div className={styles.profile_con2_child_2}>
                     {/* ========Profile======== */}
-                    {profile ? <div className={styles.profile_container}>
+                    {profile ? <div className={styles.profile_container} >
                         {!edit ? <h1>MY PROFILE</h1> : <h1>EDIT MY PROFILE</h1>}
 
                         {
@@ -184,15 +211,43 @@ export default function UserProfile() {
 
 
 
-                        {edit ? <button className={styles.editBtn_profile} onClick={editSaveFunc}>SAVE</button> : <button className={styles.editBtn_profile} onClick={editBTNFunc}>EDIT</button>}
+                        {edit ? <button className={styles.editBtn_profile} onClick={editSaveFunc}>{loading ? <Spinner size='sm' /> : 'SAVE'}</button> : <button className={styles.editBtn_profile} onClick={editBTNFunc}>EDIT</button>}
                     </div> : ""}
                     {/* ========Profile-End======== */}
 
-                    {address ? <div>
-                        address
-                        <input type="file" onChange={(e) => setAvatar(e.target.files[0])} />
-                        {/* <button onClick={imageUpload}>Upload</button> */}
+                    {address ? <div className={styles.myAddress_container}>
+                        <h1>MY ADDRESSES</h1>
+                        <button className={styles.add_new_address_btn} onClick={handleClick}>ADD NEW</button>
+                        {isOpen && (
+                            <div className={styles.address_modal_container} onClick={handleOutsideClick}>
+                                <div className={styles.address_modal_heading_con}>
+                                    <h1 >ADD NEW ADDRESS</h1>
+                                    <button onClick={() => setIsOpen(false)} className={styles.address_modal_close}><GrFormClose size='25px' /></button>
+                                </div>
+                                <div className={styles.address_input_container}>
+                                    <input type="text" placeholder='Name *' />
+                                    <div className={styles.address_input_flex}>
+                                        <input type="text" placeholder='Email *' />
+                                        <input type="text" placeholder='Mobile No *' />
+                                    </div>
+                                    <textarea type="text" placeholder='Address *' />
+                                    <div className={styles.address_input_flex}>
+                                        <input type="text" placeholder='Zip Code / Pincode *' />
+                                        <input type="text" placeholder='Country *' />
+                                    </div>
+                                    <div className={styles.address_input_flex}>
+                                        <input type="text" placeholder='State *' />
+                                        <input type="text" placeholder='City *' />
+                                    </div>
+                                </div>
 
+                                <input type="checkbox" /><label style={{ marginLeft: '10px' }}>Make this a default Address</label>
+                                <br />
+                                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                    <button className={styles.address_save_btn} onClick={handleSave}>SAVE</button>
+                                </div>
+                            </div>
+                        )}
                     </div> : ""}
                     {order ? <div>ORDERS</div> : ""}
                     {wishlist ? <div>WISHLIST</div> : ""}
