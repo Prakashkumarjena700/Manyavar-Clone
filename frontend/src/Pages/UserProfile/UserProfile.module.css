@@ -66,6 +66,7 @@
 }
 
 .profile_con2_child_2 {
+    /* border: 1px solid red; */
     background-color: #fefbf2;
     border-left: 1px solid #e3d1a8;
     padding-left: 40px;
@@ -137,6 +138,9 @@
     font-size: 14px;
     margin-top: 20px;
     margin-left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .profile_edit_container {
@@ -157,4 +161,228 @@
 
 .profile_edit_container>input::placeholder {
     color: black;
+}
+
+.myAddress_container {
+    /* border: 1px solid rebeccapurple; */
+}
+
+.myAddress_container>h1 {
+
+    font-size: 20px;
+    letter-spacing: 3px;
+    font-weight: bold;
+    color: #313030;
+
+}
+
+.add_new_address_btn {
+    background-color: #900d19;
+    color: white;
+    padding: 5px 20px;
+    font-size: 14px;
+    margin-top: 20px;
+    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.address_modal_container {
+    /* border: 1px solid red; */
+    overflow: scroll;
+    position: absolute;
+    top: 15%;
+    bottom: 15%;
+    left: 18%;
+    right: 18%;
+    background-color: #fefbf2;
+    box-shadow: rgba(0, 0, 0, 0.397) 0px 20px 100px 1000px;
+    padding: 50px;
+}
+
+.address_modal_heading_con {
+    display: grid;
+    grid-template-columns: repeat(2, 95% 5%);
+    text-align: center;
+}
+
+
+
+.address_modal_heading_con>h1 {
+    font-size: 20px;
+    letter-spacing: 3px;
+    font-weight: bold;
+    color: #313030;
+}
+
+
+.address_modal_close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.address_input_container {
+    /* border: 1px solid red; */
+    margin-bottom: 20px;
+}
+
+.address_input_container>input:nth-child(1) {
+    width: 47.5%;
+}
+
+.address_input_container input {
+    width: 100%;
+    padding: 10px 0px;
+    border-bottom: 1px solid grey;
+    margin-bottom: 10px;
+    outline: none;
+    background-color: #fefbf2;
+}
+
+.address_input_container>textarea {
+    width: 100%;
+    border-bottom: 1px solid grey;
+    margin-bottom: 10px;
+    outline: none;
+    background-color: #fefbf2;
+}
+
+.address_input_flex {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+.address_save_btn {
+    background-color: #900d19;
+    color: white;
+    padding: 8px 60px;
+    font-size: 14px;
+    margin-top: 20px;
+    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width:1180px) {
+    .profile_container_1 {
+        /* border: 1px solid red; */
+    }
+
+    .profile_container_1>h1 {
+        font-size: 28px;
+        /* border: 1px solid red; */
+    }
+
+    .profile_container_1>p:nth-child(2) {
+        /* border: 1px solid red; */
+        font-size: 16px;
+    }
+
+    .profile_container_1>p:nth-child(3) {
+        /* border: 1px solid red; */
+        font-size: 10px;
+    }
+
+    .profile_container_2 {
+        /* border: 1px solid red; */
+        grid-template-columns: repeat(2, 30% 70%);
+    }
+
+    .profile_image_con {
+        /* border: 1px solid green; */
+    }
+
+    .profile_image_con>img {
+        /* border: 1px solid red; */
+        width: 45%;
+        height: 90%;
+        margin: auto;
+    }
+
+    .profile_container_grid {
+        /* border: 1px solid green; */
+        grid-template-columns: repeat(1, 1fr);
+        gap: 8%;
+        text-align: center;
+    }
+
+    .profile_edit_container {
+        width: 90%;
+    }
+
+    .profile_container {
+        text-align: center;
+    }
+
+    .profile_container>button {
+        margin-left: 38%;
+    }
+}
+
+@media (max-width:770px) {
+    .profile_container_2 {
+        /* border: 1px solid green; */
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .profile_con2_child_1 {
+        /* border: 1px solid red; */
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        height: 90px;
+        gap: 5px;
+    }
+
+    .profile_con2_child_1>button {
+        border: 1px solid rgb(219, 217, 217);
+
+        text-align: center;
+    }
+
+    .profile_con2_child_1>button:nth-child(5) {
+        /* border: 1px solid green; */
+        /* background-color: #900d19; */
+        position: relative;
+        left: 50%;
+    }
+
+    .profile_con2_child_1>.active_profile {
+        background-color: maroon;
+        color: white;
+    }
+
+
+    .profile_con2_child_1>.active_adress {
+        background-color: maroon;
+        color: white;
+    }
+
+    .profile_con2_child_1>.active_order {
+        background-color: maroon;
+        color: white;
+    }
+
+    .profile_con2_child_1>.active_wishlist {
+        background-color: maroon;
+        color: white;
+    }
+
+    .profile_con2_child_1>.active_password {
+        background-color: maroon;
+        color: white;
+    }
+
+    .profile_con2_child_2 {
+        border: 1px solid red;
+        margin-top: 20px;
+        padding: 20px 0px;
+    }
+
+    .profile_container>button {
+        margin-left: 33%;
+    }
 }

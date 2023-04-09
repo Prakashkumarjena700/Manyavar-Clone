@@ -79,7 +79,13 @@ export default function Login() {
                             duration: 5000,
                             isClosable: true,
                         })
-                        navigate('/')
+                        let role = res.user[0].role
+                        if (role == 'admin') {
+                            navigate('/admindashboard')
+                        }
+                        if (role == 'user') {
+                            navigate('/')
+                        }
                         const token = res.token;
                         const expirationTime = new Date(new Date().getTime() + 3600 * 1000); // expires in 1 hour
                         Cookies.set('token', token, { expires: expirationTime });
