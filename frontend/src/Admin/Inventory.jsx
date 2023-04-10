@@ -50,12 +50,6 @@ export default function Inventory() {
     updateProduct(dispatch, product._id, obj)
 
     setTimeout(() => {
-      checkUpdation()
-    }, 3000);
-  }
-
-  const checkUpdation = () => {
-    if (!products.updateProductError) {
       getProducts(dispatch)
       toast({
         title: 'Product has been updated.',
@@ -66,28 +60,13 @@ export default function Inventory() {
         position: 'top',
       })
       onClose()
-    } else {
-      toast({
-        title: 'Error',
-        description: "Product has not been added.",
-        status: 'error',
-        duration: 3000,
-        isClosable: true,
-        position: 'top',
-      })
-    }
+    }, 1000);
   }
 
   const deleteFunction = (ele) => {
     deleteProduct(dispatch, ele._id)
 
     setTimeout(() => {
-      checkDelete()
-    }, 3000);
-  }
-
-  const checkDelete = () => {
-    if (products.deleteProductResult.sucess) {
       getProducts(dispatch)
       toast({
         title: 'Product has been delete.',
@@ -97,16 +76,7 @@ export default function Inventory() {
         isClosable: true,
         position: 'top',
       })
-    } else if (!products.deleteProductResult.sucess) {
-      toast({
-        title: 'Error',
-        description: "Product not been deleted.",
-        status: 'error',
-        duration: 3000,
-        isClosable: true,
-        position: 'top',
-      })
-    }
+    }, 1000);
   }
 
   useEffect(() => {

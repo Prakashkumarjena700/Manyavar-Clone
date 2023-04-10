@@ -70,41 +70,31 @@ export default function AddProduct() {
       img5
     }
     addProduct(dispatch, obj)
-    if (addProductstatus.addProductResult.sucess) {
-      toast({
-        title: 'Product has been added.',
-        description: "Product has been reflected on the product page",
-        status: 'success',
-        duration: 3000,
-        isClosable: true,
-        position: 'top',
-      })
-      setName('')
-      setCategory('')
-      setGender('')
-      setOccasion('')
-      setCollections('')
-      setPrice('')
-      setColor('')
-      setFeauters('')
-      setDescription('')
-      setAddress('')
-      setEmail('')
-      setImg1('')
-      setImg2('')
-      setImg3('')
-      setImg4('')
-      setImg5('')
-    } else {
-      toast({
-        title: 'Product not added.',
-        description: "Something went wrong ..",
-        status: 'error',
-        duration: 3000,
-        isClosable: true,
-        position: 'top',
-      })
-    }
+
+    toast({
+      title: 'Product has been added.',
+      description: "Product has been reflected on the product page",
+      status: 'success',
+      duration: 3000,
+      isClosable: true,
+      position: 'top',
+    })
+    setName('')
+    setCategory('')
+    setGender('')
+    setOccasion('')
+    setCollections('')
+    setPrice('')
+    setColor('')
+    setFeauters('')
+    setDescription('')
+    setAddress('')
+    setEmail('')
+    setImg1('')
+    setImg2('')
+    setImg3('')
+    setImg4('')
+    setImg5('')
   }
 
   return (
@@ -197,7 +187,7 @@ export default function AddProduct() {
         <input type="text" value={img3} placeholder='Image3' onChange={(e) => setImg3(e.target.value)} />
         <input type="text" value={img4} placeholder='Image4' onChange={(e) => setImg4(e.target.value)} />
         <input type="text" value={img5} placeholder='Image5' onChange={(e) => setImg5(e.target.value)} />
-        <button className={styles.addBtn} onClick={AddProduct} >{addProductstatus.addProductLoading ? <p style={{textAlign:'center'}} ><Spinner size='sm' /></p> : 'Add Product'}</button>
+        <button className={styles.addBtn} onClick={AddProduct} >{addProductstatus.addProductLoading ? <p style={{ textAlign: 'center' }} ><Spinner size='sm' /></p> : 'Add Product'}</button>
       </div>
     </div>
   )
