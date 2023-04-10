@@ -7,6 +7,8 @@ import Home from '../Pages/Home/Home'
 import Login from '../Pages/RegisterAndLogin/Login'
 import Register from '../Pages/RegisterAndLogin/Register'
 import UserProfile from '../Pages/UserProfile/UserProfile'
+import Men from '../Pages/Men/Men'
+import Women from '../Pages/Women/Women'
 
 
 
@@ -18,6 +20,8 @@ export default function AllRoutes() {
             <Route path='/login' element={<Login />} ></Route>
             <Route path='/admindashboard' element={<AdminDashboard />} ></Route>
             <Route path='/userprofile' element={<UserProfile />} ></Route>
+            <Route path='/men' element={<Men />} ></Route>
+            <Route path='/women' element={<Women />} ></Route>
         </Routes>
     )
 }

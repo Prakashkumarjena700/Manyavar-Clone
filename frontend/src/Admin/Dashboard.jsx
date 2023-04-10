@@ -4,7 +4,7 @@ import styles from "./Styles/AdminDashboard.module.css"
 import { CChart } from '@coreui/react-chartjs'
 
 import mehelLogo from "../Assets/mehelLogo.webp"
-import { getProducts } from '../Redux/admin/action'
+import { getProducts, getUser, getAdmin } from '../Redux/admin/action'
 
 import { RiAdminLine } from "react-icons/ri"
 import { AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai"
@@ -20,13 +20,15 @@ export default function Dashboard() {
     const [cartCount, setCartCount] = useState(0)
     const [wishListCount, setWishListCount] = useState(0)
 
-    const priductList = useSelector((store) => store.adminManager.productsList)
+    const adminList = useSelector((store) => store.adminManager)
 
     const dispatch = useDispatch()
 
     useEffect(() => {
         getProducts(dispatch)
-    })
+        getUser(dispatch)
+        getAdmin(dispatch)
+    }, [])
 
     return (
         <div className={styles.DashboardContainer} >
@@ -36,15 +38,15 @@ export default function Dashboard() {
                 <div>
                     <div>
                         <h2>Users <HiOutlineUsers /></h2>
-                        <p>{usersCount}</p>
+                        <p>{adminList.usersList.length}</p>
                     </div>
                     <div>
                         <h2>Admin<RiAdminLine /></h2>
-                        <p>{adminCount}</p>
+                        <p>{adminList.adminList.length}</p>
                     </div>
                     <div>
                         <h2>Produts<BsListCheck /></h2>
-                        <p>{priductList.length}</p>
+                        <p>{adminList.productsList.length}</p>
                     </div>
                     <div>
                         <h2>Cart<AiOutlineShoppingCart /></h2>
