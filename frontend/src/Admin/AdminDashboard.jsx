@@ -15,6 +15,7 @@ import Dashboard from './Dashboard'
 import { MdOutlineDashboard, MdOutlineDashboardCustomize } from 'react-icons/md'
 import { FaList } from 'react-icons/fa'
 import { HiOutlineUsers } from 'react-icons/hi'
+import Admins from './Admins'
 
 export default function AdminDashboard() {
 
@@ -22,13 +23,14 @@ export default function AdminDashboard() {
   const [addProduct, setAddProduct] = useState(false)
   const [inventory, setInventory] = useState(false)
   const [users, setUsers] = useState(false)
+  const [admins, setAdmins] = useState(false)
 
   const navigate = useNavigate()
 
   return (
     <div className={styles.AdminDashboardContainer} >
       <div className={styles.ADMenueContainer}  >
-        <img onClick={()=>navigate('/')} src={manyavarFullLogo} alt="" />
+        <img onClick={() => navigate('/')} src={manyavarFullLogo} alt="" />
         <div>
           <div>
             <img src={maleUserLogo} alt="" />
@@ -44,6 +46,7 @@ export default function AdminDashboard() {
             setDashBoard(true)
             setInventory(false)
             setUsers(false)
+            setAdmins(false)
           }}
             className={dashBoard && styles.activeonAdmin}
           ><p>Dashboard</p><span><MdOutlineDashboard /></span> </button>
@@ -51,6 +54,7 @@ export default function AdminDashboard() {
             setAddProduct(true)
             setDashBoard(false)
             setInventory(false)
+            setAdmins(false)
             setUsers(false)
           }}
             className={addProduct && styles.activeonAdmin}
@@ -60,6 +64,7 @@ export default function AdminDashboard() {
             setDashBoard(false)
             setInventory(true)
             setUsers(false)
+            setAdmins(false)
           }}
             className={inventory && styles.activeonAdmin}
           ><p>Inventory</p><span><FaList /></span> </button>
@@ -68,9 +73,19 @@ export default function AdminDashboard() {
             setDashBoard(false)
             setInventory(false)
             setUsers(true)
+            setAdmins(false)
           }}
             className={users && styles.activeonAdmin}
           ><p>Users</p><span><HiOutlineUsers /></span> </button>
+          <button onClick={() => {
+            setAddProduct(false)
+            setDashBoard(false)
+            setInventory(false)
+            setUsers(false)
+            setAdmins(true)
+          }}
+            className={admins && styles.activeonAdmin}
+          ><p>Admins</p><span><HiOutlineUsers /></span> </button>
         </div>
       </div>
       {
@@ -78,7 +93,8 @@ export default function AdminDashboard() {
           addProduct ? <AddProduct /> :
             inventory ? <Inventory /> :
               users ? <Users /> :
-                <div></div>
+                admins ? <Admins /> :
+                  <div></div>
       }
     </div>
   )
