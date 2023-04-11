@@ -6,7 +6,7 @@ import mehelLogo from "../Assets/mehelLogo.webp"
 import Skeliton from './UsersSkeliton'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { getUser, updateUser, deleteUser } from '../Redux/admin/action'
+import { getAdmin, updateUser, deleteUser } from '../Redux/admin/action'
 
 import { Modal, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, useDisclosure, Button, Input, Select, useToast, Spinner } from '@chakra-ui/react'
 
@@ -15,8 +15,7 @@ import { RiDeleteBin5Line } from 'react-icons/ri'
 import { GrView } from 'react-icons/gr'
 
 
-
-export default function Users() {
+export default function Admins() {
 
     const adminManager = useSelector((store) => store.adminManager)
     const dispatch = useDispatch()
@@ -35,7 +34,7 @@ export default function Users() {
     const toast = useToast()
 
     useEffect(() => {
-        getUser(dispatch)
+        getAdmin(dispatch)
     }, [])
 
     const UpdateUser = () => {
@@ -49,7 +48,7 @@ export default function Users() {
         updateUser(dispatch, user._id, obj)
 
         setTimeout(() => {
-            getUser(dispatch)
+            getAdmin(dispatch)
             toast({
                 title: 'Product has been updated.',
                 description: "Update has been reflected on the product page",
@@ -61,11 +60,10 @@ export default function Users() {
             onClose()
         }, 2000);
     }
-
     const DeleteFunction = (ele) => {
         deleteUser(dispatch, ele._id)
         setTimeout(() => {
-            getUser(dispatch)
+            getAdmin(dispatch)
             toast({
                 title: 'User has been deleted.',
                 description: "User is get remove from the database",
@@ -77,6 +75,7 @@ export default function Users() {
         }, 2000);
     }
 
+
     return (
         <div className={styles.UsersContainer} >
             <div>
@@ -84,10 +83,10 @@ export default function Users() {
             </div>
             <img src={mehelLogo} alt="" />
             {
-                adminManager.usersListLoading ? <Skeliton /> :
+                adminManager.adminListLoading ? <Skeliton /> :
                     <div className={styles.UserResultContainer}  >
                         {
-                            adminManager.usersList.map((ele) =>
+                            adminManager.adminList.map((ele) =>
                                 <div key={ele._id} >
                                     <div>
                                         <div>
