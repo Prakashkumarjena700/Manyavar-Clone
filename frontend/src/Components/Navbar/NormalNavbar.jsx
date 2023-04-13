@@ -50,7 +50,7 @@ export default function NormalNavbar() {
         < >
             <div className={styles.headingLogoContainer} >
                 <div></div>
-                <img src="https://static01.manyavar.com/uploads/images/Manvayar-Crest-Mohey_Horizontal_3D_logo%201.png" alt="" />
+                <img onClick={()=> navigate('/')} src="https://static01.manyavar.com/uploads/images/Manvayar-Crest-Mohey_Horizontal_3D_logo%201.png" alt="" />
                 <div>
                     <Link> <FiSearch /></Link>
                     {/* <Link to='/register'><FiUser /></Link> */}
