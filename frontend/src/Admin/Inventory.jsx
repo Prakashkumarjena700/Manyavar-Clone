@@ -41,7 +41,7 @@ export default function Inventory() {
       name: name || product.name,
       color: color || product.color,
       category: category || product.category,
-      price: price || product.price,
+      price: Number(price) || Number(product.price),
       gender: gender || product.gender,
       occasion: occasion || product.occasion,
       collection: collection || product.collection
@@ -101,7 +101,7 @@ export default function Inventory() {
                         <h2><b>{ele.name.substring(0, 15)}...</b></h2>
                         <h2><b>Price : </b> ₹ {ele.price}.00</h2>
                         <h2><b>Category : </b> {ele.category.substring(0, 10)}</h2>
-                        <h2><b>Id :</b> {ele._id.substring(0, 10)}...</h2>
+                        <h2><b>Id :</b> {ele._id.substring(0, 9)}...</h2>
                       </div>
                     </div>
                     <div className={styles.ProductsBtns}  >

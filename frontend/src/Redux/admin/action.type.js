@@ -30,6 +30,29 @@ export const DELETE_PRODUCTS_LOADING = 'delete/products/loading'
 export const DELETE_PRODUCTS_ERROR = 'delete/products/error'
 export const DELETE_PRODUCTS_SUCCESS = 'delete/products/success'
 
+export const GET_CART_LOADING = 'get/cart/loading'
+export const GET_CART_ERROR = 'get/cart/error'
+export const GET_CART_SUCCESS = 'get/cart/success'
+
+export const UPDATE_CART_LOADING = 'update/cart/loading'
+export const UPDATE_CART_ERROR = 'update/cart/error'
+export const UPDATE_CART_SUCCESS = 'update/cart/success'
+
+export const DELETE_CART_LOADING = 'delete/cart/loading'
+export const DELETE_CART_ERROR = 'delete/cart/error'
+export const DELETE_CART_SUCCESS = 'delete/cart/success'
+
+export const GET_WISHLIST_LOADING = 'get/wishlist/loading'
+export const GET_WISHLIST_ERROR = 'get/wishlist/error'
+export const GET_WISHLIST_SUCCESS = 'get/wishlist/success'
+
+export const DELETE_WISHLIST_LOADING = 'delete/wishlist/loading'
+export const DELETE_WISHLIST_ERROR = 'delete/wishlist/error'
+export const DELETE_WISHLIST_SUCCESS = 'delete/wishlist/success'
+
+
+
+
 
 
 

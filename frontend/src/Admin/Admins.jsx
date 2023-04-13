@@ -13,6 +13,7 @@ import { Modal, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseBut
 import { AiOutlineEdit } from 'react-icons/ai'
 import { RiDeleteBin5Line } from 'react-icons/ri'
 import { GrView } from 'react-icons/gr'
+import ProductsSkeliton from './ProductsSkeliton'
 
 
 export default function Admins() {
@@ -83,7 +84,7 @@ export default function Admins() {
             </div>
             <img src={mehelLogo} alt="" />
             {
-                adminManager.adminListLoading ? <Skeliton /> :
+                adminManager.adminListLoading ? <ProductsSkeliton /> :
                     <div className={styles.UserResultContainer}  >
                         {
                             adminManager.adminList.map((ele) =>
@@ -93,26 +94,30 @@ export default function Admins() {
                                             <img src={ele.avatar} alt="" />
                                         </div>
                                         <div>
-                                            <h3>Role: {ele.role}</h3>
-                                            <h3>{ele.firstname}</h3>
+                                            <p><b>Name : </b>{ele.firstname.substring(0, 10)}...</p>
+                                            <p><b>Role : </b>{ele.role}</p>
+                                            <p><b>Gender : </b>{ele.gender}</p>
+                                            <p><b>Email : </b>{ele.email.substring(0, 10)}...</p>
                                         </div>
                                     </div>
-                                    <h3>{ele.email}</h3>
                                     <h2>
-                                        <button onClick={() => {
+                                        <GrView onClick={() => {
+                                            setForm(false)
                                             setUser(ele)
-                                            DeleteFunction(ele)
-                                        }} >{adminManager.deleteusersLoading && ele._id === user._id ? <Spinner size='sm' /> : <RiDeleteBin5Line />}</button>
+                                            onOpen()
+                                        }} />
                                         <AiOutlineEdit onClick={() => {
                                             setForm(true)
                                             setUser(ele)
                                             onOpen()
                                         }} />
-                                        <GrView onClick={() => {
-                                            setForm(false)
+
+                                        <button onClick={() => {
                                             setUser(ele)
-                                            onOpen()
-                                        }} /> </h2>
+                                            DeleteFunction(ele)
+                                        }} >{adminManager.deleteusersLoading && ele._id === user._id ? <Spinner size='sm' /> : <RiDeleteBin5Line />}</button>
+
+                                    </h2>
 
                                 </div>
                             )

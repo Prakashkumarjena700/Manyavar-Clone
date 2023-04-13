@@ -4,7 +4,7 @@ import styles from "./Styles/AdminDashboard.module.css"
 import { CChart } from '@coreui/react-chartjs'
 
 import mehelLogo from "../Assets/mehelLogo.webp"
-import { getProducts, getUser, getAdmin } from '../Redux/admin/action'
+import { getProducts, getUser, getAdmin, getCart, getWishlist } from '../Redux/admin/action'
 
 import { RiAdminLine } from "react-icons/ri"
 import { AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai"
@@ -28,6 +28,8 @@ export default function Dashboard() {
         getProducts(dispatch)
         getUser(dispatch)
         getAdmin(dispatch)
+        getCart(dispatch)
+        getWishlist(dispatch)
     }, [])
 
     return (
@@ -50,11 +52,11 @@ export default function Dashboard() {
                     </div>
                     <div>
                         <h2>Cart<AiOutlineShoppingCart /></h2>
-                        <p>{cartCount}</p>
+                        <p>{adminList.cartList.length}</p>
                     </div>
                     <div>
                         <h2>Wish List<AiOutlineHeart /></h2>
-                        <p>{wishListCount}</p>
+                        <p>{adminList.wishList.length}</p>
                     </div>
                     <div>
                         <h2>Check out<MdShoppingCartCheckout /></h2>
