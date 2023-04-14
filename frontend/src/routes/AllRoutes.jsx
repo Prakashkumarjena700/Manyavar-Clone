@@ -22,13 +22,7 @@ export default function AllRoutes() {
             <Route path='/login' element={<Login />} ></Route>
             <Route path='/admindashboard' element={<AdminDashboard />} ></Route>
             <Route path='/userprofile' element={<UserProfile />} ></Route>
-<<<<<<< HEAD
             <Route path='/products' element={<Products />} ></Route>
-=======
-            <Route path='/men' element={<Men />} ></Route>
-            <Route path='/women' element={<Women />} ></Route>
-            <Route path='/singleproduct' element={<SingleProduct />} ></Route>
->>>>>>> 5b8f69c86382848807276a66aeefd89f4f4dd8b5
         </Routes>
     )
 }
