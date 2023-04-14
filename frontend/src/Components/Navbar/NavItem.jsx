@@ -224,5 +224,5 @@ export const Accessories = [
     { id: 54, title: '' },
     { id: 55, title: '' },
     { id: 10, title: 'Socks' },
-    
+
 ]
