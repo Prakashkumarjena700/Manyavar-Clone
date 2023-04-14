@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styles from "./Navbar.module.css"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { FiSearch, FiShoppingCart, FiUser } from 'react-icons/fi';
 import { AiOutlineHeart } from 'react-icons/ai';
@@ -24,6 +24,8 @@ export default function NormalNavbar() {
 
     let isAuth = Cookies.get('isAuth');
 
+    const navigate = useNavigate()
+
     useEffect(() => {
         function handleScroll() {
             if (window.pageYOffset > 100) {
@@ -38,13 +40,17 @@ export default function NormalNavbar() {
         };
     }, []);
 
+    const gotoStaticPage = (title) => {
+        let pagename = title.toLowerCase()
+        navigate(`/${pagename}`)
+    }
 
 
     return (
         < >
             <div className={styles.headingLogoContainer} >
                 <div></div>
-                <img src="https://static01.manyavar.com/uploads/images/Manvayar-Crest-Mohey_Horizontal_3D_logo%201.png" alt="" />
+                <img onClick={()=> navigate('/')} src="https://static01.manyavar.com/uploads/images/Manvayar-Crest-Mohey_Horizontal_3D_logo%201.png" alt="" />
                 <div>
                     <Link> <FiSearch /></Link>
                     {/* <Link to='/register'><FiUser /></Link> */}
@@ -67,7 +73,7 @@ export default function NormalNavbar() {
                                         onMouseEnter={() => setMenDropdown(true)}
                                         onMouseLeave={() => setMenDropdown(false)}
                                         key={ele.title}
-                                    >   <h2>{ele.title}</h2>
+                                    >   <h2 onClick={() => gotoStaticPage(ele.title)} >{ele.title}</h2>
                                         {menDropdown && <MenDropDown />}
                                     </div>
                                 )
@@ -78,7 +84,7 @@ export default function NormalNavbar() {
                                         onMouseEnter={() => setWomenDropdown(true)}
                                         onMouseLeave={() => setWomenDropdown(false)}
                                         key={ele.title}
-                                    >   <h2>{ele.title}</h2>
+                                    >   <h2 onClick={() => gotoStaticPage(ele.title)} >{ele.title}</h2>
                                         {womenDropdown && <WomenDropDown />}
                                     </div>
                                 )
@@ -89,7 +95,7 @@ export default function NormalNavbar() {
                                         onMouseEnter={() => setKidsDropdown(true)}
                                         onMouseLeave={() => setKidsDropdown(false)}
                                         key={ele.title}
-                                    >   <h2>{ele.title}</h2>
+                                    >   <h2 >{ele.title}</h2>
                                         {kidsDropdown && <KidsDropDown />}
                                     </div>
                                 )
@@ -100,13 +106,13 @@ export default function NormalNavbar() {
                                         onMouseEnter={() => setAccessoriesDropDown(true)}
                                         onMouseLeave={() => setAccessoriesDropDown(false)}
                                         key={ele.title}
-                                    >   <h2>{ele.title}</h2>
+                                    >   <h2  >{ele.title}</h2>
                                         {accessoriesDropDown && <AccessoriesDropDown />}
                                     </div>
                                 )
                             }
                             return (
-                                <div key={ele.id} style={{ cursor: 'pointer' }} >{ele.title}</div>
+                                <div key={ele.id} style={{ cursor: 'pointer' }} onClick={() => gotoStaticPage(ele.title)}  >{ele.title}</div>
                             )
                         })
                     }
