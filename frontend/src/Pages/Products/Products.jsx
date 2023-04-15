@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import Navbar from '../../Components/Navbar/Navbar'
 import styles from './Products.module.css'
-import Logo from '/Users/saikhmirsat/Desktop/Manyavar/Manyavar-Clone/frontend/src/Assets/productsTopLogo.jpg'
+import Logo from '../Images/productsTopLogo.jpg'
 
 import {
     Accordion,
