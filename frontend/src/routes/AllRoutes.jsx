@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom'
 import AdminDashboard from '../Admin/AdminDashboard'
 
 import Home from '../Pages/Home/Home'
+import Products from '../Pages/Products/Products'
 import Login from '../Pages/RegisterAndLogin/Login'
 import Register from '../Pages/RegisterAndLogin/Register'
 import UserProfile from '../Pages/UserProfile/UserProfile'
@@ -26,6 +27,7 @@ export default function AllRoutes() {
             <Route path='/women' element={<Women />} ></Route>
             <Route path='/singleproduct/:id' element={<SingleProduct />} ></Route>
             <Route path='/search' element={<Search />} ></Route>
+            <Route path='/products' element={<Products />} ></Route>
         </Routes>
     )
 }
