@@ -50,9 +50,9 @@ export default function NormalNavbar() {
         < >
             <div className={styles.headingLogoContainer} >
                 <div></div>
-                <img onClick={()=> navigate('/')} src="https://static01.manyavar.com/uploads/images/Manvayar-Crest-Mohey_Horizontal_3D_logo%201.png" alt="" />
+                <img onClick={() => navigate('/')} src="https://static01.manyavar.com/uploads/images/Manvayar-Crest-Mohey_Horizontal_3D_logo%201.png" alt="" />
                 <div>
-                    <Link> <FiSearch /></Link>
+                    <Link to='/search' > <FiSearch /></Link>
                     {/* <Link to='/register'><FiUser /></Link> */}
                     <Link className={styles.Nav_userIcon_div} to={isAuth ? '/userprofile' : '/register'}><FiUser />{isAuth ? <BsFillCheckCircleFill color='green' size='12' className={styles.nav_user_tick} /> : ""}</Link>
                     <Link><AiOutlineHeart /></Link>
@@ -117,7 +117,10 @@ export default function NormalNavbar() {
                         })
                     }
                 </div>
-                {isFixed ? <motion.div whileInView={{ y: [-10, 0] }}  ><Link><FiSearch /></Link><Link className={styles.Nav_userIcon_div} to={isAuth ? '/userprofile' : '/register'}><FiUser />{isAuth ? <BsFillCheckCircleFill color='green' size='12' className={styles.nav_user_tick} /> : ""}</Link>
+                {isFixed ? <motion.div whileInView={{ y: [-10, 0] }}  >
+                    <Link to='/search' ><FiSearch /></Link>
+                    <Link className={styles.Nav_userIcon_div} to={isAuth ? '/userprofile' : '/register'}><FiUser />
+                        {isAuth ? <BsFillCheckCircleFill color='green' size='12' className={styles.nav_user_tick} /> : ""}</Link>
                     <Link><AiOutlineHeart /></Link>
                     <Link> <FiShoppingCart /></Link></motion.div> : <div></div>}
             </div>
