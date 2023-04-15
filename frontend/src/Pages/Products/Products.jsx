@@ -15,6 +15,7 @@ import {
 
 import { IoIosArrowDown } from 'react-icons/io'
 import Card from './Card'
+import Footer from '../../Components/Footer/Footer'
 
 
 
@@ -22,10 +23,15 @@ export default function Products() {
     const [read, setRead] = useState(false)
     console.log(read)
 
-    const [image, setImage] = useState("")
+    const [grid, setGrid] = useState(true)
+    console.log(grid)
 
-
-
+    const singleGrid = () => {
+        setGrid(false)
+    }
+    const doubleGrid = () => {
+        setGrid(true)
+    }
 
     return (
         <div>
@@ -51,15 +57,15 @@ export default function Products() {
                     </div>
                 </div>
             </div>
-            <div className={styles.products_container_2}>
+            <div className={styles.products_container_2} >
                 <div className={styles.container_2_child_1}>
                     <p className={styles.products_root}>Home / Men</p>
                     <p>1275 TOTAL ITEMS</p>
                     <div className={styles.grid_filter}>
-                        <div className={styles.single_grid}>
+                        <div onClick={singleGrid} className={styles.single_grid}>
                             <div></div>
                         </div>
-                        <div className={styles.double_grid}>
+                        <div onClick={doubleGrid} className={styles.double_grid}>
                             <div></div>
                             <div></div>
                             <div></div>
@@ -121,28 +127,26 @@ export default function Products() {
 
 
                 </div>
-                <div className={styles.container_2_child_2}>
+                <div className={grid ? styles.container_2_child_2_double : styles.container_2_child_2_single} >
                     {
-                        data.map((ele) =>
-                            <div>
-                                <div>
-                                    <Card image1={ele.image1} image2={ele.image2} />
-                                </div>
+                        data.map((ele) => <div key={ele.image}>
+                            <div className={styles.HomeCard}>
+                                <Card image1={ele.image1} image2={ele.image2} />
 
-                                <div>
-                                    <p>{ele.name}</p>
-                                    <p>R 200030</p>
-                                    <p>S M L XL XXL 03XL</p>
+                                <div className={styles.HomeCardoverlay}>
+                                    <div className={styles.HomeCardText}>
+                                        <p>View</p>
+                                    </div>
                                 </div>
                             </div>
-                        )}
-
-
+                            <p className={styles.title}>{ele.name}</p>
+                            <h5 className={styles.price}>Rs 200000.00</h5>
+                            <p className={styles.size}>S M L XL XXL 03XL</p>
+                        </div>)
+                    }
                 </div>
             </div>
-            <div>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe quaerat voluptate tenetur, eum aut doloremque architecto debitis porro dolorem, molestiae consequatur libero labore perspiciatis repellat veniam? Facilis quibusdam blanditiis hic.
-            </div>
+            <Footer />
         </div >
     )
 }
@@ -158,6 +162,21 @@ const data = [
         name: "nnnn",
         image1: "https://static01.manyavar.com/uploads/dealimages/14463/listimages/CPSH223D-319_02.JPG",
         image2: "https://static01.manyavar.com/uploads/dealimages/15553/listimages/SHOS256D-303_01.JPG"
+    },
+    {
+        name: "nnnn",
+        image1: "https://static01.manyavar.com/uploads/dealimages/14463/listimages/CPSH223D-319_02.JPG",
+        image2: "https://static01.manyavar.com/uploads/dealimages/15539/listimages/ODES973-303_01.JPG"
+    },
+    {
+        name: "nnnn",
+        image1: "https://static01.manyavar.com/uploads/dealimages/14463/listimages/CPSH223D-319_02.JPG",
+        image2: "https://static01.manyavar.com/uploads/dealimages/15539/listimages/ODES973-303_01.JPG"
+    },
+    {
+        name: "nnnn",
+        image1: "https://static01.manyavar.com/uploads/dealimages/14463/listimages/CPSH223D-319_02.JPG",
+        image2: "https://static01.manyavar.com/uploads/dealimages/15539/listimages/ODES973-303_01.JPG"
     },
     {
         name: "nnnn",
