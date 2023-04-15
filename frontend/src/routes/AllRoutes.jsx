@@ -11,6 +11,7 @@ import UserProfile from '../Pages/UserProfile/UserProfile'
 import Men from '../Pages/Men/Men'
 import Women from '../Pages/Women/Women'
 import SingleProduct from '../Pages/SingleProduct/SingleProduct'
+import Search from '../Pages/Search/Search'
 
 
 
@@ -22,6 +23,10 @@ export default function AllRoutes() {
             <Route path='/login' element={<Login />} ></Route>
             <Route path='/admindashboard' element={<AdminDashboard />} ></Route>
             <Route path='/userprofile' element={<UserProfile />} ></Route>
+            <Route path='/men' element={<Men />} ></Route>
+            <Route path='/women' element={<Women />} ></Route>
+            <Route path='/singleproduct/:id' element={<SingleProduct />} ></Route>
+            <Route path='/search' element={<Search />} ></Route>
             <Route path='/products' element={<Products />} ></Route>
         </Routes>
     )

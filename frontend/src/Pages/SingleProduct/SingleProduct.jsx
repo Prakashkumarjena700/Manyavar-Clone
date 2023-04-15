@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import styles from './SingleProduct.module.css'
 
@@ -11,14 +11,19 @@ import { CiRuler } from 'react-icons/ci'
 import { MdOutlineAdd } from 'react-icons/md'
 import { AiFillHeart, AiTwotoneAlert } from 'react-icons/ai'
 import { TbPhoneCall } from 'react-icons/tb'
+import { RxDotFilled } from 'react-icons/rx'
 
 import { Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon, Box } from '@chakra-ui/react'
+import { useParams } from 'react-router-dom'
 
 export default function SingleProduct() {
 
     const [selSize, setSelSize] = useState('')
     const [quentity, setQuentity] = useState(1)
     const [sizealert, setSizealert] = useState(false)
+    const [obj, setObj] = useState({})
+
+    const { id } = useParams()
 
     const img1 = 'https://static01.manyavar.com/uploads/dealimages/14021/zoomimages/SDES528-311_02.JPG'
     const img2 = 'https://static01.manyavar.com/uploads/dealimages/14021/zoomimages/SDES528-311_03.JPG'
@@ -31,6 +36,18 @@ export default function SingleProduct() {
     const price = 2999
     const size = ['S', 'M', 'L', 'XL', 'XXL']
 
+    useEffect(() => {
+        getData()
+    }, [id])
+
+    const getData = async () => {
+        await fetch(`https://proud-lamb-suspenders.cyclic.app/products/${id}`)
+            .then(res => res.json())
+            .then(res => setObj(res[0]))
+            .catch(err => console.log(err))
+    }
+
+    console.log(obj)
 
     const QuentityInc = () => {
         if (selSize != '') {
@@ -69,24 +86,27 @@ export default function SingleProduct() {
             <Navbar />
             <div className={styles.twoFlex} >
                 <Images
-                    img1={img1}
-                    img2={img2}
-                    img3={img3}
-                    img4={img4}
-                    img5={img5}
+
+                    img={obj.img1}
+
+                    img1={obj.img1}
+                    img2={obj.img2}
+                    img3={obj.img3}
+                    img4={obj.img4}
+                    img5={obj.img5}
                 />
                 <div className={styles.ProductDiscription} >
                     <div>
                         <p>MANYAVAR COLLECTION</p>
-                        <div><h2>{name}</h2> <GrShareOption /> </div>
-                        <p>Product Code : {pcode}</p>
-                        <h3>₹ {price}.00</h3>
+                        <div><h2>{obj.name}</h2> <GrShareOption /> </div>
+                        <p>Product Code : {obj._id}</p>
+                        <h3>₹ {obj.price}.00</h3>
                         <p>inclusive of all taxes</p>
                     </div>
                     <div>
                         <div><p>Select Size</p> <p><CiRuler /> Size Guide</p> </div>
                         {
-                            size.map((ele) => <button key={ele} className={selSize == ele && styles.selectedSize} onClick={() => selectSize(ele)} >{ele}</button>)
+                            obj.size && obj.size.map((ele) => <button key={ele} className={selSize == ele && styles.selectedSize} onClick={() => selectSize(ele)} >{ele}</button>)
                         }
                         <h2>{sizealert && 'Please select the size'}</h2>
                     </div>
@@ -123,10 +143,11 @@ export default function SingleProduct() {
                                     </AccordionButton>
                                 </h3>
                                 <AccordionPanel pb={4}>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                    commodo consequat.
+                                    <div className={styles.featureContainer} >
+                                        {
+                                            obj.features && obj.features.map((ele) => <p ><RxDotFilled />{ele}</p>)
+                                        }
+                                    </div>
                                 </AccordionPanel>
                             </AccordionItem>
 
@@ -139,11 +160,8 @@ export default function SingleProduct() {
                                         <AccordionIcon />
                                     </AccordionButton>
                                 </h3>
-                                <AccordionPanel pb={4}>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                    commodo consequat.
+                                <AccordionPanel pb={4} >
+                                    <p className={styles.accordianText}  >{obj.description}</p>
                                 </AccordionPanel>
                             </AccordionItem>
                             <AccordionItem>
@@ -156,10 +174,16 @@ export default function SingleProduct() {
                                     </AccordionButton>
                                 </h3>
                                 <AccordionPanel pb={4}>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                    commodo consequat.
+                                    <div className={styles.featureContainer} >
+                                        <div>
+                                            <p><RxDotFilled /><b>Address</b></p>
+                                            <span>{obj.address}</span>
+                                        </div>
+                                        <div>
+                                            <p><RxDotFilled /><b>Email</b></p>
+                                            <span>{obj.email}</span>
+                                        </div>
+                                    </div>
                                 </AccordionPanel>
                             </AccordionItem>
                         </Accordion>
