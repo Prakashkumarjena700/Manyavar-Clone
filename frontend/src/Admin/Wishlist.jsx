@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -15,6 +15,7 @@ import { GrView } from 'react-icons/gr'
 
 
 import { Modal, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, useDisclosure, Button, Input, Select, useToast, Spinner } from '@chakra-ui/react'
+import { LoggerContext } from '../Context/LoggerContex'
 
 export default function Wishlist() {
     const [product, setproduct] = useState({})
@@ -30,22 +31,21 @@ export default function Wishlist() {
     const dispatch = useDispatch()
     const toast = useToast()
 
+    const { token } = useContext(LoggerContext)
+
     const products = useSelector((store) => store.adminManager)
     const cart = useSelector((store) => store.adminManager)
     const wishlist = useSelector((store) => store.adminManager)
-
-    console.log(wishlist.wishList)
-
 
     const Update = () => {
 
     }
 
     const deleteFunction = (ele) => {
-        deleteWishlist(dispatch, ele._id)
+        deleteWishlist(dispatch, ele._id, token)
 
         setTimeout(() => {
-            getWishlist(dispatch)
+            getWishlist(dispatch, token)
             toast({
                 title: 'Product has been delete.',
                 description: "Delete product will not reflected on the product page",
@@ -58,7 +58,7 @@ export default function Wishlist() {
     }
 
     useEffect(() => {
-        getWishlist(dispatch)
+        getWishlist(dispatch, token)
     }, [])
 
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import styles from '../RegisterAndLogin/Login.module.css'
 
 import TextField from '@mui/material/TextField';
@@ -12,10 +12,14 @@ import { BsFillEyeSlashFill } from 'react-icons/bs';
 
 import { Button, Spinner, useToast } from '@chakra-ui/react'
 
+
 import Cookies from 'js-cookie';
+import { LoggerContext } from '../../Context/LoggerContex';
 
 export default function Login() {
     const [showPassword, setShowPassword] = useState(false);
+
+    const { setToken } = useContext(LoggerContext)
 
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('')
@@ -90,7 +94,7 @@ export default function Login() {
                         const expirationTime = new Date(new Date().getTime() + 3600 * 1000); // expires in 1 hour
                         Cookies.set('token', token, { expires: expirationTime });
                         Cookies.set('isAuth', true, { expires: expirationTime });
-
+                        setToken(token)
                         localStorage.setItem('user', JSON.stringify(res.user[0]))
                     }
                     else if (res.msg == "Wrong crediential") {

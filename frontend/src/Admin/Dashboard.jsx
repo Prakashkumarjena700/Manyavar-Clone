@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 import styles from "./Styles/AdminDashboard.module.css"
 import { CChart } from '@coreui/react-chartjs'
@@ -13,12 +13,15 @@ import { MdShoppingCartCheckout } from 'react-icons/md'
 import { HiOutlineUsers } from 'react-icons/hi'
 
 import { useDispatch, useSelector } from 'react-redux'
+import { LoggerContext } from '../Context/LoggerContex'
 
 export default function Dashboard() {
     const [usersCount, setUserCount] = useState(0)
     const [adminCount, setAdminCount] = useState(0)
     const [cartCount, setCartCount] = useState(0)
     const [wishListCount, setWishListCount] = useState(0)
+
+    const { token } = useContext(LoggerContext)
 
     const adminList = useSelector((store) => store.adminManager)
 
@@ -28,8 +31,8 @@ export default function Dashboard() {
         getProducts(dispatch)
         getUser(dispatch)
         getAdmin(dispatch)
-        getCart(dispatch)
-        getWishlist(dispatch)
+        getCart(dispatch, token)
+        getWishlist(dispatch, token)
     }, [])
 
     return (

@@ -8,6 +8,7 @@ import styles from '../UserProfile/UserProfile.module.css'
 import { Spinner } from '@chakra-ui/react'
 
 import { GrFormClose } from 'react-icons/gr';
+import Wishlist from './Wishlist'
 
 export default function UserProfile() {
 
@@ -250,7 +251,7 @@ export default function UserProfile() {
                         )}
                     </div> : ""}
                     {order ? <div>ORDERS</div> : ""}
-                    {wishlist ? <div>WISHLIST</div> : ""}
+                    {wishlist ? <div><Wishlist /></div> : ""}
                     {password ? <div>PASSWORD</div> : ""}
                 </div>
             </div>

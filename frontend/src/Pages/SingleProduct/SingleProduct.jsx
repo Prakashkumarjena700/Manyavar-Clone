@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 import styles from './SingleProduct.module.css'
 
@@ -13,8 +13,9 @@ import { AiFillHeart, AiTwotoneAlert } from 'react-icons/ai'
 import { TbPhoneCall } from 'react-icons/tb'
 import { RxDotFilled } from 'react-icons/rx'
 
-import { Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon, Box } from '@chakra-ui/react'
+import { Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon, Box, useToast } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
+import { LoggerContext } from '../../Context/LoggerContex'
 
 export default function SingleProduct() {
 
@@ -23,18 +24,12 @@ export default function SingleProduct() {
     const [sizealert, setSizealert] = useState(false)
     const [obj, setObj] = useState({})
 
+    const { token } = useContext(LoggerContext)
+
     const { id } = useParams()
 
-    const img1 = 'https://static01.manyavar.com/uploads/dealimages/14021/zoomimages/SDES528-311_02.JPG'
-    const img2 = 'https://static01.manyavar.com/uploads/dealimages/14021/zoomimages/SDES528-311_03.JPG'
-    const img3 = 'https://static01.manyavar.com/uploads/dealimages/14021/zoomimages/SDES528-311_04.JPG'
-    const img4 = 'https://static01.manyavar.com/uploads/dealimages/14021/zoomimages/SDES528-311_02.JPG'
-    const img5 = 'https://static01.manyavar.com/uploads/dealimages/14021/zoomimages/SDES528-311_03.JPG'
+    const toast = useToast()
 
-    const name = 'Pale Pink and Pista Green Patterned Kurta Set'
-    const pcode = '3242jbs7q57jahahrqsfakh6yq6'
-    const price = 2999
-    const size = ['S', 'M', 'L', 'XL', 'XXL']
 
     useEffect(() => {
         getData()
@@ -81,6 +76,59 @@ export default function SingleProduct() {
         }
     }
 
+    const AddedToWishlist = async () => {
+
+        let wishlistObj = {
+            _id: obj._id,
+            img: obj.img1,
+            price: obj.price,
+            color: obj.color
+        }
+
+
+        await fetch(`https://proud-lamb-suspenders.cyclic.app/wishlists/add`, {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': token
+            },
+            body: JSON.stringify(wishlistObj)
+        }).then(res => res.json())
+            .then(res => {
+                if (res.success) {
+                    toast({
+                        title: 'Product has been added into wishlist.',
+                        description: "Product has been reflected on the wishlist section.",
+                        status: 'success',
+                        duration: 3000,
+                        isClosable: true,
+                        position: 'top'
+                    })
+                } else {
+                    toast({
+                        title: 'Something went wrong',
+                        description: "Product has not been added to wishlist",
+                        status: 'error',
+                        duration: 3000,
+                        isClosable: true,
+                        position: 'top'
+                    })
+                }
+
+            })
+            .catch(err => {
+                toast({
+                    title: 'Something went wrong',
+                    description: "Product has not been added to wishlist",
+                    status: 'error',
+                    duration: 3000,
+                    isClosable: true,
+                    position: 'top'
+                })
+                console.log(err)
+            })
+    }
+
     return (
         <div>
             <Navbar />
@@ -120,7 +168,7 @@ export default function SingleProduct() {
                     </div>
                     <div>
                         <button onClick={AddtoCart} >ADD TO CART</button>
-                        <AiFillHeart />
+                        <AiFillHeart onClick={AddedToWishlist} />
                     </div>
                     <div>
                         <p>Check Delivery Availability</p>
