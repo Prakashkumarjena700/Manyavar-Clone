@@ -14,9 +14,6 @@ import {
     DELETE_WISHLIST_LOADING, DELETE_WISHLIST_ERROR, DELETE_WISHLIST_SUCCESS
 } from './action.type'
 
-import Cookies from 'js-cookie';
-
-const token = Cookies.get('token')
 
 export const getAdmin = async (dispatch) => {
     dispatch({ type: GET_ADMIN_LOADING })
@@ -129,7 +126,7 @@ export const deleteProduct = async (dispatch, id) => {
     }
 }
 
-export const getCart = async (dispatch) => {
+export const getCart = async (dispatch, token) => {
     dispatch({ type: GET_CART_LOADING })
     try {
         const cart = await fetch('https://proud-lamb-suspenders.cyclic.app/cart/usercart', {
@@ -144,7 +141,7 @@ export const getCart = async (dispatch) => {
     }
 }
 
-export const updateCart = async (dispatch, id, obj) => {
+export const updateCart = async (dispatch, id, obj, token) => {
     dispatch({ type: UPDATE_CART_LOADING })
     try {
         const cart = await fetch(`https://proud-lamb-suspenders.cyclic.app/cart/edit/${id}`, {
@@ -162,7 +159,7 @@ export const updateCart = async (dispatch, id, obj) => {
     }
 }
 
-export const deleteCart = async (dispatch, id) => {
+export const deleteCart = async (dispatch, id, token) => {
     dispatch({ type: DELETE_CART_LOADING })
     try {
         const cart = await fetch(`https://proud-lamb-suspenders.cyclic.app/cart/delete/${id}`, {
@@ -178,7 +175,7 @@ export const deleteCart = async (dispatch, id) => {
     }
 }
 
-export const getWishlist = async (dispatch) => {
+export const getWishlist = async (dispatch, token) => {
     dispatch({ type: GET_WISHLIST_LOADING })
     try {
         const wishlist = await fetch('https://proud-lamb-suspenders.cyclic.app/wishlists', {
@@ -193,7 +190,7 @@ export const getWishlist = async (dispatch) => {
     }
 }
 
-export const deleteWishlist = async (dispatch, id) => {
+export const deleteWishlist = async (dispatch, id, token) => {
     dispatch({ type: DELETE_WISHLIST_LOADING })
     try {
         let deleteResult = await fetch(`https://proud-lamb-suspenders.cyclic.app/wishlists/delete/${id}`, {

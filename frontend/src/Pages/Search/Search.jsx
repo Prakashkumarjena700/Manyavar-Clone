@@ -20,8 +20,6 @@ export default function Search() {
             .catch(err => console.log(err))
     }
 
-    console.log(arr)
-
     return (
         <div className={styles.searchPage} >
             <div className={styles.SearchBar} >

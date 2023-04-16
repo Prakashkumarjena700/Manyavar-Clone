@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -15,6 +15,7 @@ import { GrView } from 'react-icons/gr'
 
 
 import { Modal, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, useDisclosure, Button, Input, Select, useToast, Spinner } from '@chakra-ui/react'
+import { LoggerContext } from '../Context/LoggerContex'
 
 export default function Cart() {
 
@@ -27,6 +28,8 @@ export default function Cart() {
     const [size, setSize] = useState('')
 
     const { isOpen, onOpen, onClose } = useDisclosure()
+
+    const { token } = useContext(LoggerContext)
 
     const dispatch = useDispatch()
     const toast = useToast()
@@ -41,10 +44,10 @@ export default function Cart() {
             quentity: Number(quentity) || Number(product.quentity),
             size: size || product.size,
         }
-        updateCart(dispatch, product._id, obj)
+        updateCart(dispatch, product._id, obj, token)
 
         setTimeout(() => {
-            getCart(dispatch)
+            getCart(dispatch, token)
             toast({
                 title: 'Product has been updated.',
                 description: "Update has been reflected on the product page",
@@ -58,10 +61,10 @@ export default function Cart() {
     }
 
     const deleteFunction = (ele) => {
-        deleteCart(dispatch, ele._id)
+        deleteCart(dispatch, ele._id, token)
 
         setTimeout(() => {
-            getCart(dispatch)
+            getCart(dispatch, token)
             toast({
                 title: 'Product has been delete.',
                 description: "Delete product will not reflected on the product page",
@@ -74,7 +77,7 @@ export default function Cart() {
     }
 
     useEffect(() => {
-        getCart(dispatch)
+        getCart(dispatch, token)
     }, [])
 
 
