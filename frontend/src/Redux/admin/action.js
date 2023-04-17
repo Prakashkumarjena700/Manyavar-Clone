@@ -129,7 +129,7 @@ export const deleteProduct = async (dispatch, id) => {
 export const getCart = async (dispatch, token) => {
     dispatch({ type: GET_CART_LOADING })
     try {
-        const cart = await fetch('https://proud-lamb-suspenders.cyclic.app/cart/usercart', {
+        const cart = await fetch('https://proud-lamb-suspenders.cyclic.app/cart', {
             headers: {
                 'Authorization': token
             }

@@ -91,7 +91,7 @@ export default function Login() {
                             navigate('/')
                         }
                         const token = res.token;
-                        const expirationTime = new Date(new Date().getTime() + 3600 * 1000); // expires in 1 hour
+                        const expirationTime = new Date(new Date().getTime() + 3600 * 6000); // expires in 1 hour
                         Cookies.set('token', token, { expires: expirationTime });
                         Cookies.set('isAuth', true, { expires: expirationTime });
                         setToken(token)

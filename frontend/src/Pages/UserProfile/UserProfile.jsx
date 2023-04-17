@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { json } from 'react-router-dom'
 import Navbar from '../../Components/Navbar/Navbar'
 import styles from '../UserProfile/UserProfile.module.css'
+import Footer from '../../Components/Footer/Footer'
 
 import { Spinner } from '@chakra-ui/react'
 
@@ -255,6 +256,7 @@ export default function UserProfile() {
                     {password ? <div>PASSWORD</div> : ""}
                 </div>
             </div>
+            <Footer />
         </div>
     )
 }
