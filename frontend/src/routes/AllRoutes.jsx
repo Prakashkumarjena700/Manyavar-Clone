@@ -12,6 +12,7 @@ import Men from '../Pages/Men/Men'
 import Women from '../Pages/Women/Women'
 import SingleProduct from '../Pages/SingleProduct/SingleProduct'
 import Search from '../Pages/Search/Search'
+import Cart from '../Pages/Cart/Cart'
 
 
 
@@ -28,6 +29,7 @@ export default function AllRoutes() {
             <Route path='/singleproduct/:id' element={<SingleProduct />} ></Route>
             <Route path='/search' element={<Search />} ></Route>
             <Route path='/products' element={<Products />} ></Route>
+            <Route path='/cart' element={<Cart />} ></Route>
         </Routes>
     )
 }

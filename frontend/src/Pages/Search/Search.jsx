@@ -29,7 +29,7 @@ export default function Search() {
             <div className={styles.searchResultContainer}  >
                 {
                     arr && arr.map((ele) =>
-                        <div onClick={() => navigate(`/singleproduct/${ele._id}`)}  >
+                        <div key={ele._id} onClick={() => navigate(`/singleproduct/${ele._id}`)}  >
                             <img src={ele.img1} alt="" />
                             <p>{ele.name.substring(0, 20)}...</p>
                             <p>{ele.category}</p>

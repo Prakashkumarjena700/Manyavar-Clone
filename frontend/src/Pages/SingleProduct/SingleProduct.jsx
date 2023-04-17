@@ -79,32 +79,54 @@ export default function SingleProduct() {
     const AddedToWishlist = async () => {
 
         let wishlistObj = {
-            _id: obj._id,
+            name: obj.name,
             img: obj.img1,
             price: obj.price,
             color: obj.color
         }
 
+        if (!token) {
+            toast({
+                title: 'Please Login',
+                description: "For adding into wishlist you have to login first",
+                status: 'info',
+                duration: 3000,
+                isClosable: true,
+                position: 'top'
+            })
 
-        await fetch(`https://proud-lamb-suspenders.cyclic.app/wishlists/add`, {
-            method: 'POST',
-            headers: {
-                'Content-type': 'application/json',
-                'Authorization': token
-            },
-            body: JSON.stringify(wishlistObj)
-        }).then(res => res.json())
-            .then(res => {
-                if (res.success) {
-                    toast({
-                        title: 'Product has been added into wishlist.',
-                        description: "Product has been reflected on the wishlist section.",
-                        status: 'success',
-                        duration: 3000,
-                        isClosable: true,
-                        position: 'top'
-                    })
-                } else {
+        } else {
+            await fetch(`https://proud-lamb-suspenders.cyclic.app/wishlists/add`, {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json',
+                    'Authorization': token
+                },
+                body: JSON.stringify(wishlistObj)
+            }).then(res => res.json())
+                .then(res => {
+                    if (res.success) {
+                        toast({
+                            title: 'Product has been added into wishlist.',
+                            description: "Product has been reflected on the wishlist section.",
+                            status: 'success',
+                            duration: 3000,
+                            isClosable: true,
+                            position: 'top'
+                        })
+                    } else {
+                        toast({
+                            title: 'Something went wrong',
+                            description: "Product has not been added to wishlist",
+                            status: 'error',
+                            duration: 3000,
+                            isClosable: true,
+                            position: 'top'
+                        })
+                    }
+
+                })
+                .catch(err => {
                     toast({
                         title: 'Something went wrong',
                         description: "Product has not been added to wishlist",
@@ -113,20 +135,9 @@ export default function SingleProduct() {
                         isClosable: true,
                         position: 'top'
                     })
-                }
-
-            })
-            .catch(err => {
-                toast({
-                    title: 'Something went wrong',
-                    description: "Product has not been added to wishlist",
-                    status: 'error',
-                    duration: 3000,
-                    isClosable: true,
-                    position: 'top'
+                    console.log(err)
                 })
-                console.log(err)
-            })
+        }
     }
 
     return (
