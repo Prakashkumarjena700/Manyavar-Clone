@@ -4,27 +4,46 @@ import Navbar from '../../Components/Navbar/Navbar'
 import styles from './Products.module.css'
 import Logo from '../Images/productsTopLogo.jpg'
 
-import {
-    Accordion,
-    AccordionItem,
-    AccordionButton,
-    AccordionPanel,
-    AccordionIcon,
-    Box
-} from '@chakra-ui/react'
 
 import { IoIosArrowDown } from 'react-icons/io'
+
 import Card from './Card'
 import Footer from '../../Components/Footer/Footer'
+import { useEffect } from 'react'
 
-
+import {
+    Drawer,
+    DrawerBody,
+    DrawerFooter,
+    DrawerHeader,
+    DrawerOverlay,
+    DrawerContent,
+    DrawerCloseButton,
+    Button,
+    Input,
+    useDisclosure,
+    btnRef
+} from '@chakra-ui/react'
+import { useNavigate } from 'react-router-dom'
 
 export default function Products() {
     const [read, setRead] = useState(false)
-    console.log(read)
+    // console.log(read)
 
     const [grid, setGrid] = useState(true)
-    console.log(grid)
+    // console.log(grid)
+
+    const [wish, setWish] = useState(false)
+    // console.log(wish)
+    const [data, setData] = useState([])
+    console.log(data)
+
+    const [scrollbar1, setScrollbar1] = useState(false)
+    const [scrollbar2, setScrollbar2] = useState(false)
+    const [scrollbar3, setScrollbar3] = useState(false)
+
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const btnRef = React.useRef()
 
     const singleGrid = () => {
         setGrid(false)
@@ -33,8 +52,22 @@ export default function Products() {
         setGrid(true)
     }
 
+    useEffect(() => {
+        fetch(`https://proud-lamb-suspenders.cyclic.app/products`)
+            .then((res) => res.json())
+            .then((res) => setData(res))
+    }, [])
+
+    let navigate = useNavigate()
+
+    const SinglePageFunc = (id) => {
+        navigate(`/singleproduct/${id}`)
+    }
+
+    var size = ['S', 'M', 'L', 'XL', 'XXL', '03XL']
+
     return (
-        <div>
+        <div className={styles.ProductMain_container}>
             <Navbar />
             <div className={styles.products_container_1}>
                 <div className={styles.container_1_child_1}>
@@ -57,6 +90,41 @@ export default function Products() {
                     </div>
                 </div>
             </div>
+            <p className={styles.routes_mobile}>Home / Men</p>
+            <div className={styles.filterContainer}>
+                <div className={styles.filterContainer_child1} onClick={onOpen}>SORT</div>
+                <Drawer
+                    isOpen={isOpen}
+                    placement='bottom'
+                    onClose={onClose}
+                    finalFocusRef={btnRef}
+                >
+                    <DrawerOverlay />
+                    <DrawerContent bg="#FEFBF2">
+                        <DrawerCloseButton />
+                        <DrawerHeader bg='white' textAlign='center' fontSize={['20px', '40px']}>SORT</DrawerHeader>
+                        <Button fontSize={['xl', '2xl']} fontWeight='light' bg="#FEFBF2" m='10px'>Best Seller</Button>
+                        <Button fontSize={['xl', '2xl']} fontWeight='light' bg="#FEFBF2" m='10px'>Price Low To High</Button>
+                        <Button fontSize={['xl', '2xl']} fontWeight='light' bg="#FEFBF2" m='10px'>Price High To Low</Button>
+                        <Button fontSize={['xl', '2xl']} fontWeight='light' bg="#FEFBF2" m='10px'>New Arrival</Button>
+                        <DrawerBody >
+
+                        </DrawerBody>
+                    </DrawerContent>
+                </Drawer>
+                <div className={styles.filterContainer_child2}>FILTER</div>
+                <div className={styles.grid_filter}>
+                    <div onClick={singleGrid} className={styles.single_grid}>
+                        <div></div>
+                    </div>
+                    <div onClick={doubleGrid} className={styles.double_grid}>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
             <div className={styles.products_container_2} >
                 <div className={styles.container_2_child_1}>
                     <p className={styles.products_root}>Home / Men</p>
@@ -74,64 +142,66 @@ export default function Products() {
                     </div>
                     <p>FILTER</p>
                     <hr />
-                    <details>
-                        <summary><p>CATEGORIES</p><IoIosArrowDown color='grey' size='20px' /></summary>
-                        <div><input type="checkbox" /> <p>Blazer for Men</p></div>
-                        <div><input type="checkbox" /> <p>Formal</p></div>
-                        <div><input type="checkbox" /> <p>Indo Western </p></div>
-                        <div><input type="checkbox" /> <p>Kids Kurta</p></div>
-                        <div><input type="checkbox" /> <p>Kids Kurta Jacket </p></div>
-                        <div><input type="checkbox" /> <p>kurta dhoti collection</p></div>
-                        <div><input type="checkbox" /> <p>Kurta Jacket Set</p></div>
-                        <div><input type="checkbox" /> <p>Kurta Pajama</p></div>
-                        <div><input type="checkbox" /> <p>Lower</p></div>
-                        <div><input type="checkbox" /> <p>Men Blazers Suits</p></div>
-                        <div><input type="checkbox" /> <p>Only Jacket</p></div>
-                        <div><input type="checkbox" /> <p>Only Kurta </p></div>
-                        <div><input type="checkbox" /> <p>Sherwani </p></div>
-                    </details>
-                    <hr />
-                    <details>
-                        <summary><p>SIZE</p><IoIosArrowDown color='grey' size='20px' /></summary>
-                        <div><input type="checkbox" /> <p>S</p></div>
-                        <div><input type="checkbox" /> <p>M </p></div>
-                        <div><input type="checkbox" /> <p>L</p></div>
-                        <div><input type="checkbox" /> <p>XL</p></div>
-                        <div><input type="checkbox" /> <p>XXL</p></div>
-                        <div><input type="checkbox" /> <p>03XL</p></div>
-                        <div><input type="checkbox" /> <p>04XL</p></div>
-                        <div><input type="checkbox" /> <p>2-3 year</p></div>
-                        <div><input type="checkbox" /> <p>4-5 year</p></div>
-                        <div><input type="checkbox" /> <p>6-7 year</p></div>
-                        <div><input type="checkbox" /> <p>9-10 year</p></div>
-                        <div><input type="checkbox" /> <p>FreeSize</p></div>
-                    </details>
-                    <hr />
-                    <details>
-                        <summary><p>COLOR</p><IoIosArrowDown color='grey' size='20px' /></summary>
-                        <div><input type="checkbox" /> <p>Maroon</p></div>
-                        <div><input type="checkbox" /> <p>Green</p></div>
-                        <div><input type="checkbox" /> <p>Pink</p></div>
-                        <div><input type="checkbox" /> <p>Yellow</p></div>
-                        <div><input type="checkbox" /> <p>Red</p></div>
-                        <div><input type="checkbox" /> <p>Grey</p></div>
-                        <div><input type="checkbox" /> <p>Blue</p></div>
-                        <div><input type="checkbox" /> <p>Rust</p></div>
-                        <div><input type="checkbox" /> <p>Peach</p></div>
-                        <div><input type="checkbox" /> <p>Brown</p></div>
-                        <div><input type="checkbox" /> <p>White</p></div>
-                        <div><input type="checkbox" /> <p>Black</p></div>
-                        <div><input type="checkbox" /> <p>Golden</p></div>
-                    </details>
+                    <div className={scrollbar1 || scrollbar2 || scrollbar3 ? styles.scrollbar : ""}>
+                        <details onClick={() => setScrollbar1(!scrollbar1)}>
+                            <summary><p>CATEGORIES</p><IoIosArrowDown color='grey' size='20px' /></summary>
+                            <div><input type="checkbox" /> <p>Blazer for Men</p></div>
+                            <div><input type="checkbox" /> <p>Formal</p></div>
+                            <div><input type="checkbox" /> <p>Indo Western </p></div>
+                            <div><input type="checkbox" /> <p>Kids Kurta</p></div>
+                            <div><input type="checkbox" /> <p>Kids Kurta Jacket </p></div>
+                            <div><input type="checkbox" /> <p>kurta dhoti collection</p></div>
+                            <div><input type="checkbox" /> <p>Kurta Jacket Set</p></div>
+                            <div><input type="checkbox" /> <p>Kurta Pajama</p></div>
+                            <div><input type="checkbox" /> <p>Lower</p></div>
+                            <div><input type="checkbox" /> <p>Men Blazers Suits</p></div>
+                            <div><input type="checkbox" /> <p>Only Jacket</p></div>
+                            <div><input type="checkbox" /> <p>Only Kurta </p></div>
+                            <div><input type="checkbox" /> <p>Sherwani </p></div>
+                        </details>
+                        <hr />
+                        <details onClick={() => setScrollbar2(!scrollbar2)}>
+                            <summary><p>SIZE</p><IoIosArrowDown color='grey' size='20px' /></summary>
+                            <div><input type="checkbox" /> <p>S</p></div>
+                            <div><input type="checkbox" /> <p>M </p></div>
+                            <div><input type="checkbox" /> <p>L</p></div>
+                            <div><input type="checkbox" /> <p>XL</p></div>
+                            <div><input type="checkbox" /> <p>XXL</p></div>
+                            <div><input type="checkbox" /> <p>03XL</p></div>
+                            <div><input type="checkbox" /> <p>04XL</p></div>
+                            <div><input type="checkbox" /> <p>2-3 year</p></div>
+                            <div><input type="checkbox" /> <p>4-5 year</p></div>
+                            <div><input type="checkbox" /> <p>6-7 year</p></div>
+                            <div><input type="checkbox" /> <p>9-10 year</p></div>
+                            <div><input type="checkbox" /> <p>FreeSize</p></div>
+                        </details>
+                        <hr />
+                        <details onClick={() => setScrollbar3(!scrollbar3)}>
+                            <summary><p>COLOR</p><IoIosArrowDown color='grey' size='20px' /></summary>
+                            <div><input type="checkbox" /> <p>Maroon</p></div>
+                            <div><input type="checkbox" /> <p>Green</p></div>
+                            <div><input type="checkbox" /> <p>Pink</p></div>
+                            <div><input type="checkbox" /> <p>Yellow</p></div>
+                            <div><input type="checkbox" /> <p>Red</p></div>
+                            <div><input type="checkbox" /> <p>Grey</p></div>
+                            <div><input type="checkbox" /> <p>Blue</p></div>
+                            <div><input type="checkbox" /> <p>Rust</p></div>
+                            <div><input type="checkbox" /> <p>Peach</p></div>
+                            <div><input type="checkbox" /> <p>Brown</p></div>
+                            <div><input type="checkbox" /> <p>White</p></div>
+                            <div><input type="checkbox" /> <p>Black</p></div>
+                            <div><input type="checkbox" /> <p>Golden</p></div>
+                        </details>
 
-
+                    </div>
 
                 </div>
                 <div className={grid ? styles.container_2_child_2_double : styles.container_2_child_2_single} >
                     {
-                        data.map((ele) => <div key={ele.image}>
+                        data.map((ele) => <div key={ele.image} onClick={() => SinglePageFunc(ele._id)}>
                             <div className={styles.HomeCard}>
-                                <Card image1={ele.image1} image2={ele.image2} />
+                                {/* <div onClick={() => setWish(!wish)} className={styles.wishlistHeart}>{wish ? <AiOutlineHeart color='white' size='25px' /> : <AiTwotoneHeart size='25px' color='red' />}</div> */}
+                                <Card image1={ele.img1} image2={ele.img2} />
 
                                 <div className={styles.HomeCardoverlay}>
                                     <div className={styles.HomeCardText}>
@@ -139,8 +209,8 @@ export default function Products() {
                                     </div>
                                 </div>
                             </div>
-                            <p className={styles.title}>{ele.name}</p>
-                            <h5 className={styles.price}>Rs 200000.00</h5>
+                            <p className={styles.title}>{ele.name.substring(0, 30)}...</p>
+                            <h5 className={styles.price}>₹ {ele.price}.00</h5>
                             <p className={styles.size}>S M L XL XXL 03XL</p>
                         </div>)
                     }
@@ -152,35 +222,3 @@ export default function Products() {
 }
 
 
-const data = [
-    {
-        name: "nnnn sherwani",
-        image1: "https://static01.manyavar.com/uploads/dealimages/14463/listimages/CPSH223D-319_02.JPG",
-        image2: "https://static01.manyavar.com/uploads/dealimages/15553/listimages/SHOS256D-303_01.JPG"
-    },
-    {
-        name: "nnnn",
-        image1: "https://static01.manyavar.com/uploads/dealimages/14463/listimages/CPSH223D-319_02.JPG",
-        image2: "https://static01.manyavar.com/uploads/dealimages/15553/listimages/SHOS256D-303_01.JPG"
-    },
-    {
-        name: "nnnn",
-        image1: "https://static01.manyavar.com/uploads/dealimages/14463/listimages/CPSH223D-319_02.JPG",
-        image2: "https://static01.manyavar.com/uploads/dealimages/15539/listimages/ODES973-303_01.JPG"
-    },
-    {
-        name: "nnnn",
-        image1: "https://static01.manyavar.com/uploads/dealimages/14463/listimages/CPSH223D-319_02.JPG",
-        image2: "https://static01.manyavar.com/uploads/dealimages/15539/listimages/ODES973-303_01.JPG"
-    },
-    {
-        name: "nnnn",
-        image1: "https://static01.manyavar.com/uploads/dealimages/14463/listimages/CPSH223D-319_02.JPG",
-        image2: "https://static01.manyavar.com/uploads/dealimages/15539/listimages/ODES973-303_01.JPG"
-    },
-    {
-        name: "nnnn",
-        image1: "https://static01.manyavar.com/uploads/dealimages/14463/listimages/CPSH223D-319_02.JPG",
-        image2: "https://static01.manyavar.com/uploads/dealimages/15539/listimages/ODES973-303_01.JPG"
-    },
-]
