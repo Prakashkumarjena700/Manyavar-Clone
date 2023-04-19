@@ -122,7 +122,7 @@ export default function NormalNavbar() {
                     <Link className={styles.Nav_userIcon_div} to={isAuth ? '/userprofile' : '/register'}><FiUser />
                         {isAuth ? <BsFillCheckCircleFill color='green' size='12' className={styles.nav_user_tick} /> : ""}</Link>
                     <Link><AiOutlineHeart /></Link>
-                    <Link> <FiShoppingCart /></Link></motion.div> : <div></div>}
+                    <Link to='/cart' > <FiShoppingCart /></Link></motion.div> : <div></div>}
             </div>
         </>
     )

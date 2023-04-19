@@ -2,6 +2,7 @@
     margin: auto;
     padding: 15px 0px;
     width: 300px;
+    cursor: pointer;
 }
 
 .heading {
@@ -13,7 +14,7 @@
 }
 
 .cartContainer {
-    border: 1px solid darkblue;
+    /* border: 1px solid darkblue; */
     display: flex;
     padding: 20px;
     gap: 20px;
@@ -21,12 +22,12 @@
 }
 
 .cardContainer {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     width: 67%;
 }
 
 .cardContainerTableHeading {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: grid;
     grid-template-columns: 15% 25% 15% 15% 15% 15%;
     padding: 5px 10px;
@@ -124,7 +125,7 @@
 }
 
 .paymentContainer {
-    border: 1px solid rgb(0, 247, 255);
+    /* border: 1px solid rgb(0, 247, 255); */
     width: 28%;
 }
 
@@ -173,6 +174,10 @@
     font-size: medium;
 }
 
+.cardForMidScreen {
+    display: none;
+}
+
 @media (max-width:1000px) {
     .cartContainer {
         flex-direction: column;
@@ -204,7 +209,7 @@
     }
 
     .cardContainer .cardForMidScreen {
-        border: 1px solid rebeccapurple;
+        /* border: 1px solid rebeccapurple; */
         padding: 0px;
         display: grid;
         grid-template-columns: 20% 80%;
@@ -214,11 +219,31 @@
         padding-left: 3%;
     }
 
-    .cardForMidScreen p:nth-child(2) {
+    .cardForMidScreen p:nth-child(3) {
         border: 1px solid #CED4DA;
         padding: 5px 20px;
         display: inline-block;
     }
 
+    .cardForMidScreen div:nth-child(4) {
+        border: 1px solid #CED4DA;
+        display: inline-block;
+        margin: 10px 10px;
+    }
+
+    .cardForMidScreen div button {
+        padding: 5px 10px;
+    }
+
+    .cardContainerTableHeading {
+        display: none;
+    }
+
+    .cardForMidScreen~div {
+        padding-left: 23%;
+    }
+    .cardForMidScreen div:nth-child(2){
+        border-bottom: 1px solid #CED4DA;
+    }
 
 }
