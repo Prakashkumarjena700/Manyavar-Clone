@@ -8,6 +8,7 @@ import { RiSubtractLine } from 'react-icons/ri'
 import { MdOutlineAdd } from 'react-icons/md'
 
 import { useNavigate } from 'react-router-dom'
+import { useToast } from '@chakra-ui/react'
 
 export default function Cart() {
 
@@ -16,8 +17,11 @@ export default function Cart() {
     const [sum, setSum] = useState(0)
     const [incLoad, setIncLoad] = useState(false)
     const [decLoad, setDecLoad] = useState(false)
+    const [remove, setRemove] = useState(false)
 
     const navigate = useNavigate()
+
+    const toast = useToast()
 
     useEffect(() => {
         getCart()
@@ -36,7 +40,6 @@ export default function Cart() {
             .catch(err => console.log(err))
 
     }
-
 
     const allTotal = (arr) => {
         const totalAmount = arr.reduce((accumulator, item) => {
@@ -93,6 +96,50 @@ export default function Cart() {
             })
     }
 
+    const removeFromCart = async (id) => {
+        setRemove(true)
+        await fetch(`https://proud-lamb-suspenders.cyclic.app/cart/delete/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': token
+            }
+        }).then(res => res.json())
+            .then(res => {
+                setRemove(false)
+                if (res.msg == 'Product has been deleted') {
+                    toast({
+                        title: 'Product has been deleted from cart.',
+                        description: "You can't see the product in your cart.",
+                        status: 'success',
+                        duration: 3000,
+                        isClosable: true,
+                        position: 'top'
+                    })
+                    getCart()
+                } else {
+                    toast({
+                        title: 'Something went wrong',
+                        description: "Product has not been moved to cart",
+                        status: 'error',
+                        duration: 3000,
+                        isClosable: true,
+                        position: 'top'
+                    })
+                }
+            })
+            .catch(err => {
+                setRemove(false)
+                toast({
+                    title: 'Something went wrong',
+                    description: "Product has not been moved to cart",
+                    status: 'error',
+                    duration: 3000,
+                    isClosable: true,
+                    position: 'top'
+                })
+                console.log(err)
+            })
+    }
     return (
         <div style={{ backgroundColor: '#FFFBF2' }} >
             <img onClick={() => navigate('/')} className={styles.cartPageLogo} src={logo} alt="" />
@@ -161,7 +208,7 @@ export default function Cart() {
 
                                 </div>
                                 <div>
-                                    <p>REMOVE</p>
+                                    <p className={remove && styles.processforRemove } onClick={() => removeFromCart(ele._id)} >REMOVE</p>
                                 </div>
                             </div>
                         )}

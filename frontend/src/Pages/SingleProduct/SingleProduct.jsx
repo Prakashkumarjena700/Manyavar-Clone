@@ -23,6 +23,8 @@ export default function SingleProduct() {
     const [quentity, setQuentity] = useState(1)
     const [sizealert, setSizealert] = useState(false)
     const [obj, setObj] = useState({})
+    const [wishlistLoad, setWishlist] = useState(false)
+    const [cartlistLoad, setCartlist] = useState(false)
 
     const { token } = useContext(LoggerContext)
 
@@ -41,8 +43,6 @@ export default function SingleProduct() {
             .then(res => setObj(res[0]))
             .catch(err => console.log(err))
     }
-
-    console.log(obj)
 
     const QuentityInc = () => {
         if (selSize != '') {
@@ -68,16 +68,79 @@ export default function SingleProduct() {
         setSelSize(ele)
     }
 
-    const AddtoCart = () => {
-        if (selSize == '') {
-            setSizealert(true)
+    const AddtoCart = async () => {
+        if (!token) {
+            toast({
+                title: 'Please Login',
+                description: "For adding into wishlist you have to login first",
+                status: 'info',
+                duration: 3000,
+                isClosable: true,
+                position: 'top'
+            })
+
         } else {
-            console.log(selSize, quentity)
+            if (selSize == '') {
+                setSizealert(true)
+            } else {
+                setCartlist(true)
+                let cartobj = {
+                    name: obj.name,
+                    img: obj.img1,
+                    color: obj.color,
+                    quentity,
+                    price: obj.price,
+                    size: selSize
+                }
+                await fetch(`https://proud-lamb-suspenders.cyclic.app/cart/add`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-type': 'application/json',
+                        'Authorization': token
+                    },
+                    body: JSON.stringify(cartobj)
+                }).then(res => res.json())
+                    .then(res => {
+                        setCartlist(false)
+                        if (res.msg == 'Product has been added') {
+                            toast({
+                                title: 'Product has been added to cart.',
+                                description: "You can see the product in your cart.",
+                                status: 'success',
+                                duration: 3000,
+                                isClosable: true,
+                                position: 'top'
+                            })
+                        } else {
+                            toast({
+                                title: 'Something went wrong',
+                                description: "Product has not been moved to cart",
+                                status: 'error',
+                                duration: 3000,
+                                isClosable: true,
+                                position: 'top'
+                            })
+                        }
+                    })
+                    .catch(err => {
+                        setCartlist(false)
+                        toast({
+                            title: 'Something went wrong',
+                            description: "Product has not been moved to cart",
+                            status: 'error',
+                            duration: 3000,
+                            isClosable: true,
+                            position: 'top'
+                        })
+                        console.log(err)
+                    })
+
+            }
         }
     }
 
     const AddedToWishlist = async () => {
-
+        setWishlist(true)
         let wishlistObj = {
             name: obj.name,
             img: obj.img1,
@@ -105,6 +168,7 @@ export default function SingleProduct() {
                 body: JSON.stringify(wishlistObj)
             }).then(res => res.json())
                 .then(res => {
+                    setWishlist(false)
                     if (res.success) {
                         toast({
                             title: 'Product has been added into wishlist.',
@@ -115,6 +179,7 @@ export default function SingleProduct() {
                             position: 'top'
                         })
                     } else {
+                        setWishlist(false)
                         toast({
                             title: 'Something went wrong',
                             description: "Product has not been added to wishlist",
@@ -127,6 +192,7 @@ export default function SingleProduct() {
 
                 })
                 .catch(err => {
+                    setWishlist(false)
                     toast({
                         title: 'Something went wrong',
                         description: "Product has not been added to wishlist",
@@ -178,8 +244,8 @@ export default function SingleProduct() {
                         </div>
                     </div>
                     <div>
-                        <button onClick={AddtoCart} >ADD TO CART</button>
-                        <AiFillHeart onClick={AddedToWishlist} />
+                        <button className={cartlistLoad && styles.process} onClick={AddtoCart} >ADD TO CART</button>
+                        <AiFillHeart style={wishlistLoad && { cursor: 'progress' }} onClick={AddedToWishlist} />
                     </div>
                     <div>
                         <p>Check Delivery Availability</p>

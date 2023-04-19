@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState } from 'react'
 import Navbar from '../../Components/Navbar/Navbar'
 import styles from './Products.module.css'
@@ -25,6 +25,7 @@ import {
     btnRef
 } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
+import { SearchContext } from '../../Context/SearchContext'
 
 export default function Products() {
     const [read, setRead] = useState(false)
@@ -38,6 +39,8 @@ export default function Products() {
     const [data, setData] = useState([])
     console.log(data)
 
+    const [proLoad, setProdLoad] = useState(false)
+    console.log(proLoad)
     const [scrollbar1, setScrollbar1] = useState(false)
     const [scrollbar2, setScrollbar2] = useState(false)
     const [scrollbar3, setScrollbar3] = useState(false)
@@ -52,11 +55,28 @@ export default function Products() {
         setGrid(true)
     }
 
+
+    const { gender, setGender, category, setCategory, size, setSize, color, setColor, occasion, setOccasion, collections, setCollection } = useContext(SearchContext)
+
+    console.log('gender', gender, 'category', category, 'occasion', occasion, 'collections', collections)
+
     useEffect(() => {
-        fetch(`https://proud-lamb-suspenders.cyclic.app/products`)
+        getData()
+    }, [gender, category, occasion, collections, size, color])
+
+    const getData = async () => {
+        setProdLoad(true)
+        await fetch(`https://proud-lamb-suspenders.cyclic.app/products/?gender=${gender}&category=${category}&size=${size}&color=${color}&occasion=${occasion}&collections=${collections}`)
             .then((res) => res.json())
-            .then((res) => setData(res))
-    }, [])
+            .then((res) => {
+                setProdLoad(false)
+                setData(res)
+            })
+            .catch(err => {
+                setProdLoad(false)
+                console.log(err)
+            })
+    }
 
     let navigate = useNavigate()
 
@@ -64,7 +84,7 @@ export default function Products() {
         navigate(`/singleproduct/${id}`)
     }
 
-    var size = ['S', 'M', 'L', 'XL', 'XXL', '03XL']
+    // var size = ['S', 'M', 'L', 'XL', 'XXL', '03XL']
 
     return (
         <div className={styles.ProductMain_container}>
@@ -198,7 +218,7 @@ export default function Products() {
                 </div>
                 <div className={grid ? styles.container_2_child_2_double : styles.container_2_child_2_single} >
                     {
-                        data.map((ele) => <div key={ele.image} onClick={() => SinglePageFunc(ele._id)}>
+                        data.map((ele) => <div key={ele._id} onClick={() => SinglePageFunc(ele._id)}>
                             <div className={styles.HomeCard}>
                                 {/* <div onClick={() => setWish(!wish)} className={styles.wishlistHeart}>{wish ? <AiOutlineHeart color='white' size='25px' /> : <AiTwotoneHeart size='25px' color='red' />}</div> */}
                                 <Card image1={ele.img1} image2={ele.img2} />

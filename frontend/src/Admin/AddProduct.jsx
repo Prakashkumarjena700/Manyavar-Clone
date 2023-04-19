@@ -61,8 +61,13 @@ export default function AddProduct() {
       quentity: 1,
       features: features.split(','),
       description,
-      address,
-      email,
+      address: `Vedant Fashions Limited, 
+      Paridhan Garment Park, 19,
+      Canal South Road, SDF-1,
+      4th Floor, A501-A502,
+      Kolkata, West Bengal 700015 INDIA
+      `,
+      email: 'care@vedantfashions.com',
       img1,
       img2,
       img3,
@@ -149,6 +154,8 @@ export default function AddProduct() {
           <option value="Festive">Festive</option>
           <option value="Formal">Formal</option>
           <option value="Classic">Classic</option>
+          <option value="Bridal">Bridal</option>
+          <option value="Casual">Casual</option>
         </select>
         <Popover placement='top-start'>
           <PopoverTrigger>
@@ -180,8 +187,8 @@ export default function AddProduct() {
         <input type="text" value={color} placeholder='Color' onChange={(e) => setColor(e.target.value)} />
         <input type="text" value={features} placeholder='Features' onChange={(e) => setFeauters(e.target.value)} />
         <input type="text" value={description} placeholder='Description' onChange={(e) => setDescription(e.target.value)} />
-        <input type="text" value={address} placeholder='Address' onChange={(e) => setAddress(e.target.value)} />
-        <input type="email" value={email} placeholder='Email' onChange={(e) => setEmail(e.target.value)} />
+        {/* <input type="text" value={address} placeholder='Address' onChange={(e) => setAddress(e.target.value)} />
+        <input type="email" value={email} placeholder='Email' onChange={(e) => setEmail(e.target.value)} /> */}
         <input type="text" value={img1} placeholder='Image1' onChange={(e) => setImg1(e.target.value)} />
         <input type="text" value={img2} placeholder='Image2' onChange={(e) => setImg2(e.target.value)} />
         <input type="text" value={img3} placeholder='Image3' onChange={(e) => setImg3(e.target.value)} />
