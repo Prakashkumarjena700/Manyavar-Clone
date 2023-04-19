@@ -169,6 +169,7 @@ export default function Wishlist() {
                                     <option value="L">L</option>
                                     <option value="XL">XL</option>
                                     <option value="XXX">XXL</option>
+                                    <option value="FS">FS</option>
                                 </select>
                                 <p style={{ color: 'red', fontSize: '12px' }} >{product._id == ele._id && 'Select Size'}</p>
                             </div>
