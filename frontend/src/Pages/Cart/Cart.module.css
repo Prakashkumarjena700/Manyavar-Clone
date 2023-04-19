@@ -178,6 +178,10 @@
     display: none;
 }
 
+.processforRemove {
+    cursor: progress;
+}
+
 @media (max-width:1000px) {
     .cartContainer {
         flex-direction: column;
@@ -242,7 +246,8 @@
     .cardForMidScreen~div {
         padding-left: 23%;
     }
-    .cardForMidScreen div:nth-child(2){
+
+    .cardForMidScreen div:nth-child(2) {
         border-bottom: 1px solid #CED4DA;
     }
 

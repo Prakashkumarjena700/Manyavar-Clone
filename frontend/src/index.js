@@ -8,19 +8,22 @@ import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux';
 import { store } from './Redux/store';
 import LoggerContexProvider from './Context/LoggerContex';
+import SearchContextProvider from './Context/SearchContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <LoggerContexProvider>
-    <Provider store={store} >
-      <BrowserRouter>
-        <ChakraProvider>
-          <App />
-        </ChakraProvider>
-      </BrowserRouter>
-    </Provider>
-  </LoggerContexProvider>
+  <SearchContextProvider>
+    <LoggerContexProvider>
+      <Provider store={store} >
+        <BrowserRouter>
+          <ChakraProvider>
+            <App />
+          </ChakraProvider>
+        </BrowserRouter>
+      </Provider>
+    </LoggerContexProvider>
+  </SearchContextProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

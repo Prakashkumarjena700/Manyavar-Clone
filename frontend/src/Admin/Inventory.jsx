@@ -44,10 +44,12 @@ export default function Inventory() {
       price: Number(price) || Number(product.price),
       gender: gender || product.gender,
       occasion: occasion || product.occasion,
-      collection: collection || product.collection
+      collections: collection || product.collections
     }
 
     updateProduct(dispatch, product._id, obj)
+
+    console.log(obj)
 
     setTimeout(() => {
       getProducts(dispatch)
@@ -92,7 +94,7 @@ export default function Inventory() {
             <div className={styles.ProductsSkelitonContainer} >
               {
                 products.productsList.map((ele) =>
-                  <div className={styles.ProductsSkelitonCard} >
+                  <div key={ele._id} className={styles.ProductsSkelitonCard} >
                     <div>
                       <div>
                         <img src={ele.img1} alt="" />
@@ -187,6 +189,8 @@ export default function Inventory() {
                   <option value="Festive">Festive</option>
                   <option value="Formal">Formal</option>
                   <option value="Classic">Classic</option>
+                  <option value="Bridal">Bridal</option>
+                  <option value="Casual">Casual</option>
                 </Select>
                 <ModalFooter>
                   <Button colorScheme='blue' mr={3} onClick={

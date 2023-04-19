@@ -202,6 +202,10 @@
     font-size: 13px;
 }
 
+.process {
+    cursor: progress;
+}
+
 @media (max-width:800px) {
     .twoFlex {
         flex-direction: column;
