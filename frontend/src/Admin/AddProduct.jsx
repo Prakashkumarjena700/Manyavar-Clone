@@ -116,8 +116,6 @@ export default function AddProduct() {
           <option value="Indo-Western">Indo-Western</option>
           <option value="Sherwani">Sherwani</option>
           <option value="Kurta Dhoti">Kurta Dhoti</option>
-          <option value="Safas">Safas</option>
-          <option value="Malas">Malas</option>
           <option value="Footwear">Footwear</option>
           <option value="Bottomwear">Bottomwear</option>
           <option value="Lehenga">Lehenga</option>
@@ -180,6 +178,7 @@ export default function AddProduct() {
               <label>11<input type="checkbox" value="11" checked={checkedItems.includes("11")} onChange={handleCheckboxChange} /></label>
               <label>12<input type="checkbox" value="12" checked={checkedItems.includes("12")} onChange={handleCheckboxChange} /></label>
               <label>13<input type="checkbox" value="13" checked={checkedItems.includes("13")} onChange={handleCheckboxChange} /></label>
+              <label>FS<input type="checkbox" value="FS" checked={checkedItems.includes("FS")} onChange={handleCheckboxChange} /></label>
             </PopoverBody>
           </PopoverContent>
         </Popover>

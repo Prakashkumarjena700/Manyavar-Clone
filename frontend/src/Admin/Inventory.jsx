@@ -151,8 +151,6 @@ export default function Inventory() {
                   <option value="Indo-Western">Indo-Western</option>
                   <option value="Sherwani">Sherwani</option>
                   <option value="Kurta Dhoti">Kurta Dhoti</option>
-                  <option value="Safas">Safas</option>
-                  <option value="Malas">Malas</option>
                   <option value="Footwear">Footwear</option>
                   <option value="Bottomwear">Bottomwear</option>
                   <option value="Lehenga">Lehenga</option>

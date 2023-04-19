@@ -79,14 +79,31 @@ export const WomenDropDown = () => {
     )
 }
 export const KidsDropDown = () => {
-
+    const { setGender, setCategory, setOccasion, setCollection } = useContext(SearchContext)
     const [dropDown, setDropdown] = React.useState(false)
+
+    const navigate = useNavigate()
+
+    const GoToProductPage = (ele) => {
+        setGender('kids')
+        if (ele.id == 1 || ele.id == 2) {
+            setCategory('')
+            setOccasion('')
+            setCollection('')
+        } else {
+            setCategory(ele.title)
+            setOccasion('')
+            setCollection('')
+        }
+
+        navigate('/products')
+    }
 
 
     return (
         <div className={styles.subMenue} id={styles.PaddingForKidsSubmenue} onClick={() => setDropdown(!dropDown)} >
             {
-                Kids.map((ele) => <p key={ele.id} className={ele.id === 1 ? styles.headingFromSubmenue : styles.normalSubmenue} >{ele.title}</p>)
+                Kids.map((ele) => <p key={ele.id} onClick={() => GoToProductPage(ele)} className={ele.id === 1 ? styles.headingFromSubmenue : styles.normalSubmenue} >{ele.title}</p>)
             }
             <div className={styles.submenueImagesContainer} >
                 <img src="https://static01.manyavar.com/uploads/homepagetemplates/images/kurta-jacket-megamenu-creative.jpg" alt="" />
@@ -96,14 +113,26 @@ export const KidsDropDown = () => {
     )
 }
 export const AccessoriesDropDown = () => {
-
+    const { setGender, setCategory, setOccasion, setCollection } = useContext(SearchContext)
     const [dropDown, setDropdown] = React.useState(false)
 
+    const navigate = useNavigate()
+
+    const GoToProductPage = (ele) => {
+        if (ele.id !== 1) {
+            setCategory(ele.title)
+            setGender('')
+            setOccasion('')
+            setCollection('')
+            navigate('/products')
+        }
+
+    }
 
     return (
         <div className={styles.subMenue} id={styles.PaddingForAccessoriesSubmenue} onClick={() => setDropdown(!dropDown)} >
             {
-                Accessories.map((ele) => <p key={ele.id} className={ele.id === 1 ? styles.headingFromSubmenue : styles.normalSubmenue} >{ele.title}</p>)
+                Accessories.map((ele) => <p key={ele.id} onClick={() => GoToProductPage(ele)} className={ele.id === 1 ? styles.headingFromSubmenue : styles.normalSubmenue} >{ele.title}</p>)
             }
             <div className={styles.submenueImagesContainer} >
                 <img src="https://static01.manyavar.com/uploads/homepagetemplates/images/mala-megamenu-creative.jpg" alt="" />

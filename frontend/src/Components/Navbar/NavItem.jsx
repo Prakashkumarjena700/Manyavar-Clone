@@ -175,7 +175,7 @@ export const Accessories = [
     { id: 14, title: '' },
     { id: 15, title: '' },
     { id: 11, title: '' },
-    { id: 2, title: 'View All' },
+    { id: 2, title: '' },
     { id: 16, title: '' },
     { id: 17, title: '' },
     { id: 18, title: '' },

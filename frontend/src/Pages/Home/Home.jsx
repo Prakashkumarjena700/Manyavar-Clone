@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from './Home.module.css'
 import HomeBannerSlider from './HomeBannerSlider'
 import { menData, womenData } from './data'
@@ -7,6 +7,8 @@ import { useState } from 'react'
 import Navbar from '../../Components/Navbar/Navbar'
 import HomeCardSlider from './HomeCardSlider'
 import Footer from '../../Components/Footer/Footer'
+import { SearchContext } from '../../Context/SearchContext'
+import { useNavigate } from 'react-router-dom'
 
 export default function Home() {
   const [newArrivalToggle, SetNewArrivalToggle] = useState(true)
@@ -16,6 +18,10 @@ export default function Home() {
   const [PiecesWesternToggle, SetPiecesWesternToggle] = useState(false)
   const [PiecesSherwaniToggle, SetPiecesSherwaniToggle] = useState(false)
   const [PiecesJacketToggle, SetPiecesJacketToggle] = useState(false)
+
+  const navigate = useNavigate()
+
+  const { setGender, setCategory, setOccasion, setCollection } = useContext(SearchContext)
 
 
   return (
