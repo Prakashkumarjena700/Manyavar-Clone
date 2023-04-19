@@ -7,6 +7,8 @@ import { LoggerContext } from '../../Context/LoggerContex'
 import { RiSubtractLine } from 'react-icons/ri'
 import { MdOutlineAdd } from 'react-icons/md'
 
+import { useNavigate } from 'react-router-dom'
+
 export default function Cart() {
 
     const { token } = useContext(LoggerContext)
@@ -14,6 +16,8 @@ export default function Cart() {
     const [sum, setSum] = useState(0)
     const [incLoad, setIncLoad] = useState(false)
     const [decLoad, setDecLoad] = useState(false)
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         getCart()
@@ -91,7 +95,7 @@ export default function Cart() {
 
     return (
         <div style={{ backgroundColor: '#FFFBF2' }} >
-            <img className={styles.cartPageLogo} src={logo} alt="" />
+            <img onClick={() => navigate('/')} className={styles.cartPageLogo} src={logo} alt="" />
             <h1 className={styles.heading} >Shopping Cart</h1>
             <div className={styles.cartContainer} >
                 <div className={styles.cardContainer} >
@@ -139,19 +143,20 @@ export default function Cart() {
                                         <img src={ele.img} alt="" />
                                     </div>
                                     <div>
-                                        <b>{ele.name}</b>
+                                        <b>{ele.name}</b><br />
+                                        <p>{ele.size}</p>
                                         <div>
                                             <button onClick={() => DecressQuentity(ele._id, ele.quentity)} className={decLoad && styles.processingforDE}  ><RiSubtractLine style={{ color: '#A98F58' }} /></button>
                                             <button>{ele.quentity}</button>
                                             <button className={incLoad && styles.processing} onClick={() => IncreasingQuentity(ele._id, ele.quentity)} ><MdOutlineAdd /></button>
                                         </div>
+                                        <p>₹ {ele.quentity * ele.price}</p>
+                                        <p>Unit Price : ₹ {ele.price}.00</p>
                                         <p>SKU : {ele._id.substring(0, 15)}...</p>
                                         <p>Colour : {ele.color}</p>
                                         <p>Size : {ele.size}</p>
                                         <p>Net Quantity : 1 N</p>
-                                        <p>Unit Price : ₹ {ele.quentity * ele.price}</p>
-                                        <p>{ele.size}</p>
-                                        <p>₹ {ele.price}.00</p>
+
                                     </div>
 
                                 </div>
