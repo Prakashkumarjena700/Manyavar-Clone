@@ -37,20 +37,31 @@ export default function Products() {
     const [wish, setWish] = useState(false)
     // console.log(wish)
     const [data, setData] = useState([])
-    console.log(data)
+
 
     const [proLoad, setProdLoad] = useState(false)
-    console.log(proLoad)
+
     const [scrollbar1, setScrollbar1] = useState(false)
     const [scrollbar2, setScrollbar2] = useState(false)
     const [scrollbar3, setScrollbar3] = useState(false)
 
-    const [selectedOption, setSelectedOption] = useState('option1');
+    const [selectedCat, setSelectedCat] = useState('')
+    const [selectSize, setSelectSize] = useState('')
+    const [selectColor, setSelectColor] = useState('')
 
-    console.log(selectedOption)
+    console.log(selectedCat)
 
-    const handleOptionChange = (event) => {
-        setSelectedOption(event.target.value);
+    const categoryOptionChange = (event) => {
+        setSelectedCat(event.target.value);
+        setCategory(event.target.value);
+    }
+    const sizeOptionChange = (event) => {
+        setSelectSize(event.target.value);
+        setSize(event.target.value);
+    }
+    const colorOptionChange = (event) => {
+        setSelectColor(event.target.value);
+        setColor(event.target.value);
     }
 
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -173,48 +184,45 @@ export default function Products() {
                     <div className={scrollbar1 || scrollbar2 || scrollbar3 ? styles.scrollbar : ""}>
                         <details onClick={() => setScrollbar1(!scrollbar1)}>
                             <summary><p>CATEGORIES</p><IoIosArrowDown color='grey' size='20px' /></summary>
-                            <div><input type="radio" name="options" value="option1" checked={selectedOption === 'option1'} onChange={handleOptionChange} /><p>Option 1</p></div>
-                            <div><input type="radio" name="options" value="option2" checked={selectedOption === 'option2'} onChange={handleOptionChange} /><p>Option 2</p></div>
-                          
-                            <div><input type="checkbox" onChange={() => setCategory('Kurta Jackets Set')} /> <p>Kurta Jackets Set </p></div>
-                            <div><input type="checkbox" onChange={() => setCategory('Jackets')} /> <p>Jackets</p></div>
-                            <div><input type="checkbox" onChange={() => setCategory('Indo-Western')} /> <p>Indo-Western </p></div>
-                            <div><input type="checkbox" onChange={() => setCategory('Sherwani')} /> <p>Sherwani</p></div>
-                            <div><input type="checkbox" onChange={() => setCategory('Kurta Dhoti')} /> <p>Kurta Dhoti</p></div>
-
+                            <div><input type="radio" name="options" value="Kurta" checked={selectedCat === 'Kurta'} onChange={categoryOptionChange} /><p>Kurta</p></div>
+                            <div><input type="radio" name="options" value="Kurta Sets" checked={selectedCat === 'Kurta Sets'} onChange={categoryOptionChange} /><p>Kurta Sets</p></div>
+                            <div><input type="radio" name="options" value="Kurta Jacket Set" checked={selectedCat === 'Kurta Jacket Set'} onChange={categoryOptionChange} /><p>Kurta Jacket Set</p></div>
+                            <div><input type="radio" name="options" value="Jackets" checked={selectedCat === 'Jackets'} onChange={categoryOptionChange} /><p>Jackets</p></div>
+                            <div><input type="radio" name="options" value="Indo-Western" checked={selectedCat === 'Indo-Western'} onChange={categoryOptionChange} /><p>Indo-Western</p></div>
+                            <div><input type="radio" name="options" value="Sherwani" checked={selectedCat === 'Sherwani'} onChange={categoryOptionChange} /><p>Sherwani</p></div>
+                            <div><input type="radio" name="options" value="Kurta Dhoti" checked={selectedCat === 'Kurta Dhoti'} onChange={categoryOptionChange} /><p>Kurta Dhoti</p></div>
                         </details>
                         <hr />
                         <details onClick={() => setScrollbar2(!scrollbar2)}>
                             <summary><p>SIZE</p><IoIosArrowDown color='grey' size='20px' /></summary>
-                            <div><input type="checkbox" /> <p>S</p></div>
-                            <div><input type="checkbox" /> <p>M </p></div>
-                            <div><input type="checkbox" /> <p>L</p></div>
-                            <div><input type="checkbox" /> <p>XL</p></div>
-                            <div><input type="checkbox" /> <p>XXL</p></div>
-                            <div><input type="checkbox" /> <p>03XL</p></div>
-                            <div><input type="checkbox" /> <p>04XL</p></div>
-                            <div><input type="checkbox" /> <p>2-3 year</p></div>
-                            <div><input type="checkbox" /> <p>4-5 year</p></div>
-                            <div><input type="checkbox" /> <p>6-7 year</p></div>
-                            <div><input type="checkbox" /> <p>9-10 year</p></div>
-                            <div><input type="checkbox" /> <p>FreeSize</p></div>
+                            <div><input type="radio" name="options" value="S" checked={selectSize === 'S'} onChange={sizeOptionChange} /><p>S</p></div>
+                            <div><input type="radio" name="options" value="M" checked={selectSize === 'M'} onChange={sizeOptionChange} /><p>M</p></div>
+                            <div><input type="radio" name="options" value="L" checked={selectSize === 'L'} onChange={sizeOptionChange} /><p>L</p></div>
+                            <div><input type="radio" name="options" value="XL" checked={selectSize === 'XL'} onChange={sizeOptionChange} /><p>XL</p></div>
+                            <div><input type="radio" name="options" value="XXL" checked={selectSize === 'XXL'} onChange={sizeOptionChange} /><p>XXL</p></div>
+                            <div><input type="radio" name="options" value="6" checked={selectSize === '6'} onChange={sizeOptionChange} /><p>6</p></div>
+                            <div><input type="radio" name="options" value="7" checked={selectSize === '7'} onChange={sizeOptionChange} /><p>7</p></div>
+                            <div><input type="radio" name="options" value="8" checked={selectSize === '8'} onChange={sizeOptionChange} /><p>8</p></div>
+                            <div><input type="radio" name="options" value="9" checked={selectSize === '9'} onChange={sizeOptionChange} /><p>9</p></div>
+                            <div><input type="radio" name="options" value="10" checked={selectSize === '10'} onChange={sizeOptionChange} /><p>10</p></div>
+                            <div><input type="radio" name="options" value="11" checked={selectSize === '11'} onChange={sizeOptionChange} /><p>11</p></div>
+                            <div><input type="radio" name="options" value="12" checked={selectSize === '12'} onChange={sizeOptionChange} /><p>12</p></div>
+                            <div><input type="radio" name="options" value="13" checked={selectSize === '13'} onChange={sizeOptionChange} /><p>13</p></div>
+                            <div><input type="radio" name="options" value="FS" checked={selectSize === 'FS'} onChange={sizeOptionChange} /><p>Free Size</p></div>
                         </details>
                         <hr />
                         <details onClick={() => setScrollbar3(!scrollbar3)}>
                             <summary><p>COLOR</p><IoIosArrowDown color='grey' size='20px' /></summary>
-                            <div><input type="checkbox" /> <p>Maroon</p></div>
-                            <div><input type="checkbox" /> <p>Green</p></div>
-                            <div><input type="checkbox" /> <p>Pink</p></div>
-                            <div><input type="checkbox" /> <p>Yellow</p></div>
-                            <div><input type="checkbox" /> <p>Red</p></div>
-                            <div><input type="checkbox" /> <p>Grey</p></div>
-                            <div><input type="checkbox" /> <p>Blue</p></div>
-                            <div><input type="checkbox" /> <p>Rust</p></div>
-                            <div><input type="checkbox" /> <p>Peach</p></div>
-                            <div><input type="checkbox" /> <p>Brown</p></div>
-                            <div><input type="checkbox" /> <p>White</p></div>
-                            <div><input type="checkbox" /> <p>Black</p></div>
-                            <div><input type="checkbox" /> <p>Golden</p></div>
+                            <div><input type="radio" name="options" value="Maroon" checked={selectColor === 'Maroon'} onChange={colorOptionChange} /><p>Maroon</p></div>
+                            <div><input type="radio" name="options" value="Green" checked={selectColor === 'Green'} onChange={colorOptionChange} /><p>Green</p></div>
+                            <div><input type="radio" name="options" value="Blue" checked={selectColor === 'Blue'} onChange={colorOptionChange} /><p>Blue</p></div>
+                            <div><input type="radio" name="options" value="Sky" checked={selectColor === 'Sky'} onChange={colorOptionChange} /><p>Sky</p></div>
+                            <div><input type="radio" name="options" value="Yellow" checked={selectColor === 'Yellow'} onChange={colorOptionChange} /><p>Yellow</p></div>
+                            <div><input type="radio" name="options" value="Light Orange" checked={selectColor === 'Light Orange'} onChange={colorOptionChange} /><p>Light Orange</p></div>
+                            <div><input type="radio" name="options" value="Biscuit" checked={selectColor === 'Biscuit'} onChange={colorOptionChange} /><p>Biscuit</p></div>
+                            <div><input type="radio" name="options" value="Grey" checked={selectColor === 'Grey'} onChange={colorOptionChange} /><p>Grey</p></div>
+                            <div><input type="radio" name="options" value="Gajaree" checked={selectColor === 'Gajaree'} onChange={colorOptionChange} /><p>Gajaree</p></div>
+
                         </details>
 
                     </div>

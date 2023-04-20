@@ -8,7 +8,7 @@ import { SearchContext } from "../../Context/SearchContext"
 
 
 export const MenDropDown = () => {
-    const { setGender, setCategory, setOccasion, setCollection, setBreadCrum2, setBreadCrum3, setHeading } = useContext(SearchContext)
+    const { setGender, setCategory, setOccasion, setCollection, setBreadCrum2, setBreadCrum3, setHeading, setColor, setSize } = useContext(SearchContext)
     const [dropDown, setDropdown] = React.useState(false)
 
     const navigate = useNavigate()
@@ -39,6 +39,8 @@ export const MenDropDown = () => {
             setCategory('')
             setOccasion('')
         }
+        setSize('')
+        setColor('')
         navigate('/products')
     }
 
@@ -56,7 +58,7 @@ export const MenDropDown = () => {
     )
 }
 export const WomenDropDown = () => {
-    const { setGender, setCategory, setOccasion, setCollection, setBreadCrum2, setBreadCrum3, setHeading } = useContext(SearchContext)
+    const { setGender, setCategory, setOccasion, setCollection, setBreadCrum2, setBreadCrum3, setHeading, setColor, setSize } = useContext(SearchContext)
     const [dropDown, setDropdown] = React.useState(false)
 
     const navigate = useNavigate()
@@ -80,6 +82,8 @@ export const WomenDropDown = () => {
             setCategory('')
             setOccasion('')
         }
+        setSize('')
+        setColor('')
         navigate('/products')
     }
 
@@ -97,7 +101,7 @@ export const WomenDropDown = () => {
     )
 }
 export const KidsDropDown = () => {
-    const { setGender, setCategory, setOccasion, setCollection, setBreadCrum2, setBreadCrum3, setHeading } = useContext(SearchContext)
+    const { setGender, setCategory, setOccasion, setCollection, setBreadCrum2, setBreadCrum3, setHeading, setSize, setColor } = useContext(SearchContext)
     const [dropDown, setDropdown] = React.useState(false)
 
     const navigate = useNavigate()
@@ -120,7 +124,8 @@ export const KidsDropDown = () => {
             setCollection('')
             setHeading(ele.title)
         }
-
+        setSize('')
+        setColor('')
         navigate('/products')
     }
 
@@ -138,7 +143,7 @@ export const KidsDropDown = () => {
     )
 }
 export const AccessoriesDropDown = () => {
-    const { setGender, setCategory, setOccasion, setCollection, setBreadCrum2, setBreadCrum3, setHeading } = useContext(SearchContext)
+    const { setGender, setCategory, setOccasion, setCollection, setBreadCrum2, setBreadCrum3, setHeading, setSize, setColor, } = useContext(SearchContext)
     const [dropDown, setDropdown] = React.useState(false)
 
     const navigate = useNavigate()
@@ -151,6 +156,8 @@ export const AccessoriesDropDown = () => {
             setGender('')
             setOccasion('')
             setCollection('')
+            setSize('')
+            setColor('')
             navigate('/products')
             setHeading(ele.title)
         }
