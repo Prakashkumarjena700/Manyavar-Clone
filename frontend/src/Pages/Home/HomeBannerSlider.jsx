@@ -1,5 +1,8 @@
 import React, { useRef, useState } from 'react';
 import './HomeBannerSlider.css'
+import { useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 
 
 // Import Swiper styles
@@ -8,10 +11,14 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper';
+import { SearchContext } from '../../Context/SearchContext';
 
 export default function HomeBannerSlider() {
 
+    const navigate = useNavigate()
 
+    const { setGender, setCategory, setOccasion, setCollection, breadCrum2, setBreadCrum2, breadCrum3, setBreadCrum3,
+        heading, setHeading } = useContext(SearchContext)
 
     return (
         <div id='HomeSliderBanner'>
@@ -31,7 +38,16 @@ export default function HomeBannerSlider() {
                     modules={[Autoplay, Pagination, Navigation]}
                     className="mySwiper"
                 >
-                    <SwiperSlide>
+                    <SwiperSlide onClick={() => {
+                        setGender("women")
+                        setCategory("")
+                        setCollection("Bridal")
+                        setOccasion("")
+                        setHeading("Bridal Lehengas")
+                        setBreadCrum2("Women")
+                        setBreadCrum3("Bridal")
+                        navigate('/products')
+                    }}>
                         <img src="https://manyavar.scene7.com/is/image/manyavarstage/Kiara%20HP%20Banner%20_Desktop%20_04-01-2023-07-29?$R%2DD%2DHP%2DB$" alt="" />
                     </SwiperSlide>
                     <SwiperSlide>

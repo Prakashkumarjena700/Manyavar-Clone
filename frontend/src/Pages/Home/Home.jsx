@@ -31,11 +31,17 @@ export default function Home() {
 
   const navigate = useNavigate()
 
-  const { setGender, setCategory, setOccasion, setCollection } = useContext(SearchContext)
+  const { setGender, setCategory, setOccasion, setCollection, breadCrum2, setBreadCrum2, breadCrum3, setBreadCrum3,
+    heading, setHeading } = useContext(SearchContext)
 
   const GoToProductPage = (gen, cat) => {
     setGender(gen)
     setCategory(cat)
+    setCollection("")
+    setOccasion("")
+    setHeading(cat)
+    setBreadCrum2(gen)
+    setBreadCrum3(cat)
     navigate('/products')
   }
 
@@ -163,7 +169,16 @@ export default function Home() {
       <div className={styles.HomeContainer2}>
         <h1 className={styles.Home_New_Arrival_Headin}>Pieces Customers Love</h1>
 
-        <div className={styles.home_viewAll}>VIEW ALL</div>
+        <div className={styles.home_viewAll} onClick={() => {
+          setGender("men")
+          setCategory("")
+          setCollection("")
+          setOccasion("")
+          setHeading("Men")
+          setBreadCrum2("Men")
+          setBreadCrum3("")
+          navigate('/products')
+        }}>VIEW ALL</div>
 
 
         <div className={styles.Home_newArr_con_2_buttons}>
@@ -322,6 +337,11 @@ export default function Home() {
           <div className={styles.Attending_Wedding} onClick={() => {
             setGender('men')
             setOccasion('Wedding')
+            setCategory("")
+            setCollection("")
+            setHeading('Wedding')
+            setBreadCrum2("Men")
+            setBreadCrum3("Wedding")
             navigate('/products')
           }}>
             <div>
@@ -334,7 +354,16 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className={styles.moheyBanner}>
+        <div className={styles.moheyBanner} onClick={() => {
+          setGender('women')
+          setOccasion('')
+          setCategory("Lehenga")
+          setCollection("")
+          setHeading('Lehenga')
+          setBreadCrum2("Women")
+          setBreadCrum3("Lehenga")
+          navigate('/products')
+        }}>
           <img src="https://static01.manyavar.com/uploads/Newhometemplate/images//Manvayar-Crest-Mohey_Horizontal.png" alt="" />
           <div>
             <img className={styles.mohey_image1} src="https://manyavar.scene7.com/is/image/manyavarstage/Mohey%20Banner%20Dektop%20jpg_11-11-2022-04-58?$R%2DD%2DHP%2DMB$" alt="" />
@@ -374,13 +403,40 @@ export default function Home() {
         <h1 className={styles.Home_New_Arrival_Headin}>Shop By Collections</h1>
         <p>A wedding is a beautiful life event with many intricate traditions. Every occasion calls for that perfect celebration outfit, select your from below.</p>
         <div className={styles.container_6_card_parent}>
-          <div>
+          <div onClick={() => {
+            setGender('men')
+            setOccasion('Sangeet')
+            setCategory("")
+            setCollection("")
+            setHeading('Men Sangeet')
+            setBreadCrum2("Men")
+            setBreadCrum3("Sangeet")
+            navigate('/products')
+          }}>
             <img src="https://manyavar.scene7.com/is/image/manyavarstage/Sangeet%20jpg_11-11-2022-05-281?$R%2DD%2FM%2DHP%2DSBC$" alt="" />
           </div>
-          <div>
+          <div onClick={() => {
+            setGender('men')
+            setOccasion('Engagement')
+            setCategory("")
+            setCollection("")
+            setHeading('Men Engagement')
+            setBreadCrum2("Men")
+            setBreadCrum3("Engagement")
+            navigate('/products')
+          }}>
             <img src="https://manyavar.scene7.com/is/image/manyavarstage/Engagement%20jpg_11-11-2022-05-281?$R%2DD%2FM%2DHP%2DSBC$" alt="" />
           </div>
-          <div>
+          <div onClick={() => {
+            setGender('men')
+            setOccasion('Reception')
+            setCategory("")
+            setCollection("")
+            setHeading('Men Reception')
+            setBreadCrum2("Men")
+            setBreadCrum3("Reception")
+            navigate('/products')
+          }}>
             <img src="https://manyavar.scene7.com/is/image/manyavarstage/Reception%20jpg_11-11-2022-05-281?$R%2DD%2FM%2DHP%2DSBC$" alt="" />
           </div>
         </div>
