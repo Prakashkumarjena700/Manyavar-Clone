@@ -8,7 +8,7 @@ import { SearchContext } from "../../Context/SearchContext"
 
 
 export const MenDropDown = () => {
-    const { setGender, setCategory, setOccasion, setCollection } = useContext(SearchContext)
+    const { setGender, setCategory, setOccasion, setCollection, setBreadCrum2, setBreadCrum3 } = useContext(SearchContext)
     const [dropDown, setDropdown] = React.useState(false)
 
     const navigate = useNavigate()

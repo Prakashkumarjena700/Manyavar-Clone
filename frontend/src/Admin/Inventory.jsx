@@ -216,6 +216,8 @@ export default function Inventory() {
                   <img src={product.img5} alt="" />
                 </div>
                 <div>
+                  <br />
+                  <p><b>ID : </b>{product._id}</p>
                   <p><b>Name : </b>{product.name}</p>
                   <p><b>Category : </b>{product.category}</p>
                   <p><b>Gender : </b>{product.gender}</p>

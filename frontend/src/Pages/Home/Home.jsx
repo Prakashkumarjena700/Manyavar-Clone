@@ -23,41 +23,50 @@ export default function Home() {
 
   const { setGender, setCategory, setOccasion, setCollection } = useContext(SearchContext)
 
+  const GoToProductPage = (gen, cat) => {
+    setGender(gen)
+    setCategory(cat)
+    navigate('/products')
+  }
+
+  const GotoparticularMen = (id) => {
+    navigate(`/singleproduct/${id}`)
+  }
 
   return (
     <div className={styles.homeMainContainer}>
       <Navbar />
       <HomeBannerSlider />
       <div className={styles.homeCollectionsDiv}>
-        <div>
+        <div onClick={() => GoToProductPage('men', 'Sherwani')} >
           <img src="https://manyavar.scene7.com/is/image/manyavarstage/Sherwani%20Category%20Tiles_%20Both%20device_12-01-2023-11-56?$R%2DD%2DHP%2DCircle$" alt="" />
           <h2>SHERWANI</h2>
         </div>
-        <div>
+        <div onClick={() => GoToProductPage('men', 'Kurta Sets')} >
           <img src="https://manyavar.scene7.com/is/image/manyavarstage/Kurta%20pajama%20jpg_11-11-2022-07-36-2?$R%2DD%2DHP%2DCircle$" alt="" />
           <h2>KURTA PAJAMA</h2>
         </div>
-        <div>
+        <div onClick={() => GoToProductPage('men', 'Indo-Western')}  >
           <img src="https://manyavar.scene7.com/is/image/manyavarstage/Indo%20Western%20jpg_11-11-2022-07-36-2?$R%2DD%2DHP%2DCircle$" alt="" />
           <h2>INDO WESTERN</h2>
         </div>
-        <div>
+        <div onClick={() => GoToProductPage('men', 'Kurta Jacket Set')} >
           <img src="https://manyavar.scene7.com/is/image/manyavarstage/Kurta%20Jacket%20jpg_11-11-2022-07-36-2?$R%2DD%2DHP%2DCircle$" alt="" />
           <h2>KURTA JACKET SETS</h2>
         </div>
-        <div>
+        <div onClick={() => GoToProductPage('men', 'Kurta')}  >
           <img src="https://manyavar.scene7.com/is/image/manyavarstage/Only%20Kurta%20jpg_11-11-2022-07-36-2?$R%2DD%2DHP%2DCircle$" alt="" />
           <h2>KURTAS</h2>
         </div>
-        <div>
+        <div onClick={() => GoToProductPage('men', 'Jackets')} >
           <img src="https://manyavar.scene7.com/is/image/manyavarstage/Jacket%20jpg_11-11-2022-07-36-2?$R%2DD%2DHP%2DCircle$" alt="" />
           <h2>JACKETS</h2>
         </div>
-        <div>
+        <div onClick={() => GoToProductPage('women', 'Lehenga')} >
           <img src="https://manyavar.scene7.com/is/image/manyavarstage/Category%20Tiles%20%20Alia%20Replacement%20jpg_11-11-2022-07-36?$R%2DD%2DHP%2DCircle$" alt="" />
           <h2>LEHENGAS</h2>
         </div>
-        <div>
+        <div onClick={() => GoToProductPage('kids', 'Kurta')} >
           <img src="https://manyavar.scene7.com/is/image/manyavarstage/Boys%20jpg_11-11-2022-07-36-2?$R%2DD%2DHP%2DCircle$" alt="" />
           <h2>BOYS</h2>
         </div>
@@ -73,7 +82,7 @@ export default function Home() {
         <div>{newArrivalToggle ?
           <div className={styles.newArrival_card_con}>
             {
-              menData.map((ele) => <div className={styles.container_1_cards} key={ele.image}>
+              menData.map((ele) => <div onClick={() => GotoparticularMen(ele.id)} className={styles.container_1_cards} key={ele.image}>
                 <div className={styles.HomeCard}>
                   <div className={styles.HomeCardImg_Div}>
                     <img src={ele.image} alt="" />

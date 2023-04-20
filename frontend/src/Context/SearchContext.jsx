@@ -10,7 +10,15 @@ export default function SearchContextProvider({ children }) {
     const [occasion, setOccasion] = useState('')
     const [collections, setCollection] = useState('')
 
+    const [breadCrum2, setBreadCrum2] = useState('')
+    const [breadCrum3, setBreadCrum3] = useState('')
+
     return (
-        <SearchContext.Provider value={{ gender, setGender, category, setCategory, size, setSize, color, setColor, occasion, setOccasion, collections, setCollection }} >{children}</SearchContext.Provider>
+        <SearchContext.Provider value={{
+            gender, setGender, category, setCategory,
+            size, setSize, color, setColor,
+            occasion, setOccasion, collections, setCollection,
+            breadCrum2, setBreadCrum2, breadCrum3, setBreadCrum3
+        }} >{children}</SearchContext.Provider>
     )
 }

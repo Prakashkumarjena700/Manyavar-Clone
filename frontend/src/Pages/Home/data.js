@@ -3,13 +3,15 @@ export const menData = [
         "image": "https://static01.manyavar.com/uploads/dealimages/11305/detailimages/robust-red-indo-western-wear-cpiw509-307-8.jpg",
         "ProductViewClick href": "https://www.manyavar.com/striking-maroon-indo-western-cpiw509-307",
         "title": "Striking Maroon Indo-Western",
-        "price": "₹ 15999"
+        "price": "₹ 15999",
+        "id": "64403edabcc34a3ad65bdb20"
     },
     {
         "image": "https://static01.manyavar.com/uploads/dealimages/10618/detailimages/bright-maroon-patternd-kurta-set-sosk371-307-4.jpg",
         "ProductViewClick href": "https://www.manyavar.com/bright-maroon-patterned-kurta-set-sosk371-307",
         "title": "Bright Maroon Patterned Kurta Set",
-        "price": "₹ 3999"
+        "price": "₹ 3999",
+        "id": "64404186a88ca17149d9f9d8"
     },
     {
         "image": "https://static01.manyavar.com/uploads/dealimages/13877/detailimages/summer-essential-blue-kurta-ml12032-306-4.jpg",
