@@ -12,13 +12,15 @@ export default function SearchContextProvider({ children }) {
 
     const [breadCrum2, setBreadCrum2] = useState('')
     const [breadCrum3, setBreadCrum3] = useState('')
+    const [heading, setHeading] = useState('')
 
     return (
         <SearchContext.Provider value={{
             gender, setGender, category, setCategory,
             size, setSize, color, setColor,
             occasion, setOccasion, collections, setCollection,
-            breadCrum2, setBreadCrum2, breadCrum3, setBreadCrum3
+            breadCrum2, setBreadCrum2, breadCrum3, setBreadCrum3,
+            heading, setHeading
         }} >{children}</SearchContext.Provider>
     )
 }
