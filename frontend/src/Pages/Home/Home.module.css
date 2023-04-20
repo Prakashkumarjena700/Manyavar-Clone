@@ -171,6 +171,7 @@
     /* border: 1px solid red; */
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    cursor: pointer;
 }
 
 .Attending_Wedding>div>img {
@@ -245,7 +246,7 @@
     /* border: 1px solid green; */
     border-bottom: 2px solid black;
     font-size: 16px;
-
+    cursor: pointer;
 }
 
 .HomeContainer3>p {
@@ -260,7 +261,9 @@
     display: none;
 }
 
-.moheyBanner {}
+.moheyBanner {
+    cursor: pointer;
+}
 
 .container_4 {
     /* border: 1px solid red; */
@@ -412,6 +415,7 @@
 
     .Attending_Wedding {
         grid-template-columns: repeat(1, 1fr);
+        cursor: pointer;
     }
 
     .Container3_img_2 {
