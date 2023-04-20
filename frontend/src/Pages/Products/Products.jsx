@@ -56,7 +56,7 @@ export default function Products() {
     }
 
 
-    const { gender, setGender, category, setCategory, size, setSize, color, setColor, occasion, setOccasion, collections, setCollection } = useContext(SearchContext)
+    const { gender, setGender, category, setCategory, size, setSize, color, setColor, occasion, setOccasion, collections, setCollection, breadCrum2, setBreadCrum2, breadCrum3, setBreadCrum3 } = useContext(SearchContext)
 
     console.log('gender', gender, 'category', category, 'occasion', occasion, 'collections', collections)
 
@@ -147,7 +147,7 @@ export default function Products() {
             </div>
             <div className={styles.products_container_2} >
                 <div className={styles.container_2_child_1}>
-                    <p className={styles.products_root}>Home / Men</p>
+                    <p className={styles.products_root}>Home / {breadCrum2} / {breadCrum3}</p>
                     <p>1275 TOTAL ITEMS</p>
                     <div className={styles.grid_filter}>
                         <div onClick={singleGrid} className={styles.single_grid}>
