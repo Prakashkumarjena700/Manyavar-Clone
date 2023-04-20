@@ -101,7 +101,7 @@ export const Women = [
     { id: 15, type: '', title: '', cat: '' },
     { id: 16, type: '', title: '', cat: '' },
     { id: 17, type: '', title: '', cat: '' },
-    { id: 3, type: '', title: 'View All', cat: '' },
+    { id: 3, type: '', title: 'View All', category: '' },
     { id: 4, type: '', title: 'Bridal', collections: 'Bridal' },
     { id: 18, type: '', title: '', cat: '' },
     { id: 19, type: '', title: '', cat: '' },

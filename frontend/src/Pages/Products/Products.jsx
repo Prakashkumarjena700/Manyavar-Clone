@@ -45,6 +45,14 @@ export default function Products() {
     const [scrollbar2, setScrollbar2] = useState(false)
     const [scrollbar3, setScrollbar3] = useState(false)
 
+    const [selectedOption, setSelectedOption] = useState('option1');
+
+    console.log(selectedOption)
+
+    const handleOptionChange = (event) => {
+        setSelectedOption(event.target.value);
+    }
+
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef()
 
@@ -56,7 +64,7 @@ export default function Products() {
     }
 
 
-    const { gender, setGender, category, setCategory, size, setSize, color, setColor, occasion, setOccasion, collections, setCollection, breadCrum2, setBreadCrum2, breadCrum3, setBreadCrum3 } = useContext(SearchContext)
+    const { gender, setGender, category, setCategory, size, setSize, color, setColor, occasion, setOccasion, collections, setCollection, breadCrum2, setBreadCrum2, breadCrum3, setBreadCrum3, heading, setHeading } = useContext(SearchContext)
 
     console.log('gender', gender, 'category', category, 'occasion', occasion, 'collections', collections)
 
@@ -94,7 +102,7 @@ export default function Products() {
                     <img src={Logo} alt="" />
                 </div>
                 <div className={styles.container_1_child_2}>
-                    <h1>Men</h1>
+                    <h1>{heading}</h1>
                     <p className={read ? styles.container_1_child_2_para : ""}>Traditional wear for men has evolved over the years, all while keeping the cultural aesthetics and roots intact. Western-inspired <span style={{ color: '#027bfe' }}>Indo-Western</span> clothing like blazers and pants are among the most preferred outfits that cater to modern sensibilities and tastes. Even traditional Indian and {read ? "regional garments such as kurtas and dhotis have transformed by leaps and bounds. Men with preferences influenced by Western wear expect fashion-forward attires that exude charm, style and sophistication. Thus, Manyavar has crafted tastefully designed traditional clothes for men. We house the best traditional dress for men by offering fine blended fabrics in poised hues, stunning cuts and silhouettes, and elaborate adornments." : ""}</p>
                     <button onClick={() => setRead(!read)}>{read ? "Read less" : "Read more"}</button>
                 </div>
@@ -165,19 +173,15 @@ export default function Products() {
                     <div className={scrollbar1 || scrollbar2 || scrollbar3 ? styles.scrollbar : ""}>
                         <details onClick={() => setScrollbar1(!scrollbar1)}>
                             <summary><p>CATEGORIES</p><IoIosArrowDown color='grey' size='20px' /></summary>
-                            <div><input type="checkbox" /> <p>Blazer for Men</p></div>
-                            <div><input type="checkbox" /> <p>Formal</p></div>
-                            <div><input type="checkbox" /> <p>Indo Western </p></div>
-                            <div><input type="checkbox" /> <p>Kids Kurta</p></div>
-                            <div><input type="checkbox" /> <p>Kids Kurta Jacket </p></div>
-                            <div><input type="checkbox" /> <p>kurta dhoti collection</p></div>
-                            <div><input type="checkbox" /> <p>Kurta Jacket Set</p></div>
-                            <div><input type="checkbox" /> <p>Kurta Pajama</p></div>
-                            <div><input type="checkbox" /> <p>Lower</p></div>
-                            <div><input type="checkbox" /> <p>Men Blazers Suits</p></div>
-                            <div><input type="checkbox" /> <p>Only Jacket</p></div>
-                            <div><input type="checkbox" /> <p>Only Kurta </p></div>
-                            <div><input type="checkbox" /> <p>Sherwani </p></div>
+                            <div><input type="radio" name="options" value="option1" checked={selectedOption === 'option1'} onChange={handleOptionChange} /><p>Option 1</p></div>
+                            <div><input type="radio" name="options" value="option2" checked={selectedOption === 'option2'} onChange={handleOptionChange} /><p>Option 2</p></div>
+                          
+                            <div><input type="checkbox" onChange={() => setCategory('Kurta Jackets Set')} /> <p>Kurta Jackets Set </p></div>
+                            <div><input type="checkbox" onChange={() => setCategory('Jackets')} /> <p>Jackets</p></div>
+                            <div><input type="checkbox" onChange={() => setCategory('Indo-Western')} /> <p>Indo-Western </p></div>
+                            <div><input type="checkbox" onChange={() => setCategory('Sherwani')} /> <p>Sherwani</p></div>
+                            <div><input type="checkbox" onChange={() => setCategory('Kurta Dhoti')} /> <p>Kurta Dhoti</p></div>
+
                         </details>
                         <hr />
                         <details onClick={() => setScrollbar2(!scrollbar2)}>
