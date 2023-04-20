@@ -17,49 +17,57 @@ export const menData = [
         "image": "https://static01.manyavar.com/uploads/dealimages/13877/detailimages/summer-essential-blue-kurta-ml12032-306-4.jpg",
         "ProductViewClick href": "https://www.manyavar.com/sapphire-blue-printed-kurta-ml12032-306",
         "title": "Sapphire Blue Printed Kurta",
-        "price": "₹ 2499"
+        "price": "₹ 2499",
+        "id": "6440c4440d020509e961a796"
     },
     {
         "image": "https://static01.manyavar.com/uploads/dealimages/14682/detailimages/ML12098-308_01.JPG",
         "ProductViewClick href": "https://www.manyavar.com/Grey-Bandhani-Print-Kurta-ML12098-308",
         "title": "Grey Bandhani Print Kurta",
-        "price": "₹ 2499"
+        "price": "₹ 2499",
+        "id": "6440c57b88046a9c4dbae182"
     },
     {
-        "image": "https://static01.manyavar.com/uploads/dealimages/14505/detailimages/sosk605-325_01.jpg",
+        "image": "https://static01.manyavar.com/uploads/dealimages/14134/zoomimages/S952789-328_01.JPG",
         "ProductViewClick href": "https://www.manyavar.com/salmon-pink-jacquard-kurta-pajama-sosk605-325",
-        "title": "Salmon Pink Jacquard Kurta Pajama",
-        "price": "₹ 4999"
+        "title": "Golden Yellow Thread Embroidered Kurta Set",
+        "price": "₹ 5999",
+        "id": "6440c8fd87be5bdc862f6617"
     },
     {
         "image": "https://static01.manyavar.com/uploads/dealimages/14350/detailimages/sdes607-327_01.jpg",
         "ProductViewClick href": "https://www.manyavar.com/dapper-light-green-kurta-set-sdes607-327",
         "title": "Dapper Light Green Kurta Set",
-        "price": "₹ 3999"
+        "price": "₹ 3999",
+        "id": "6440c6aa87be5bdc862f6604"
     },
     {
-        "image": "https://static01.manyavar.com/uploads/dealimages/14513/detailimages/CPOSK504-322_01.JPG",
+        "image": "https://static01.manyavar.com/uploads/dealimages/12153/zoomimages/glamorous-green-kurta-set-s952642-327-3.jpg",
         "ProductViewClick href": "https://www.manyavar.com/wine-floral-print-kurta-set-cposk504-322",
-        "title": "Wine Floral Print Kurta Set",
-        "price": "₹ 3499"
+        "title": "Jade Green Self Design Kurta Set",
+        "price": "₹ 3499",
+        "id": "6440ceb9b52030a73f754d46"
     },
     {
         "image": "https://static01.manyavar.com/uploads/dealimages/14438/detailimages/ides738-333_01.jpg",
         "ProductViewClick href": "https://www.manyavar.com/sage-green-self-design-indo-western-ides738-333",
         "title": "Sage Green Self Design Indo Western",
-        "price": "₹ 17999"
+        "price": "₹ 17999",
+        "id": "6440cf8755628b0ca8ca727a"
     },
     {
         "image": "https://static01.manyavar.com/uploads/dealimages/14321/detailimages/o951d504-333_01.jpg",
         "ProductViewClick href": "https://www.manyavar.com/opal-green-sherwani-o951d504-333",
         "title": "Opal Green Sherwani",
         "price": "₹ 20999"
+        , "id": "6440ca28980bb53f822c3c06"
     },
     {
         "image": "https://static01.manyavar.com/uploads/dealimages/13991/detailimages/cpsh144-340_01.jpg",
         "ProductViewClick href": "https://www.manyavar.com/enchanting-cream-sherwani-cpsh144-340",
         "title": "Enchanting Cream Sherwani",
-        "price": "₹ 14999"
+        "price": "₹ 14999",
+        "id": "6440d113b52030a73f754d54"
     }
 ]
 

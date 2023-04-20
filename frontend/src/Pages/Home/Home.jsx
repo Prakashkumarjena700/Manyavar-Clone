@@ -9,6 +9,7 @@ import HomeCardSlider from './HomeCardSlider'
 import Footer from '../../Components/Footer/Footer'
 import { SearchContext } from '../../Context/SearchContext'
 import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
 
 export default function Home() {
   const [newArrivalToggle, SetNewArrivalToggle] = useState(true)
@@ -18,6 +19,15 @@ export default function Home() {
   const [PiecesWesternToggle, SetPiecesWesternToggle] = useState(false)
   const [PiecesSherwaniToggle, SetPiecesSherwaniToggle] = useState(false)
   const [PiecesJacketToggle, SetPiecesJacketToggle] = useState(false)
+
+
+  const [womenLehenga, setWomenLehenga] = useState([])
+  const [menKurtaset, setMenKurtaset] = useState([])
+  const [menKurtas, setMenKurtas] = useState([])
+  const [indoWestorn, setindoWestorn] = useState([])
+  const [sherwani, setSherwani] = useState([])
+  const [jacket, setJacket] = useState([])
+
 
   const navigate = useNavigate()
 
@@ -29,9 +39,34 @@ export default function Home() {
     navigate('/products')
   }
 
-  const GotoparticularMen = (id) => {
+  const GotoparticularPage = (id) => {
     navigate(`/singleproduct/${id}`)
   }
+
+  useEffect(() => {
+    GetData('Lehenga', setWomenLehenga)
+    GetData('Kurta Sets', setMenKurtaset)
+    GetData('Kurta', setMenKurtas)
+    GetData('Sherwani', setSherwani)
+    GetData('Jackets', setJacket)
+    GetData('Indo-Western', setindoWestorn)
+  }, [])
+
+  console.log(womenLehenga)
+
+
+  const GetData = async (cat, set) => {
+    await fetch(`https://proud-lamb-suspenders.cyclic.app/products/?category=${cat}`)
+      .then((res) => res.json())
+      .then((res) => {
+        set(res)
+        console.log(res)
+      })
+      .catch((err) => console.log(err))
+  }
+
+
+
 
   return (
     <div className={styles.homeMainContainer}>
@@ -82,7 +117,7 @@ export default function Home() {
         <div>{newArrivalToggle ?
           <div className={styles.newArrival_card_con}>
             {
-              menData.map((ele) => <div onClick={() => GotoparticularMen(ele.id)} className={styles.container_1_cards} key={ele.image}>
+              menData.map((ele) => <div onClick={() => GotoparticularPage(ele.id)} className={styles.container_1_cards} key={ele.image}>
                 <div className={styles.HomeCard}>
                   <div className={styles.HomeCardImg_Div}>
                     <img src={ele.image} alt="" />
@@ -104,10 +139,10 @@ export default function Home() {
 
           <div className={styles.newArrival_card_con}>
             {
-              womenData.map((ele) => <div key={ele.image}>
+              womenLehenga.map((ele) => <div key={ele._id} onClick={() => GotoparticularPage(ele._id)}>
                 <div className={styles.HomeCard}>
                   <div className={styles.HomeCardImg_Div}>
-                    <img src={ele.image} alt="" />
+                    <img src={ele.img1} alt="" />
                   </div>
 
                   <div className={styles.HomeCardoverlay}>
@@ -177,10 +212,10 @@ export default function Home() {
           <div>{PiecesKurtasetToggle ?
             <div className={styles.newArrival_card_con}>
               {
-                menData.map((ele) => <div key={ele.image} className={styles.container_2_card}>
+                menKurtaset.map((ele) => <div key={ele._id} className={styles.container_2_card} onClick={() => GotoparticularPage(ele._id)}>
                   <div className={styles.HomeCard}>
                     <div className={styles.HomeCardImg_Div}>
-                      <img src={ele.image} alt="" />
+                      <img src={ele.img1} alt="" />
                     </div>
 
                     <div className={styles.HomeCardoverlay}>
@@ -199,10 +234,10 @@ export default function Home() {
 
               <div className={styles.newArrival_card_con}>
                 {
-                  womenData.map((ele) => <div key={ele.image}>
+                  menKurtas.map((ele) => <div key={ele._id} onClick={() => GotoparticularPage(ele._id)}>
                     <div className={styles.HomeCard}>
                       <div className={styles.HomeCardImg_Div}>
-                        <img src={ele.image} alt="" />
+                        <img src={ele.img1} alt="" />
                       </div>
 
                       <div className={styles.HomeCardoverlay}>
@@ -217,12 +252,12 @@ export default function Home() {
                 }
               </div>
               : PiecesWesternToggle ?
-                <div className={styles.newArrival_card_con}>
+                <div className={styles.newArrival_card_con} >
                   {
-                    menData.map((ele) => <div key={ele.image}>
+                    indoWestorn.map((ele) => <div key={ele._id} onClick={() => GotoparticularPage(ele._id)}>
                       <div className={styles.HomeCard}>
                         <div className={styles.HomeCardImg_Div}>
-                          <img src={ele.image} alt="" />
+                          <img src={ele.img1} alt="" />
                         </div>
 
                         <div className={styles.HomeCardoverlay}>
@@ -239,10 +274,10 @@ export default function Home() {
                 : PiecesSherwaniToggle ?
                   <div className={styles.newArrival_card_con}>
                     {
-                      womenData.map((ele) => <div key={ele.image}>
+                      sherwani.map((ele) => <div key={ele.image} onClick={() => GotoparticularPage(ele._id)}>
                         <div className={styles.HomeCard}>
                           <div className={styles.HomeCardImg_Div}>
-                            <img src={ele.image} alt="" />
+                            <img src={ele.img1} alt="" />
                           </div>
 
                           <div className={styles.HomeCardoverlay}>
@@ -259,10 +294,10 @@ export default function Home() {
                   </div> :
                   <div className={styles.newArrival_card_con}>
                     {
-                      menData.map((ele) => <div key={ele.image}>
+                      jacket.map((ele) => <div key={ele.image} onClick={() => GotoparticularPage(ele._id)}>
                         <div className={styles.HomeCard}>
                           <div className={styles.HomeCardImg_Div}>
-                            <img src={ele.image} alt="" />
+                            <img src={ele.img1} alt="" />
                           </div>
 
                           <div className={styles.HomeCardoverlay}>
@@ -284,7 +319,11 @@ export default function Home() {
         <div className={styles.HomeContainer3}>
           <h1 className={styles.Home_New_Arrival_Headin}>Attending a Wedding?</h1>
           <p>Like Ranveer Says, Shaadi Hai? #Taiyaar Hokar Aayiye</p>
-          <div className={styles.Attending_Wedding}>
+          <div className={styles.Attending_Wedding} onClick={() => {
+            setGender('men')
+            setOccasion('Wedding')
+            navigate('/products')
+          }}>
             <div>
               <img className={styles.Container3_img_1} src="https://manyavar.scene7.com/is/image/manyavarstage/Shop%20as%20a%20Groom%20jpg_11-11-2022-04-47?$R%2DD%2DHP%2DAW$" alt="" />
               <img className={styles.Container3_img_2} src="https://manyavar.scene7.com/is/image/manyavarstage/As%20a%20the%20groom%20jpg_11-11-2022-10-26?$R%2DM%2DHP%2DAW$" alt="" />
@@ -305,13 +344,13 @@ export default function Home() {
       </div >
       <div className={styles.container_4}>
         <h1 className={styles.Home_New_Arrival_Headin}>Pieces Customers Love</h1>
-        <div className={styles.home_viewAll}>VIEW ALL</div>
+        <div className={styles.home_viewAll} onClick={() => GoToProductPage('women', 'Lehenga')}>VIEW ALL</div>
         <div className={styles.newArrival_card_con}>
           {
-            womenData.map((ele) => <div key={ele.image}>
+            womenLehenga.map((ele) => <div key={ele._id} onClick={() => GotoparticularPage(ele._id)}>
               <div className={styles.HomeCard}>
                 <div className={styles.HomeCardImg_Div}>
-                  <img src={ele.image} alt="" />
+                  <img src={ele.img1} alt="" />
                 </div>
 
                 <div className={styles.HomeCardoverlay}>
