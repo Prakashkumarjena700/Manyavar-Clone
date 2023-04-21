@@ -191,6 +191,11 @@ export default function Products() {
                             <div><input type="radio" name="options" value="Indo-Western" checked={selectedCat === 'Indo-Western'} onChange={categoryOptionChange} /><p>Indo-Western</p></div>
                             <div><input type="radio" name="options" value="Sherwani" checked={selectedCat === 'Sherwani'} onChange={categoryOptionChange} /><p>Sherwani</p></div>
                             <div><input type="radio" name="options" value="Kurta Dhoti" checked={selectedCat === 'Kurta Dhoti'} onChange={categoryOptionChange} /><p>Kurta Dhoti</p></div>
+                            <div><input type="radio" name="options" value="Lehenga" checked={selectedCat === 'Lehenga'} onChange={categoryOptionChange} /><p>Lehenga</p></div>
+                            <div><input type="radio" name="options" value="Gown" checked={selectedCat === 'Gown'} onChange={categoryOptionChange} /><p>Gown</p></div>
+                            <div><input type="radio" name="options" value="Saree" checked={selectedCat === 'Saree'} onChange={categoryOptionChange} /><p>Saree</p></div>
+                            <div><input type="radio" name="options" value="Stitched Suits" checked={selectedCat === 'Stitched Suits'} onChange={categoryOptionChange} /><p>Stitched Suits</p></div>
+                            <div><input type="radio" name="options" value="Kurti / Suit" checked={selectedCat === 'Kurti / Suit'} onChange={categoryOptionChange} /><p>Kurti / Suit</p></div>
                         </details>
                         <hr />
                         <details onClick={() => setScrollbar2(!scrollbar2)}>
@@ -213,6 +218,7 @@ export default function Products() {
                         <hr />
                         <details onClick={() => setScrollbar3(!scrollbar3)}>
                             <summary><p>COLOR</p><IoIosArrowDown color='grey' size='20px' /></summary>
+                            <div><input type="radio" name="options" value="Red" checked={selectColor === 'Red'} onChange={colorOptionChange} /><p>Red</p></div>
                             <div><input type="radio" name="options" value="Maroon" checked={selectColor === 'Maroon'} onChange={colorOptionChange} /><p>Maroon</p></div>
                             <div><input type="radio" name="options" value="Green" checked={selectColor === 'Green'} onChange={colorOptionChange} /><p>Green</p></div>
                             <div><input type="radio" name="options" value="Blue" checked={selectColor === 'Blue'} onChange={colorOptionChange} /><p>Blue</p></div>
