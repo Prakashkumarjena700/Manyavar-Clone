@@ -6,38 +6,25 @@ import Logo from '../Images/productsTopLogo.jpg'
 
 
 import { IoIosArrowDown } from 'react-icons/io'
+import { GrFormPrevious, GrFormNext } from 'react-icons/gr'
 
 import Card from './Card'
 import Footer from '../../Components/Footer/Footer'
 import { useEffect } from 'react'
 
-import {
-    Drawer,
-    DrawerBody,
-    DrawerFooter,
-    DrawerHeader,
-    DrawerOverlay,
-    DrawerContent,
-    DrawerCloseButton,
-    Button,
-    Input,
-    useDisclosure,
-    btnRef
+import { Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, Button, Input, useDisclosure, btnRef
 } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 import { SearchContext } from '../../Context/SearchContext'
 
 export default function Products() {
     const [read, setRead] = useState(false)
-    // console.log(read)
 
     const [grid, setGrid] = useState(true)
-    // console.log(grid)
 
     const [wish, setWish] = useState(false)
-    // console.log(wish)
-    const [data, setData] = useState([])
 
+    const [data, setData] = useState([])
 
     const [proLoad, setProdLoad] = useState(false)
 
@@ -49,7 +36,8 @@ export default function Products() {
     const [selectSize, setSelectSize] = useState('')
     const [selectColor, setSelectColor] = useState('')
 
-    console.log(selectedCat)
+    const [order, setOrder] = useState('')
+    const [sort, setSort] = useState('')
 
     const categoryOptionChange = (event) => {
         setSelectedCat(event.target.value);
@@ -75,17 +63,15 @@ export default function Products() {
     }
 
 
-    const { gender, setGender, category, setCategory, size, setSize, color, setColor, occasion, setOccasion, collections, setCollection, breadCrum2, setBreadCrum2, breadCrum3, setBreadCrum3, heading, setHeading } = useContext(SearchContext)
-
-    console.log('gender', gender, 'category', category, 'occasion', occasion, 'collections', collections)
+    const { gender, setGender, category, setCategory, size, setSize, color, setColor, occasion, setOccasion, collections, setCollection, breadCrum2, setBreadCrum2, breadCrum3, setBreadCrum3, heading, setHeading, skip, setSkip, page, setPage } = useContext(SearchContext)
 
     useEffect(() => {
         getData()
-    }, [gender, category, occasion, collections, size, color])
+    }, [gender, category, occasion, collections, size, color, skip, sort, order])
 
     const getData = async () => {
         setProdLoad(true)
-        await fetch(`https://proud-lamb-suspenders.cyclic.app/products/?gender=${gender}&category=${category}&size=${size}&color=${color}&occasion=${occasion}&collections=${collections}`)
+        await fetch(`https://proud-lamb-suspenders.cyclic.app/products/?gender=${gender}&category=${category}&size=${size}&color=${color}&occasion=${occasion}&collections=${collections}&limit=12&skip=${skip}&sort=${sort}&order=${order}`)
             .then((res) => res.json())
             .then((res) => {
                 setProdLoad(false)
@@ -103,7 +89,23 @@ export default function Products() {
         navigate(`/singleproduct/${id}`)
     }
 
-    // var size = ['S', 'M', 'L', 'XL', 'XXL', '03XL']
+    const NextPage = () => {
+        if (data.length == 12) {
+            setPage(page + 1)
+            setSkip(skip + 12)
+        }
+    }
+
+    const PrevPage = () => {
+        if (page > 1) {
+            setPage(page - 1)
+            setSkip(skip - 12)
+        }
+    }
+
+    const sortFunct = (e) => {
+        console.log(e.target.value)
+    }
 
     return (
         <div className={styles.ProductMain_container}>
@@ -120,11 +122,15 @@ export default function Products() {
                 <div className={styles.container_1_child_3}>
                     <div>
                         <span>Sort By</span>
-                        <select name="" id="">
-                            <option value="">Best Seller</option>
-                            <option value="">Price Low to High</option>
-                            <option value="">Price High to Low</option>
-                            <option value="">New Arrival</option>
+                        <select onChange={(e) => {
+                            if (e.target.value) {
+                                setOrder(e.target.value)
+                                setSort('price')
+                            }
+                        }} >
+                            <option value="">Select</option>
+                            <option value="1">Price Low to High</option>
+                            <option value="-1">Price High to Low</option>
                         </select>
                     </div>
                 </div>
@@ -253,6 +259,11 @@ export default function Products() {
                         </div>)
                     }
                 </div>
+            </div>
+            <div className={styles.paginationBtns} >
+                <button onClick={PrevPage} ><GrFormPrevious/> Prev</button>
+                <button>{page}</button>
+                <button onClick={NextPage} >Next <GrFormNext/></button>
             </div>
             <Footer />
         </div >

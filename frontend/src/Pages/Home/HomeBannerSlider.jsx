@@ -18,7 +18,7 @@ export default function HomeBannerSlider() {
     const navigate = useNavigate()
 
     const { setGender, setCategory, setOccasion, setCollection, breadCrum2, setBreadCrum2, breadCrum3, setBreadCrum3,
-        heading, setHeading } = useContext(SearchContext)
+        heading, setHeading, setSkip, setPage } = useContext(SearchContext)
 
     return (
         <div id='HomeSliderBanner'>
@@ -46,6 +46,8 @@ export default function HomeBannerSlider() {
                         setHeading("Bridal Lehengas")
                         setBreadCrum2("Women")
                         setBreadCrum3("Bridal")
+                        setSkip(0)
+                        setPage(1)
                         navigate('/products')
                     }}>
                         <img src="https://manyavar.scene7.com/is/image/manyavarstage/Kiara%20HP%20Banner%20_Desktop%20_04-01-2023-07-29?$R%2DD%2DHP%2DB$" alt="" />

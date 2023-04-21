@@ -118,6 +118,7 @@ export default function AddProduct() {
           <option value="Kurta Dhoti">Kurta Dhoti</option>
           <option value="Footwear">Footwear</option>
           <option value="Bottomwear">Bottomwear</option>
+          <option value="Ranveer Singh Collection">Ranveer Singh Collection</option>
           <option value="Lehenga">Lehenga</option>
           <option value="Gown">Gown</option>
           <option value="Saree">Saree</option>

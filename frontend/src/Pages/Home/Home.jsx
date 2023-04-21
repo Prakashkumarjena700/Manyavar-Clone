@@ -32,7 +32,7 @@ export default function Home() {
   const navigate = useNavigate()
 
   const { setGender, setCategory, setOccasion, setCollection, breadCrum2, setBreadCrum2, breadCrum3, setBreadCrum3,
-    heading, setHeading } = useContext(SearchContext)
+    heading, setHeading, setSkip, setPage } = useContext(SearchContext)
 
   const GoToProductPage = (gen, cat) => {
     setGender(gen)
@@ -42,6 +42,8 @@ export default function Home() {
     setHeading(cat)
     setBreadCrum2(gen)
     setBreadCrum3(cat)
+    setSkip(0)
+    setPage(1)
     navigate('/products')
   }
 
@@ -177,6 +179,8 @@ export default function Home() {
           setHeading("Men")
           setBreadCrum2("Men")
           setBreadCrum3("")
+          setSkip(0)
+          setPage(1)
           navigate('/products')
         }}>VIEW ALL</div>
 
@@ -342,6 +346,8 @@ export default function Home() {
             setHeading('Wedding')
             setBreadCrum2("Men")
             setBreadCrum3("Wedding")
+            setSkip(0)
+            setPage(1)
             navigate('/products')
           }}>
             <div>
@@ -362,6 +368,8 @@ export default function Home() {
           setHeading('Lehenga')
           setBreadCrum2("Women")
           setBreadCrum3("Lehenga")
+          setSkip(0)
+          setPage(1)
           navigate('/products')
         }}>
           <img src="https://static01.manyavar.com/uploads/Newhometemplate/images//Manvayar-Crest-Mohey_Horizontal.png" alt="" />
@@ -411,6 +419,8 @@ export default function Home() {
             setHeading('Men Sangeet')
             setBreadCrum2("Men")
             setBreadCrum3("Sangeet")
+            setSkip(0)
+            setPage(1)
             navigate('/products')
           }}>
             <img src="https://manyavar.scene7.com/is/image/manyavarstage/Sangeet%20jpg_11-11-2022-05-281?$R%2DD%2FM%2DHP%2DSBC$" alt="" />
@@ -423,6 +433,8 @@ export default function Home() {
             setHeading('Men Engagement')
             setBreadCrum2("Men")
             setBreadCrum3("Engagement")
+            setSkip(0)
+            setPage(1)
             navigate('/products')
           }}>
             <img src="https://manyavar.scene7.com/is/image/manyavarstage/Engagement%20jpg_11-11-2022-05-281?$R%2DD%2FM%2DHP%2DSBC$" alt="" />
@@ -435,6 +447,8 @@ export default function Home() {
             setHeading('Men Reception')
             setBreadCrum2("Men")
             setBreadCrum3("Reception")
+            setSkip(0)
+            setPage(1)
             navigate('/products')
           }}>
             <img src="https://manyavar.scene7.com/is/image/manyavarstage/Reception%20jpg_11-11-2022-05-281?$R%2DD%2FM%2DHP%2DSBC$" alt="" />
