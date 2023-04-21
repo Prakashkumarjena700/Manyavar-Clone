@@ -30,7 +30,11 @@ export default function AllRoutes() {
                     <AdminDashboard />
                 </PrivateRouteForAdmin>
             } ></Route>
-            <Route path='/userprofile' element={<UserProfile />} ></Route>
+            <Route path='/userprofile' element={
+                <PrivateRouteForAuth>
+                    <UserProfile />
+                </PrivateRouteForAuth>
+            } ></Route>
             <Route path='/men' element={<Men />} ></Route>
             <Route path='/women' element={<Women />} ></Route>
             <Route path='/singleproduct/:id' element={<SingleProduct />} ></Route>

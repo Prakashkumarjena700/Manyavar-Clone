@@ -21,7 +21,7 @@ import Admins from './Admins'
 import Cart from './Cart'
 import Wishlist from './Wishlist'
 
-
+import Cookies from 'js-cookie';
 
 export default function AdminDashboard() {
 
@@ -37,6 +37,13 @@ export default function AdminDashboard() {
 
   const navigate = useNavigate()
 
+  const logoutAdmin = () => {
+    Cookies.remove("isAuth");
+    Cookies.remove("token");
+    Cookies.remove("role");
+    navigate('/login')
+  }
+
   return (
     <div className={styles.AdminDashboardContainer} >
       <div className={styles.ADMenueContainer}  >
@@ -48,7 +55,7 @@ export default function AdminDashboard() {
           <div>
             <h4><b>{user.firstname + ' ' + user.lastname}</b></h4>
             <h4>{user.email}</h4>
-            <h4 className={styles.logoutBtn} >Log out</h4>
+            <h4 className={styles.logoutBtn} onClick={logoutAdmin}>Log out</h4>
           </div>
         </div>
         <div>

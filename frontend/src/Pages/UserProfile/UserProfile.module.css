@@ -267,6 +267,18 @@
     align-items: center;
 }
 
+.LogoutBTN {
+    background-color: #900d19;
+    color: white;
+    padding: 5px 20px;
+    border-radius: 5px;
+}
+
+.LogoutBTN:hover {
+    background-color: #4b4842;
+    transition: 1s;
+}
+
 @media (max-width:1180px) {
     .profile_container_1 {
         /* border: 1px solid red; */
