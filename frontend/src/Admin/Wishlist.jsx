@@ -14,7 +14,7 @@ import { RiDeleteBin5Line } from 'react-icons/ri'
 import { GrView } from 'react-icons/gr'
 
 
-import { Modal, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, useDisclosure, Button, Input, Select, useToast, Spinner } from '@chakra-ui/react'
+import { Modal, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, useDisclosure, Button, Input, Select, useToast, Spinner, Skeleton } from '@chakra-ui/react'
 import { LoggerContext } from '../Context/LoggerContex'
 
 export default function Wishlist() {
@@ -34,8 +34,11 @@ export default function Wishlist() {
     const { token } = useContext(LoggerContext)
 
     const products = useSelector((store) => store.adminManager)
-    const cart = useSelector((store) => store.adminManager)
-    const wishlist = useSelector((store) => store.adminManager)
+    const wishlist = useSelector((store) => store.adminManager.wishList)
+    const deleteWishlistLoading = useSelector((store) => store.adminManager.deleteWishlistLoading)
+    const wishListLoading = useSelector((store) => store.adminManager.wishListLoading)
+
+    console.log(wishlist)
 
     const Update = () => {
 
@@ -62,43 +65,53 @@ export default function Wishlist() {
     }, [])
 
 
+    const cutString = (str, cut) => {
+        let ans = ''
+        for (let i = 0; i < cut; i++) {
+            ans += str[i]
+        }
+        return ans
+    }
+
+
     return (
         <div className={styles.InventoryContainer} >
             <img src={mehelLogo} alt="" />
             <div className={styles.InventoryCardContainer} >
-                {
-                    wishlist.deleteWishlistLoading ? <ProductsSkeliton /> :
-                        <div className={styles.ProductsSkelitonContainer} >
-                            {
-                                wishlist.wishList && wishlist.wishList.map((ele) =>
-                                    <div key={ele._id} className={styles.ProductsSkelitonCard} >
-                                        <div>
-                                            <div>
-                                                <img src={ele.img} alt="" />
-                                            </div>
-                                            <div>
-                                                <h2><b>{ele.name.substring(0, 15)}...</b></h2>
-                                                <h2><b>Price : </b> ₹ {ele.price}.00</h2>
-                                                <h2><b>User Id : </b> {ele.user.substring(0, 5)}...</h2>
-                                                <h2><b>Prod. Id :</b>{ele._id.substring(0, 5)}...</h2>
-                                            </div>
-                                        </div>
-                                        <div className={styles.ProductsBtns}  >
-                                            <button onClick={() => {
-                                                setForm(false)
-                                                setproduct(ele)
-                                                onOpen()
-                                            }}  > <GrView /></button>
+                {wishListLoading ? <ProductsSkeliton /> :
 
-                                            <button onClick={() => {
-                                                setproduct(ele)
-                                                deleteFunction(ele)
-                                            }} >{ele._id === product._id && products.deleteWishlistLoading ? <Spinner size='xs' /> : <RiDeleteBin5Line />}</button>
+                    <div className={styles.ProductsSkelitonContainer} >
+                        {
+                            wishlist.map((ele) =>
+                                <div key={ele._id} className={styles.ProductsSkelitonCard} >
+                                    <div>
+                                        <div>
+                                            <img src={ele.img} alt="" />
+                                        </div>
+                                        <div>
+                                            <h2><b>{ele.name && cutString(ele.name, 15)}...</b></h2>
+                                            <h2><b>Price : </b> ₹ {ele.price}.00</h2>
+                                            <h2><b>Color : </b>{ele.color}</h2>
+                                            <h2><b>User ID : </b>{ele.user && cutString(ele.user, 7)}...</h2>
                                         </div>
                                     </div>
-                                )
-                            }
-                        </div>
+                                    <div className={styles.ProductsBtns}  >
+                                        <button onClick={() => {
+                                            setForm(false)
+                                            setproduct(ele)
+                                            onOpen()
+                                        }}  > <GrView /></button>
+
+                                        <button onClick={() => {
+                                            setproduct(ele)
+                                            deleteFunction(ele)
+                                        }} >{ele._id === product._id && deleteWishlistLoading ? <Spinner size='xs' /> : <RiDeleteBin5Line />}</button>
+                                    </div>
+                                </div>
+                            )
+                        }
+                    </div>
+
                 }
             </div>
             <Modal isOpen={isOpen} onClose={onClose}>
@@ -150,6 +163,6 @@ export default function Wishlist() {
                         </ModalContent>
                 }
             </Modal>
-        </div>
+        </div >
     )
 }

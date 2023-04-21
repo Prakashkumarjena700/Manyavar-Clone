@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import styles from "./Navbar.module.css"
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -12,6 +12,7 @@ import { MenDropDown, WomenDropDown, KidsDropDown, AccessoriesDropDown } from ".
 import { mainItem } from './NavItem';
 
 import Cookies from 'js-cookie';
+import { ProfileContex } from '../../Context/ProfileContex';
 
 
 export default function NormalNavbar() {
@@ -22,9 +23,12 @@ export default function NormalNavbar() {
 
     const [isFixed, setIsFixed] = useState(false);
 
+    const { profile, setProfile, address, setAddress, order, setOrder, wishlist, setWishlist, password, setPassword, } = useContext(ProfileContex)
+
     let isAuth = Cookies.get('isAuth');
 
     const navigate = useNavigate()
+
 
     useEffect(() => {
         function handleScroll() {
@@ -45,17 +49,26 @@ export default function NormalNavbar() {
         navigate(`/${pagename}`)
     }
 
+    const goToWishlistPage = () => {
+        setProfile(false)
+        setAddress(false)
+        setOrder(false)
+        setWishlist(true)
+        setPassword(false)
+        navigate('/userprofile')
+    }
+
 
     return (
         < >
-            <div className={styles.headingLogoContainer} >
+            <div style={{ cursor: 'pointer' }} className={styles.headingLogoContainer} >
                 <div></div>
                 <img onClick={() => navigate('/')} src="https://static01.manyavar.com/uploads/images/Manvayar-Crest-Mohey_Horizontal_3D_logo%201.png" alt="" />
                 <div>
                     <Link to='/search' > <FiSearch /></Link>
                     {/* <Link to='/register'><FiUser /></Link> */}
                     <Link className={styles.Nav_userIcon_div} to={isAuth ? '/userprofile' : '/register'}><FiUser />{isAuth ? <BsFillCheckCircleFill color='green' size='12' className={styles.nav_user_tick} /> : ""}</Link>
-                    <Link><AiOutlineHeart /></Link>
+                    <AiOutlineHeart onClick={goToWishlistPage} />
                     <Link to='/cart' > <FiShoppingCart /></Link>
 
                 </div>
@@ -121,7 +134,7 @@ export default function NormalNavbar() {
                     <Link to='/search' ><FiSearch /></Link>
                     <Link className={styles.Nav_userIcon_div} to={isAuth ? '/userprofile' : '/register'}><FiUser />
                         {isAuth ? <BsFillCheckCircleFill color='green' size='12' className={styles.nav_user_tick} /> : ""}</Link>
-                    <Link><AiOutlineHeart /></Link>
+                    <AiOutlineHeart style={{ cursor: 'pointer' }} onClick={goToWishlistPage} />
                     <Link to='/cart' > <FiShoppingCart /></Link></motion.div> : <div></div>}
             </div>
         </>
