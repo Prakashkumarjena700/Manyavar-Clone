@@ -19,7 +19,7 @@ import { LoggerContext } from '../../Context/LoggerContex';
 export default function Login() {
     const [showPassword, setShowPassword] = useState(false);
 
-    const { setToken } = useContext(LoggerContext)
+    const { setToken, setRole, setIsAuth } = useContext(LoggerContext)
 
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('')
@@ -94,8 +94,11 @@ export default function Login() {
                         const expirationTime = new Date(new Date().getTime() + 3600 * 6000); // expires in 1 hour
                         Cookies.set('token', token, { expires: expirationTime });
                         Cookies.set('isAuth', true, { expires: expirationTime });
+                        Cookies.set('role', role, { expires: expirationTime });
                         setToken(token)
-                        localStorage.setItem('user', JSON.stringify(res.user[0]))
+                        setRole(role)
+                        setIsAuth(true)
+                        localStorage.setItem('Manyavaruser', JSON.stringify(res.user[0]))
                     }
                     else if (res.msg == "Wrong crediential") {
                         toast({

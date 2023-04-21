@@ -25,6 +25,8 @@ import Wishlist from './Wishlist'
 
 export default function AdminDashboard() {
 
+  const user = JSON.parse(localStorage.getItem('Manyavaruser'))
+
   const [dashBoard, setDashBoard] = useState(true)
   const [addProduct, setAddProduct] = useState(false)
   const [inventory, setInventory] = useState(false)
@@ -41,11 +43,11 @@ export default function AdminDashboard() {
         <img onClick={() => navigate('/')} src={manyavarFullLogo} alt="" />
         <div>
           <div>
-            <img src={maleUserLogo} alt="" />
+            <img src={user.avatar || maleUserLogo} alt="" />
           </div>
           <div>
-            <h4><b>First Name</b></h4>
-            <h4>admin@gmail.com</h4>
+            <h4><b>{user.firstname + ' ' + user.lastname}</b></h4>
+            <h4>{user.email}</h4>
             <h4 className={styles.logoutBtn} >Log out</h4>
           </div>
         </div>
@@ -127,7 +129,7 @@ export default function AdminDashboard() {
           }}
             className={wishlist && styles.activeonAdmin}
           ><p>Wish List</p><span><AiOutlineHeart /></span> </button>
-           </div>
+        </div>
       </div>
       {
         dashBoard ? <Dashboard /> :

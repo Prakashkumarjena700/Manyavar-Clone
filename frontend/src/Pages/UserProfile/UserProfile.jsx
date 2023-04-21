@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { json } from 'react-router-dom'
@@ -10,16 +10,13 @@ import { Spinner } from '@chakra-ui/react'
 
 import { GrFormClose } from 'react-icons/gr';
 import Wishlist from './Wishlist'
+import { ProfileContex } from '../../Context/ProfileContex'
 
 export default function UserProfile() {
 
     const [user, setUser] = useState({})
 
-    const [profile, setProfile] = useState(true)
-    const [address, setAddress] = useState(false)
-    const [order, setOrder] = useState(false)
-    const [wishlist, setWishlist] = useState(false)
-    const [password, setPassword] = useState(false)
+    const { profile, setProfile, address, setAddress, order, setOrder, wishlist, setWishlist, password, setPassword, } = useContext(ProfileContex)
 
     const [firstname, setFname] = useState("")
     const [lastname, setLname] = useState("")
@@ -32,7 +29,7 @@ export default function UserProfile() {
 
     const [edit, setEdit] = useState(false)
 
-    const userID = JSON.parse(localStorage.getItem('user'))
+    const userID = JSON.parse(localStorage.getItem('Manyavaruser'))
 
     // console.log(user)
     useEffect(() => {

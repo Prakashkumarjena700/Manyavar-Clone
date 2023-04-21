@@ -13,6 +13,9 @@ import Women from '../Pages/Women/Women'
 import SingleProduct from '../Pages/SingleProduct/SingleProduct'
 import Search from '../Pages/Search/Search'
 import Cart from '../Pages/Cart/Cart'
+import PrivateRouteForAdmin from './PrivateRouteForAdmin'
+import NotAutherished from '../Pages/NotAutherishied/NotAutherished'
+import PrivateRouteForAuth from './PrivateRouteForAuth'
 
 
 
@@ -22,14 +25,23 @@ export default function AllRoutes() {
             <Route path='/' element={<Home />} ></Route>
             <Route path='/register' element={<Register />} ></Route>
             <Route path='/login' element={<Login />} ></Route>
-            <Route path='/admindashboard' element={<AdminDashboard />} ></Route>
+            <Route path='/admindashboard' element={
+                <PrivateRouteForAdmin>
+                    <AdminDashboard />
+                </PrivateRouteForAdmin>
+            } ></Route>
             <Route path='/userprofile' element={<UserProfile />} ></Route>
             <Route path='/men' element={<Men />} ></Route>
             <Route path='/women' element={<Women />} ></Route>
             <Route path='/singleproduct/:id' element={<SingleProduct />} ></Route>
             <Route path='/search' element={<Search />} ></Route>
             <Route path='/products' element={<Products />} ></Route>
-            <Route path='/cart' element={<Cart />} ></Route>
+            <Route path='/cart' element={
+                <PrivateRouteForAuth>
+                    <Cart />
+                </PrivateRouteForAuth>
+            } ></Route>
+            <Route path='*' element={<NotAutherished />} ></Route>
         </Routes>
     )
 }
