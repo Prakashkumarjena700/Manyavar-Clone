@@ -296,6 +296,10 @@
     bottom: 50px;
 }
 
+.container_6_card_parent img {
+    cursor: pointer;
+}
+
 .container5_img_2 {
     display: none;
 }

@@ -8,7 +8,7 @@ import { SearchContext } from "../../Context/SearchContext"
 
 
 export const MenDropDown = () => {
-    const { setGender, setCategory, setOccasion, setCollection, setBreadCrum2, setBreadCrum3, setHeading, setColor, setSize } = useContext(SearchContext)
+    const { setGender, setCategory, setOccasion, setCollection, setBreadCrum2, setBreadCrum3, setHeading, setColor, setSize, setSkip , setPage} = useContext(SearchContext)
     const [dropDown, setDropdown] = React.useState(false)
 
     const navigate = useNavigate()
@@ -17,7 +17,9 @@ export const MenDropDown = () => {
     const GoToProductPage = (ele) => {
         setGender('men')
         setBreadCrum2('Men')
-        if (ele.id == 7 || ele.id == 9 || ele.id == 11 || ele.id == 13 || ele.id == 15 || ele.id == 17 || ele.id == 19 || ele.id == 5 || ele.id == 23 || ele.id == 25 || ele.id == 27 || ele.id == 29) {
+        setSkip(0)
+        setPage(1)
+        if (ele.id == 7 || ele.id == 9 || ele.id == 11 || ele.id == 13 || ele.id == 15 || ele.id == 17 || ele.id == 19 || ele.id == 5 || ele.id == 23 || ele.id == 25 || ele.id == 27 || ele.id == 29 || ele.id == 16) {
             setBreadCrum3('Only ' + ele.cat)
             setCategory(ele.cat)
             setOccasion('')
@@ -58,7 +60,7 @@ export const MenDropDown = () => {
     )
 }
 export const WomenDropDown = () => {
-    const { setGender, setCategory, setOccasion, setCollection, setBreadCrum2, setBreadCrum3, setHeading, setColor, setSize } = useContext(SearchContext)
+    const { setGender, setCategory, setOccasion, setCollection, setBreadCrum2, setBreadCrum3, setHeading, setColor, setSize, setSkip ,setPage} = useContext(SearchContext)
     const [dropDown, setDropdown] = React.useState(false)
 
     const navigate = useNavigate()
@@ -66,6 +68,8 @@ export const WomenDropDown = () => {
     const GoToProductPage = (ele) => {
         setGender('women')
         setBreadCrum2('Women')
+        setSkip(0)
+        setPage(1)
         if (ele.id == 5 || ele.id == 3 || ele.id == 7 || ele.id == 9 || ele.id == 11 || ele.id == 13) {
             setBreadCrum3(ele.category)
             setCategory(ele.category)
@@ -101,7 +105,7 @@ export const WomenDropDown = () => {
     )
 }
 export const KidsDropDown = () => {
-    const { setGender, setCategory, setOccasion, setCollection, setBreadCrum2, setBreadCrum3, setHeading, setSize, setColor } = useContext(SearchContext)
+    const { setGender, setCategory, setOccasion, setCollection, setBreadCrum2, setBreadCrum3, setHeading, setSize, setColor, setSkip ,setPage} = useContext(SearchContext)
     const [dropDown, setDropdown] = React.useState(false)
 
     const navigate = useNavigate()
@@ -109,6 +113,8 @@ export const KidsDropDown = () => {
     const GoToProductPage = (ele) => {
         setGender('kids')
         setBreadCrum2('Kids')
+        setSkip(0)
+        setPage(1)
         if (ele.id == 1 || ele.id == 2) {
             setBreadCrum3('')
             setCategory('')
@@ -143,12 +149,14 @@ export const KidsDropDown = () => {
     )
 }
 export const AccessoriesDropDown = () => {
-    const { setGender, setCategory, setOccasion, setCollection, setBreadCrum2, setBreadCrum3, setHeading, setSize, setColor, } = useContext(SearchContext)
+    const { setGender, setCategory, setOccasion, setCollection, setBreadCrum2, setBreadCrum3, setHeading, setSize, setColor, setSkip,setPage } = useContext(SearchContext)
     const [dropDown, setDropdown] = React.useState(false)
 
     const navigate = useNavigate()
 
     const GoToProductPage = (ele) => {
+        setSkip(0)
+        setPage(1)
         setBreadCrum2('Manyavar Accessories')
         if (ele.id !== 1) {
             setBreadCrum3(ele.title)

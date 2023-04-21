@@ -50,7 +50,7 @@ export const Men = [
     { id: 56, type: '', title: '', cat: '' },
     { id: 57, type: '', title: '', cat: '' },
     { id: 15, type: '', title: 'Indo-Western', cat: 'Indo-Western' },
-    { id: 16, type: '', title: 'Ranveer Singh Collection', cat: '' },
+    { id: 16, type: '', title: 'Ranveer Singh Collection', cat: 'Ranveer Singh Collection' },
     { id: 59, type: '', title: '', cat: '' },
     { id: 58, type: '', title: '', cat: '' },
     { id: 60, type: '', title: '', cat: '' },

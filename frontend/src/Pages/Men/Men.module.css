@@ -1,3 +1,7 @@
+.IntroDiv {
+    cursor: pointer;
+}
+
 .IntroDiv>img:nth-child(2) {
     display: none;
 }
@@ -15,6 +19,7 @@
 .menDiffCat img {
     /* border: 1px solid teal; */
     margin: auto;
+    cursor: pointer;
 }
 
 .menDiffCat~h1 {
@@ -40,6 +45,7 @@
 .engagementToreception>img {
     border: 1px solid #AA8531;
     padding: 3px;
+    cursor: pointer;
 }
 
 .collectibles {
@@ -47,6 +53,7 @@
     width: 86%;
     display: flex;
     margin: auto;
+    cursor: pointer;
 }
 
 .collectibles div:nth-child(2) {
@@ -82,6 +89,7 @@
 
 .wedCollection img {
     width: 100%;
+    cursor: pointer;
 }
 
 .wedCollection>img:nth-child(2) {
