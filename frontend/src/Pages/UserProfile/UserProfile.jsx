@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import { json } from 'react-router-dom'
+import { json, useNavigate } from 'react-router-dom'
 import Navbar from '../../Components/Navbar/Navbar'
 import styles from '../UserProfile/UserProfile.module.css'
 import Footer from '../../Components/Footer/Footer'
@@ -12,11 +12,16 @@ import { GrFormClose } from 'react-icons/gr';
 import Wishlist from './Wishlist'
 import { ProfileContex } from '../../Context/ProfileContex'
 
+import Cookies from 'js-cookie';
+import { LoggerContext } from '../../Context/LoggerContex'
+
 export default function UserProfile() {
+
 
     const [user, setUser] = useState({})
 
     const { profile, setProfile, address, setAddress, order, setOrder, wishlist, setWishlist, password, setPassword, } = useContext(ProfileContex)
+    const { token, setToken, role, setRole, isAuth, setIsAuth } = useContext(LoggerContext)
 
     const [firstname, setFname] = useState("")
     const [lastname, setLname] = useState("")
@@ -116,6 +121,16 @@ export default function UserProfile() {
         }
     };
 
+    const navigate = useNavigate()
+    const logoutFunc = () => {
+
+        Cookies.remove("isAuth");
+        Cookies.remove("token");
+        Cookies.remove("role");
+        navigate('/login')
+
+    }
+
     return (
         <div className={styles.profile_main_container}>
             <Navbar />
@@ -123,6 +138,7 @@ export default function UserProfile() {
             <div className={styles.profile_container_1}>
                 <h1>My Account</h1>
                 <p>HELLO, {user.firstname}</p>
+                <button onClick={logoutFunc} className={styles.LogoutBTN}>Logout</button>
                 <p>From your My Account you have the ability to view your recent account activity and update your account information.</p>
             </div>
             <div className={styles.profile_container_2}>
