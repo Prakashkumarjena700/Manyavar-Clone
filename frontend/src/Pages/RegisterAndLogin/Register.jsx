@@ -136,7 +136,7 @@ export default function Register() {
         <div className={styles.RegisterMainContainer}>
             <div className={styles.waveBG_img_div}>
                 <img className={styles.register_waveImg} src="https://static01.manyavar.com/uploads/images/orderprocess_header_bg.png" alt="" />
-                <img className={styles.register_Logo_img} src="https://static01.manyavar.com/uploads/images/Manvayar-Crest-Mohey_Horizontal_3D_logo%201.png" alt="" />
+                <img style={{cursor:'pointer'}} onClick={() => navigate('/')} className={styles.register_Logo_img} src="https://static01.manyavar.com/uploads/images/Manvayar-Crest-Mohey_Horizontal_3D_logo%201.png" alt="" />
             </div>
             <div className={styles.register_main_container}>
                 <p>SIGN UP USING</p>
@@ -145,7 +145,7 @@ export default function Register() {
                         <img src="https://www.manyavar.com/assets/images/fb.svg" alt="" />
                     </div>
                     <div>
-                        <img src="https://static01.manyavar.com/uploads/images/gplus.png" alt="" />
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/706px-Google_%22G%22_Logo.svg.png" alt="" />
                     </div>
                     <div>
                         <img src="https://www.manyavar.com/assets/images/apple.png" alt="" />
