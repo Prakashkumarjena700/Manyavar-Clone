@@ -12,6 +12,7 @@ import { TfiLinkedin, TfiYoutube } from 'react-icons/tfi'
 
 import { Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, useDisclosure, Button, Input } from '@chakra-ui/react'
 import { AccessoriesContainer, KidsContainer, MenContainer, WomenContainer } from './DifferentContainerInHB';
+import { useNavigate } from 'react-router-dom';
 
 export default function HamburgerNavbar() {
 
@@ -24,6 +25,8 @@ export default function HamburgerNavbar() {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef()
+
+    const navigate=useNavigate()
 
 
 
@@ -102,7 +105,7 @@ export default function HamburgerNavbar() {
                 </Drawer>
             </div>
             <div><img src="https://static01.manyavar.com/uploads/images/Manvayar-Crest-Mohey_Horizontal_3D_logo%201.png" alt="" /></div>
-            <div> <FiSearch /><FiShoppingCart /></div>
+            <div> <FiSearch onClick={()=> navigate('/search')} /><FiShoppingCart onClick={()=> navigate('/cart')} /></div>
 
         </div >
     )
