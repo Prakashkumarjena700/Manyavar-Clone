@@ -27,6 +27,11 @@ export default function Inventory() {
   const [gender, setGender] = useState('')
   const [occasion, setOccasion] = useState('')
   const [collection, setCollections] = useState('')
+  const [img1, setImg1] = useState('')
+  const [img2, setImg2] = useState('')
+  const [img3, setImg3] = useState('')
+  const [img4, setImg4] = useState('')
+  const [img5, setImg5] = useState('')
 
 
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -44,7 +49,12 @@ export default function Inventory() {
       price: Number(price) || Number(product.price),
       gender: gender || product.gender,
       occasion: occasion || product.occasion,
-      collections: collection || product.collections
+      collections: collection || product.collections,
+      img1: img1 || product.img1,
+      img2: img2 || product.img2,
+      img3: img3 || product.img3,
+      img4: img4 || product.img4,
+      img5: img5 || product.img5,
     }
 
     updateProduct(dispatch, product._id, obj)
@@ -139,6 +149,11 @@ export default function Inventory() {
               <ModalCloseButton />
               <ModalBody>
 
+                <Input mb='2' color='#718096' type="text" placeholder={`Img1 `} onChange={(e) => setImg1(e.target.value)} />
+                <Input mb='2' color='#718096' type="text" placeholder={`Img2 `} onChange={(e) => setImg2(e.target.value)} />
+                <Input mb='2' color='#718096' type="text" placeholder={`Img3 `} onChange={(e) => setImg3(e.target.value)} />
+                <Input mb='2' color='#718096' type="text" placeholder={`Img4 `} onChange={(e) => setImg4(e.target.value)} />
+                <Input mb='2' color='#718096' type="text" placeholder={`Img5 `} onChange={(e) => setImg5(e.target.value)} />
                 <Input mb='2' color='#718096' type="text" placeholder={`Name : ${product.name}`} onChange={(e) => setName(e.target.value)} />
                 <Input mb='2' color='#718096' type="text" placeholder={`Price : ₹ ${product.price}.00`} onChange={(e) => setPrice(e.target.value)} />
                 <Input mb='2' color='#718096' type="text" placeholder={`Color : ${product.color}`} onChange={(e) => setColor(e.target.value)} />
