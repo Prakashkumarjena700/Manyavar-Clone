@@ -1,13 +1,9 @@
 import React, { useState } from 'react'
 import styles from './Register.module.css'
 
-import TextField from '@mui/material/TextField';
-import Stack from '@mui/material/Stack';
-import Autocomplete from '@mui/material/Autocomplete';
-import { style } from '@mui/system';
 import { Link } from 'react-router-dom'
 
-import { Button, Spinner, useToast } from '@chakra-ui/react'
+import { Spinner, useToast } from '@chakra-ui/react'
 
 
 import { BsFillEyeFill } from 'react-icons/bs';
@@ -17,6 +13,7 @@ import { TiTick } from 'react-icons/ti';
 import { useNavigate } from 'react-router-dom';
 
 import mahalShadow from '../../Assets/mehelLogo.webp'
+import fulllogo from '../../Assets/manyavarFullLogo.webp'
 
 export default function Register() {
 
@@ -137,10 +134,7 @@ export default function Register() {
             <div className={styles.waveBG_img_div}>
 
                 <img className={styles.register_waveImg} src={mahalShadow} alt="" />
-                <img className={styles.register_Logo_img} src="https://static01.manyavar.com/uploads/images/Manvayar-Crest-Mohey_Horizontal_3D_logo%201.png" alt="" />
-
-                <img className={styles.register_waveImg} src="https://static01.manyavar.com/uploads/images/orderprocess_header_bg.png" alt="" />
-                <img style={{cursor:'pointer'}} onClick={() => navigate('/')} className={styles.register_Logo_img} src="https://static01.manyavar.com/uploads/images/Manvayar-Crest-Mohey_Horizontal_3D_logo%201.png" alt="" />
+                <img style={{ cursor: 'pointer' }} onClick={() => navigate('/')} className={styles.register_Logo_img} src={fulllogo} alt="" />
 
             </div>
             <div className={styles.register_main_container}>
