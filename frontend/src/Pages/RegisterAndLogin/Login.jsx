@@ -11,7 +11,7 @@ import { BsFillEyeFill } from 'react-icons/bs';
 import { BsFillEyeSlashFill } from 'react-icons/bs';
 
 import { Button, Spinner, useToast } from '@chakra-ui/react'
-
+import mahalShadow from '../../Assets/mehelLogo.webp'
 
 import Cookies from 'js-cookie';
 import { LoggerContext } from '../../Context/LoggerContex';
@@ -131,8 +131,13 @@ export default function Login() {
     return (
         <div className={styles.RegisterMainContainer}>
             <div className={styles.waveBG_img_div}>
+
+                <img className={styles.register_waveImg} src={mahalShadow} alt="" />
+                <img className={styles.register_Logo_img} src="https://static01.manyavar.com/uploads/images/Manvayar-Crest-Mohey_Horizontal_3D_logo%201.png" alt="" />
+
                 <img className={styles.register_waveImg} src="https://static01.manyavar.com/uploads/images/orderprocess_header_bg.png" alt="" />
                 <img style={{ cursor: 'pointer' }} onClick={() => navigate('/')} className={styles.register_Logo_img} src="https://static01.manyavar.com/uploads/images/Manvayar-Crest-Mohey_Horizontal_3D_logo%201.png" alt="" />
+
             </div>
             <div className={styles.register_main_container}>
                 <p>SIGN IN USING</p>
