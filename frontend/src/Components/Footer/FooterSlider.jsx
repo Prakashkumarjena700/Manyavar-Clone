@@ -51,22 +51,22 @@ export default class FooterSlider extends Component {
       <div className={styles.sliderContainer} >
         <Slider {...settings}>
           <div className={styles.footerSliderCard} >
-            <img src="https://www.manyavar.com/assets/images/Vector-3.svg" alt="" />
+            <img src="http://surl.li/gopow" alt="" />
             <h2>SATISFIED CUSTOMERS</h2>
             <h2>45,00,000</h2>
           </div>
           <div className={styles.footerSliderCard} >
-            <img width='80px' src="https://www.manyavar.com/assets/images/Vector-4.svg" alt="" />
+            <img width='80px' src="http://surl.li/goppe" alt="" />
             <h2>HOMEGROWN</h2>
             <h2>Made in India</h2>
           </div>
           <div className={styles.footerSliderCard} >
-            <img width='50px' src="https://www.manyavar.com/assets/images/Vector-2.svg" alt="" />
+            <img width='50px' src="http://surl.li/goppj" alt="" />
             <h2>FREE SHIPPING IN INDIA</h2>
             <h2>Fast Delivery</h2>
           </div>
           <div className={styles.footerSliderCard} >
-            <img width='40px' src="https://www.manyavar.com/assets/images/Vector-1.svg" alt="" />
+            <img width='40px' src="http://surl.li/goppo" alt="" />
             <h2>INTERNATIONAL SHIPPING</h2>
             <h2>Worldwide</h2>
           </div>
