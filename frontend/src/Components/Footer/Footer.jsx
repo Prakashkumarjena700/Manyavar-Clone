@@ -10,7 +10,9 @@ import { BsTwitter } from "react-icons/bs"
 import { AiOutlineInstagram } from "react-icons/ai"
 import { TfiLinkedin, TfiYoutube } from 'react-icons/tfi'
 
-import { Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon, Box } from '@chakra-ui/react'
+import footerBg from '../../Assets/footerBg.webp'
+
+import { Accordion, AccordionItem, AccordionButton, AccordionPanel, Box } from '@chakra-ui/react'
 
 export default function Footer() {
   return (

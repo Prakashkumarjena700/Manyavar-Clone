@@ -35,13 +35,14 @@
 
 .FooterMiddle {
     /* border: 1px solid green; */
-    background-image: url('http://surl.li/gopoh');
+   background-image: url('https://static01.manyavar.com/uploads/images/newfooterBg.png');
     background-size: auto;
     color: white;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     padding: 50px 30px;
     gap: 20px;
+    background-color: maroon;
 }
 
 .middleScreenFooterMiddle {

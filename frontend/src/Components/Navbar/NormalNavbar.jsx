@@ -6,6 +6,9 @@ import { FiSearch, FiShoppingCart, FiUser } from 'react-icons/fi';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { BsFillCheckCircleFill } from 'react-icons/bs';
 
+import FullLogo from '../../Assets/manyavarFullLogo.webp'
+import SmallLogo from '../../Assets/manyavarSmallLogo.webp'
+
 import { motion } from 'framer-motion'
 
 import { MenDropDown, WomenDropDown, KidsDropDown, AccessoriesDropDown } from "./DropDown"
@@ -63,7 +66,7 @@ export default function NormalNavbar() {
         < >
             <div style={{ cursor: 'pointer' }} className={styles.headingLogoContainer} >
                 <div></div>
-                <img onClick={() => navigate('/')} src="http://surl.li/gopqo" alt="" />
+                <img onClick={() => navigate('/')} src={FullLogo} alt="" />
                 <div>
                     <Link to='/search' > <FiSearch /></Link>
                     {/* <Link to='/register'><FiUser /></Link> */}
@@ -76,7 +79,7 @@ export default function NormalNavbar() {
             <div style={{ top: isFixed ? 0 : 200, position: isFixed ? "fixed" : "static" }} className={styles.normalNavbarContainer} >
                 <div><motion.img
                     whileInView={{ y: [-10, 0] }}
-                    src={isFixed && 'http://surl.li/goprd'} alt="" /></div>
+                    src={isFixed && SmallLogo} alt="" /></div>
                 <div style={!isFixed ? { paddingBottom: '5px' } : {}} className={styles.dropDownMainMenue} >
                     {
                         mainItem.map((ele) => {
