@@ -63,7 +63,7 @@ export default function NormalNavbar() {
         < >
             <div style={{ cursor: 'pointer' }} className={styles.headingLogoContainer} >
                 <div></div>
-                <img onClick={() => navigate('/')} src="https://static01.manyavar.com/uploads/images/Manvayar-Crest-Mohey_Horizontal_3D_logo%201.png" alt="" />
+                <img onClick={() => navigate('/')} src="http://surl.li/gopqo" alt="" />
                 <div>
                     <Link to='/search' > <FiSearch /></Link>
                     {/* <Link to='/register'><FiUser /></Link> */}
@@ -76,7 +76,7 @@ export default function NormalNavbar() {
             <div style={{ top: isFixed ? 0 : 200, position: isFixed ? "fixed" : "static" }} className={styles.normalNavbarContainer} >
                 <div><motion.img
                     whileInView={{ y: [-10, 0] }}
-                    src={isFixed && 'https://static01.manyavar.com/uploads/images/manvayar-logo-icon-new.png'} alt="" /></div>
+                    src={isFixed && 'http://surl.li/goprd'} alt="" /></div>
                 <div style={!isFixed ? { paddingBottom: '5px' } : {}} className={styles.dropDownMainMenue} >
                     {
                         mainItem.map((ele) => {

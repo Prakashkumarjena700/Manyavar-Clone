@@ -79,7 +79,7 @@ export default function Footer() {
       </div>
       <div className={styles.middleScreenFooterMiddle} >
         <div>
-          <img src="https://static01.manyavar.com/uploads/images/image_97.png" alt="" />
+          <img src="http://surl.li/goprx" alt="" />
           <h2>Customer Care</h2>
           <p>1800 120 000 500 (India) / <br /> +91 9674373838 (International) <br /> care@vedantfashions.com</p>
           <h2>Follow us</h2>
@@ -225,9 +225,9 @@ export default function Footer() {
         </div>
       </div>
       <div className={styles.lastFooterContainer} >
-        <img src="https://www.manyavar.com/assets/images/shipping_new_img.png" alt="" />
+        <img src="http://surl.li/gopsi" alt="" />
         <p>Manyavar. all rights reserved © 2020 - 2023</p>
-        <img src="https://www.manyavar.com/assets/images/payments-accepted.png" alt="" />
+        <img src="http://surl.li/gopsn" alt="" />
       </div>
     </div>
   )

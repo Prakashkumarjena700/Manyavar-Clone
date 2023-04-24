@@ -26,7 +26,7 @@ export default function HamburgerNavbar() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef()
 
-    const navigate=useNavigate()
+    const navigate = useNavigate()
 
 
 
@@ -104,8 +104,8 @@ export default function HamburgerNavbar() {
                     </DrawerContent>
                 </Drawer>
             </div>
-            <div><img src="https://static01.manyavar.com/uploads/images/Manvayar-Crest-Mohey_Horizontal_3D_logo%201.png" alt="" /></div>
-            <div> <FiSearch onClick={()=> navigate('/search')} /><FiShoppingCart onClick={()=> navigate('/cart')} /></div>
+            <div><img src="http://surl.li/gopqo" alt="" /></div>
+            <div> <FiSearch onClick={() => navigate('/search')} /><FiShoppingCart onClick={() => navigate('/cart')} /></div>
 
         </div >
     )
