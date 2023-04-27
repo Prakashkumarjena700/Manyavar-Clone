@@ -9,6 +9,9 @@ import { Spinner, useToast } from '@chakra-ui/react'
 import { BsFillEyeFill } from 'react-icons/bs';
 import { BsFillEyeSlashFill } from 'react-icons/bs';
 import { TiTick } from 'react-icons/ti';
+import { RiFacebookBoxFill } from 'react-icons/ri'
+import { SiApple } from 'react-icons/si'
+import { FcGoogle } from 'react-icons/fc'
 
 import { useNavigate } from 'react-router-dom';
 
@@ -141,13 +144,13 @@ export default function Register() {
                 <p>SIGN UP USING</p>
                 <div className={styles.register_social_img_con}>
                     <div>
-                        <img src="https://www.manyavar.com/assets/images/fb.svg" alt="" />
+                        <RiFacebookBoxFill style={{ color: '#4267B2' }} />
                     </div>
                     <div>
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/706px-Google_%22G%22_Logo.svg.png" alt="" />
+                        <FcGoogle />
                     </div>
                     <div>
-                        <img src="https://www.manyavar.com/assets/images/apple.png" alt="" />
+                        <SiApple />
                     </div>
                 </div>
                 <p>- OR USE -</p>

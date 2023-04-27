@@ -9,6 +9,9 @@ import { Link, useNavigate } from 'react-router-dom'
 
 import { BsFillEyeFill } from 'react-icons/bs';
 import { BsFillEyeSlashFill } from 'react-icons/bs';
+import { RiFacebookBoxFill } from 'react-icons/ri'
+import { SiApple } from 'react-icons/si'
+import { FcGoogle } from 'react-icons/fc'
 
 import { Button, Spinner, useToast } from '@chakra-ui/react'
 
@@ -142,13 +145,13 @@ export default function Login() {
                 <p>SIGN IN USING</p>
                 <div className={styles.register_social_img_con}>
                     <div>
-                        <img src="https://www.manyavar.com/assets/images/fb.svg" alt="" />
+                        <RiFacebookBoxFill style={{ color: '#4267B2' }} />
                     </div>
                     <div>
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/706px-Google_%22G%22_Logo.svg.png" alt="" />
+                        <FcGoogle />
                     </div>
                     <div>
-                        <img src="https://www.manyavar.com/assets/images/apple.png" alt="" />
+                        <SiApple />
                     </div>
                 </div>
                 <p>- OR USE -</p>

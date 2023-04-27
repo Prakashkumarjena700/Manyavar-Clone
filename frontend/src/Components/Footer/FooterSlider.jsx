@@ -6,6 +6,11 @@ import styles from "./Footer.module.css"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+import footerLogo1 from '../../Assets/footerLogo1.svg'
+import footerLogo2 from '../../Assets/footerLogo2.svg'
+import footerLogo3 from '../../Assets/footerLogo3.svg'
+import footerLogo4 from '../../Assets/footerLogo4.svg'
+
 export default class FooterSlider extends Component {
   render() {
     var settings = {
@@ -51,22 +56,22 @@ export default class FooterSlider extends Component {
       <div className={styles.sliderContainer} >
         <Slider {...settings}>
           <div className={styles.footerSliderCard} >
-            <img src="http://surl.li/gopow" alt="" />
+            <img src={footerLogo1} alt="" />
             <h2>SATISFIED CUSTOMERS</h2>
             <h2>45,00,000</h2>
           </div>
           <div className={styles.footerSliderCard} >
-            <img width='80px' src="http://surl.li/goppe" alt="" />
+            <img width='80px' src={footerLogo2} alt="" />
             <h2>HOMEGROWN</h2>
             <h2>Made in India</h2>
           </div>
           <div className={styles.footerSliderCard} >
-            <img width='50px' src="http://surl.li/goppj" alt="" />
+            <img width='50px' src={footerLogo3} alt="" />
             <h2>FREE SHIPPING IN INDIA</h2>
             <h2>Fast Delivery</h2>
           </div>
           <div className={styles.footerSliderCard} >
-            <img width='40px' src="http://surl.li/goppo" alt="" />
+            <img width='40px' src={footerLogo4} alt="" />
             <h2>INTERNATIONAL SHIPPING</h2>
             <h2>Worldwide</h2>
           </div>

@@ -1,41 +1,90 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 import styles from "./Navbar.module.css"
+import { SearchContext } from '../../Context/SearchContext'
+import { useNavigate } from 'react-router-dom'
 
 export const MenContainer = () => {
+
+    const navigate = useNavigate()
+
+    const { setGender, setCategory, setOccasion, setCollection, setBreadCrum2, setBreadCrum3, setHeading, setColor, setSize, setSkip, setPage } = useContext(SearchContext)
+
+    const goToProductwithCat = (gen, cat) => {
+        setGender(gen)
+        setCategory(cat)
+        setOccasion('')
+        setCollection('')
+        setBreadCrum2('Men')
+        setBreadCrum3(cat)
+        setHeading('Men' + ' ' + cat)
+        setColor('')
+        setSize('')
+        setSkip(0)
+        setPage(1)
+        navigate('/products')
+    }
+    const gotoProductwithOcc = (occ) => {
+        setGender('men')
+        setCategory('')
+        setOccasion(occ)
+        setCollection('')
+        setBreadCrum2('Men')
+        setBreadCrum3(occ)
+        setHeading('Men' + ' ' + occ)
+        setColor('')
+        setSize('')
+        setSkip(0)
+        setPage(1)
+        navigate('/products')
+    }
+    const gotoProductwithColl = (coll) => {
+        setGender('men')
+        setCategory('')
+        setOccasion('')
+        setCollection(coll)
+        setBreadCrum2('Men')
+        setBreadCrum3(coll)
+        setHeading('Men' + ' ' + coll)
+        setColor('')
+        setSize('')
+        setSkip(0)
+        setPage(1)
+        navigate('/products')
+    }
+
     return (
         <div className={styles.mainContainerOfsubMenueHB} >
             <h3>New Arrivals</h3>
             <h3>Shop by Product</h3>
-            <p>Kurta</p>
-            <p>Kurta Sets</p>
-            <p>Kurta Jacket Set</p>
-            <p>Jacket</p>
-            <p>Indo-Western</p>
-            <p>Sherwani</p>
-            <p>Kurta Dhoti</p>
+            <p onClick={() => goToProductwithCat('men', 'Kurta')} >Kurta</p>
+            <p onClick={() => goToProductwithCat('men', 'Kurta Sets')} >Kurta Sets</p>
+            <p onClick={() => goToProductwithCat('men', 'Kurta Jacket Set')} >Kurta Jacket Set</p>
+            <p onClick={() => goToProductwithCat('men', 'Jackets')} >Jacket</p>
+            <p onClick={() => goToProductwithCat('men', 'Indo-Western')} >Indo-Western</p>
+            <p onClick={() => goToProductwithCat('men', 'Sherwani')} >Sherwani</p>
+            <p onClick={() => goToProductwithCat('men', 'Kurta Dhoti')} >Kurta Dhoti</p>
             <h3>Shop by Occasion</h3>
-            <p>Wedding</p>
-            <p>Reception</p>
-            <p>Engagement</p>
-            <p>Sangeet</p>
-            <p>Haldi</p>
+            <p onClick={() => gotoProductwithOcc('Wedding')} >Wedding</p>
+            <p onClick={() => gotoProductwithOcc('Reception')} >Reception</p>
+            <p onClick={() => gotoProductwithOcc('Engagement')} >Engagement</p>
+            <p onClick={() => gotoProductwithOcc('Sangeet')} >Sangeet</p>
+            <p onClick={() => gotoProductwithOcc('Haldi')} >Haldi</p>
             <h3>Accessories</h3>
-            <p>Safas</p>
-            <p>Malas</p>
-            <p>Footwear</p>
+            <p onClick={() => goToProductwithCat('men', 'Safas')} >Safas</p>
+            <p onClick={() => goToProductwithCat('men', 'Malas')} >Malas</p>
+            <p onClick={() => goToProductwithCat('men', 'Footwear')} >Footwear</p>
             <h3>Bottomwear</h3>
             <h3>Celebrity Style</h3>
-            <p>Ranveer Singh Collection</p>
+            <p onClick={() => goToProductwithCat('men', 'Ranveer Singh Collection')} >Ranveer Singh Collection</p>
             <h3>Shop By Collection</h3>
-            <p>Festive</p>
-            <p>Formal</p>
-            <p>Classic</p>
-          
+            <p onClick={() => gotoProductwithColl('Festive')}  >Festive</p>
+            <p onClick={() => gotoProductwithColl('Formal')} >Formal</p>
+            <p onClick={() => gotoProductwithColl('Classic')} >Classic</p>
+
         </div>
     )
 }
-
 
 export const WomenContainer = () => {
     return (

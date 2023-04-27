@@ -4,6 +4,8 @@ import Navbar from '../../Components/Navbar/Navbar'
 import styles from './Products.module.css'
 import Logo from '../Images/productsTopLogo.jpg'
 
+import walkingbarat from '../../Assets/walkingBarat.gif'
+
 
 import { IoIosArrowDown } from 'react-icons/io'
 import { GrFormPrevious, GrFormNext } from 'react-icons/gr'
@@ -12,7 +14,8 @@ import Card from './Card'
 import Footer from '../../Components/Footer/Footer'
 import { useEffect } from 'react'
 
-import { Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, Button, Input, useDisclosure, btnRef
+import {
+    Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, Button, Input, useDisclosure, btnRef
 } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 import { SearchContext } from '../../Context/SearchContext'
@@ -103,16 +106,12 @@ export default function Products() {
         }
     }
 
-    const sortFunct = (e) => {
-        console.log(e.target.value)
-    }
-
     return (
         <div className={styles.ProductMain_container}>
             <Navbar />
             <div className={styles.products_container_1}>
                 <div className={styles.container_1_child_1}>
-                    <img src={Logo} alt="" />
+                    <img src={walkingbarat} alt="" />
                 </div>
                 <div className={styles.container_1_child_2}>
                     <h1>{heading}</h1>
@@ -135,7 +134,7 @@ export default function Products() {
                     </div>
                 </div>
             </div>
-            <p className={styles.routes_mobile}>Home / Men</p>
+            <p className={styles.routes_mobile}>Home / {breadCrum2} / {breadCrum3}</p>
             <div className={styles.filterContainer}>
                 <div className={styles.filterContainer_child1} onClick={onOpen}>SORT</div>
                 <Drawer
@@ -148,10 +147,17 @@ export default function Products() {
                     <DrawerContent bg="#FEFBF2">
                         <DrawerCloseButton />
                         <DrawerHeader bg='white' textAlign='center' fontSize={['20px', '40px']}>SORT</DrawerHeader>
-                        <Button fontSize={['xl', '2xl']} fontWeight='light' bg="#FEFBF2" m='10px'>Best Seller</Button>
-                        <Button fontSize={['xl', '2xl']} fontWeight='light' bg="#FEFBF2" m='10px'>Price Low To High</Button>
-                        <Button fontSize={['xl', '2xl']} fontWeight='light' bg="#FEFBF2" m='10px'>Price High To Low</Button>
-                        <Button fontSize={['xl', '2xl']} fontWeight='light' bg="#FEFBF2" m='10px'>New Arrival</Button>
+
+                        <Button fontSize={['xl', '2xl']} fontWeight='light' bg="#FEFBF2" m='10px' onClick={() => {
+                            onClose()
+                            setOrder('1')
+                            setSort('price')
+                        }} >Price Low To High</Button>
+                        <Button fontSize={['xl', '2xl']} fontWeight='light' bg="#FEFBF2" m='10px' onClick={() => {
+                            onClose()
+                            setOrder('-1')
+                            setSort('price')
+                        }} >Price High To Low</Button>
                         <DrawerBody >
 
                         </DrawerBody>
@@ -242,28 +248,29 @@ export default function Products() {
                 </div>
                 <div className={grid ? styles.container_2_child_2_double : styles.container_2_child_2_single} >
                     {
-                        data.map((ele) => <div key={ele._id} onClick={() => SinglePageFunc(ele._id)}>
-                            <div className={styles.HomeCard}>
-                                {/* <div onClick={() => setWish(!wish)} className={styles.wishlistHeart}>{wish ? <AiOutlineHeart color='white' size='25px' /> : <AiTwotoneHeart size='25px' color='red' />}</div> */}
-                                <Card image1={ele.img1} image2={ele.img2} />
+                        data.map((ele) =>
+                            <div key={ele._id} onClick={() => SinglePageFunc(ele._id)}>
+                                <div className={styles.HomeCard}>
+                                    {/* <div onClick={() => setWish(!wish)} className={styles.wishlistHeart}>{wish ? <AiOutlineHeart color='white' size='25px' /> : <AiTwotoneHeart size='25px' color='red' />}</div> */}
+                                    <Card image1={ele.img1} image2={ele.img2} />
 
-                                <div className={styles.HomeCardoverlay}>
-                                    <div className={styles.HomeCardText}>
-                                        <p>View</p>
+                                    <div className={styles.HomeCardoverlay}>
+                                        <div className={styles.HomeCardText}>
+                                            <p>View</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <p className={styles.title}>{ele.name.substring(0, 30)}...</p>
-                            <h5 className={styles.price}>₹ {ele.price}.00</h5>
-                            <p className={styles.size}>S M L XL XXL 03XL</p>
-                        </div>)
+                                <p className={styles.title}>{ele.name.substring(0, 30)}...</p>
+                                <h5 className={styles.price}>₹ {ele.price}.00</h5>
+                                <p className={styles.size}>S M L XL XXL 03XL</p>
+                            </div>)
                     }
                 </div>
             </div>
             <div className={styles.paginationBtns} >
-                <button onClick={PrevPage} ><GrFormPrevious/> Prev</button>
+                <button onClick={PrevPage} ><GrFormPrevious /> Prev</button>
                 <button>{page}</button>
-                <button onClick={NextPage} >Next <GrFormNext/></button>
+                <button onClick={NextPage} >Next <GrFormNext /></button>
             </div>
             <Footer />
         </div >
