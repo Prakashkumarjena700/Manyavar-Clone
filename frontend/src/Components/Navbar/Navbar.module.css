@@ -48,7 +48,8 @@
     font-weight: 350;
     font-size: 13px;
     line-height: 40px;
-    overflow: scroll;
+    /* border: 1px solid blue; */
+    height: 90vh;
 }
 
 
@@ -60,6 +61,8 @@
     font-size: 14px;
     line-height: 25px;
     color: black;
+    /* border: 1px solid red; */
+    height: 90vh;
 }
 
 .Drowerbody .mainContainerOfsubMenueHB h3 {

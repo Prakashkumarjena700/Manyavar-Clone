@@ -50,7 +50,7 @@ export default function AdminDashboard() {
         <img onClick={() => navigate('/')} src={manyavarFullLogo} alt="" />
         <div>
           <div>
-            <img src={user.avatar || maleUserLogo} alt="" />
+            <img style={{ borderRadius: '50%' }} src={user.avatar || maleUserLogo} alt="" />
           </div>
           <div>
             <h4><b>{user.firstname + ' ' + user.lastname}</b></h4>

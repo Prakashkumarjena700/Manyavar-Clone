@@ -41,13 +41,24 @@
     /* border: 1px solid red; */
     border-radius: 5px;
     width: 40px;
-    padding: 5px;
+    padding: 3px;
     background-color: white;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .register_social_img_con>div>img {
     width: 100%;
+}
+
+.register_social_img_con>div>svg {
+    font-size: 35px;
+}
+
+.register_social_img_con>div:last-child svg {
+    font-size: 35px;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 2px;
 }
 
 .register_main_container>p:nth-child(4) {

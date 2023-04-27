@@ -60,15 +60,12 @@ export default function Home() {
     GetData('Indo-Western', setindoWestorn)
   }, [])
 
-  console.log(womenLehenga)
-
 
   const GetData = async (cat, set) => {
     await fetch(`https://proud-lamb-suspenders.cyclic.app/products/?category=${cat}`)
       .then((res) => res.json())
       .then((res) => {
         set(res)
-        console.log(res)
       })
       .catch((err) => console.log(err))
   }

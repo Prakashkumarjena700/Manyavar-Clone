@@ -31,7 +31,7 @@ export default function Search() {
                     arr && arr.map((ele) =>
                         <div key={ele._id} onClick={() => navigate(`/singleproduct/${ele._id}`)}  >
                             <img src={ele.img1} alt="" />
-                            <p>{ele.name.substring(0, 20)}...</p>
+                            <p>{ele.name.substring(0, 15)}...</p>
                             <p>{ele.category}</p>
                             <p>₹ {ele.price}.00</p>
                         </div>

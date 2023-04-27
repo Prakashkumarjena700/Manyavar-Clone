@@ -8,6 +8,7 @@ import { BsTwitter } from "react-icons/bs"
 import { AiOutlineInstagram } from "react-icons/ai"
 import { TfiLinkedin, TfiYoutube } from 'react-icons/tfi'
 
+import manyavarFullLogo from '../../Assets/manyavarFullLogo.webp'
 
 
 import { Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, useDisclosure, Button, Input } from '@chakra-ui/react'
@@ -23,12 +24,17 @@ export default function HamburgerNavbar() {
     const [kids, showKids] = useState(false)
     const [Accessories, showAccessories] = useState(false)
 
+
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef()
+    
 
     const navigate = useNavigate()
 
-
+    const closeDrawer = () => {
+        onClose()
+        setHamburger(!hamburger)
+    }
 
     return (
         <div className={styles.hamburderNavbarContainer} >
@@ -95,16 +101,18 @@ export default function HamburgerNavbar() {
                                     <a href="https://in.pinterest.com/manyavar1/" target="_blank" ><FaPinterestP /></a>
                                 </div>
                             </div>
-                            {men ? <MenContainer /> : women ? <WomenContainer /> : kids ? <KidsContainer /> : Accessories ? <AccessoriesContainer /> :
-                                <div style={{ backgroundColor: 'rgba(0, 0, 0, 0.376)' }} onClick={() => {
-                                    onClose()
-                                    setHamburger(!hamburger)
-                                }} ></div>}
+                            <div onClick={closeDrawer} >
+                                {men ? <MenContainer />
+                                    : women ? <WomenContainer />
+                                        : kids ? <KidsContainer />
+                                            : Accessories ? <AccessoriesContainer />
+                                                : <div style={{ backgroundColor: 'rgba(0, 0, 0, 0.376)', height: '90vh' }} ></div>}
+                            </div>
                         </DrawerBody>
-                    </DrawerContent>
-                </Drawer>
-            </div>
-            <div><img src="http://surl.li/gopqo" alt="" /></div>
+                    </DrawerContent >
+                </Drawer >
+            </div >
+            <div><img onClick={()=> navigate('/')} src={manyavarFullLogo} alt="" /></div>
             <div> <FiSearch onClick={() => navigate('/search')} /><FiShoppingCart onClick={() => navigate('/cart')} /></div>
 
         </div >
