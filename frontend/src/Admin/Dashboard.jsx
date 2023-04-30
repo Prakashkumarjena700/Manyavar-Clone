@@ -4,7 +4,7 @@ import styles from "./Styles/AdminDashboard.module.css"
 import { CChart } from '@coreui/react-chartjs'
 
 import mehelLogo from "../Assets/mehelLogo.webp"
-import { getProducts, getUser, getAdmin, getCart, getWishlist } from '../Redux/admin/action'
+import { getProducts, getUser, getAdmin, getCart, getWishlist, getCheckout } from '../Redux/admin/action'
 
 import { RiAdminLine } from "react-icons/ri"
 import { AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai"
@@ -14,14 +14,14 @@ import { HiOutlineUsers } from 'react-icons/hi'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { LoggerContext } from '../Context/LoggerContex'
+import { AdminDashboardContext } from '../Context/AdminDashboardContext'
 
 export default function Dashboard() {
-    const [usersCount, setUserCount] = useState(0)
-    const [adminCount, setAdminCount] = useState(0)
-    const [cartCount, setCartCount] = useState(0)
-    const [wishListCount, setWishListCount] = useState(0)
-
     const { token } = useContext(LoggerContext)
+
+    const { dashBoard, setDashBoard, addProduct, setAddProduct, inventory, setInventory,
+        users, setUsers, admins, setAdmins, cart, setCart, wishlist, setWishlist,
+        checkout, setCheckout } = useContext(AdminDashboardContext)
 
     const adminList = useSelector((store) => store.adminManager)
 
@@ -33,7 +33,10 @@ export default function Dashboard() {
         getAdmin(dispatch)
         getCart(dispatch, token)
         getWishlist(dispatch, token)
+        getCheckout(dispatch, token)
     }, [])
+
+
 
     return (
         <div className={styles.DashboardContainer} >
@@ -41,29 +44,83 @@ export default function Dashboard() {
 
             <div className={styles.DashboardContainerFirstDiv} >
                 <div>
-                    <div>
+                    <div onClick={() => {
+                        setAddProduct(false)
+                        setDashBoard(false)
+                        setInventory(false)
+                        setUsers(true)
+                        setAdmins(false)
+                        setCart(false)
+                        setWishlist(false)
+                        setCheckout(false)
+                    }}  >
                         <h2>Users <HiOutlineUsers /></h2>
                         <p>{adminList.usersList.length}</p>
                     </div>
-                    <div>
+                    <div onClick={() => {
+                        setAddProduct(false)
+                        setDashBoard(false)
+                        setInventory(false)
+                        setUsers(false)
+                        setAdmins(true)
+                        setCart(false)
+                        setWishlist(false)
+                        setCheckout(false)
+                    }}  >
                         <h2>Admin<RiAdminLine /></h2>
                         <p>{adminList.adminList.length}</p>
                     </div>
-                    <div>
+                    <div onClick={() => {
+                        setAddProduct(false)
+                        setDashBoard(false)
+                        setInventory(true)
+                        setUsers(false)
+                        setAdmins(false)
+                        setCart(false)
+                        setWishlist(false)
+                        setCheckout(false)
+                    }} >
                         <h2>Produts<BsListCheck /></h2>
                         <p>{adminList.productsList.length}</p>
                     </div>
-                    <div>
+                    <div onClick={() => {
+                        setAddProduct(false)
+                        setDashBoard(false)
+                        setInventory(false)
+                        setUsers(false)
+                        setAdmins(false)
+                        setCart(true)
+                        setWishlist(false)
+                        setCheckout(false)
+                    }}   >
                         <h2>Cart<AiOutlineShoppingCart /></h2>
                         <p>{adminList.cartList.length}</p>
                     </div>
-                    <div>
-                        <h2>Wish List<AiOutlineHeart /></h2>
+                    <div onClick={() => {
+                        setAddProduct(false)
+                        setDashBoard(false)
+                        setInventory(false)
+                        setUsers(false)
+                        setAdmins(false)
+                        setCart(false)
+                        setWishlist(true)
+                        setCheckout(false)
+                    }}   >
+                        <h2>Wishlist<AiOutlineHeart /></h2>
                         <p>{adminList.wishList.length}</p>
                     </div>
-                    <div>
-                        <h2>Check out<MdShoppingCartCheckout /></h2>
-                        <p>{wishListCount}</p>
+                    <div onClick={() => {
+                        setAddProduct(false)
+                        setDashBoard(false)
+                        setInventory(false)
+                        setUsers(false)
+                        setAdmins(false)
+                        setCart(false)
+                        setWishlist(false)
+                        setCheckout(true)
+                    }}   >
+                        <h2>Checkout<MdShoppingCartCheckout /></h2>
+                        <p>{adminList.checkoutList.length}</p>
                     </div>
 
                 </div>

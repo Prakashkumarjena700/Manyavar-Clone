@@ -10,23 +10,26 @@ import { store } from './Redux/store';
 import LoggerContexProvider from './Context/LoggerContex';
 import SearchContextProvider from './Context/SearchContext';
 import ProfileContexProvider from './Context/ProfileContex';
+import AdminDashboardContextProvider from './Context/AdminDashboardContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <ProfileContexProvider>
-    <SearchContextProvider>
-      <LoggerContexProvider>
-        <Provider store={store} >
-          <BrowserRouter>
-            <ChakraProvider>
-              <App />
-            </ChakraProvider>
-          </BrowserRouter>
-        </Provider>
-      </LoggerContexProvider>
-    </SearchContextProvider>
-  </ProfileContexProvider>
+  <AdminDashboardContextProvider>
+    <ProfileContexProvider>
+      <SearchContextProvider>
+        <LoggerContexProvider>
+          <Provider store={store} >
+            <BrowserRouter>
+              <ChakraProvider>
+                <App />
+              </ChakraProvider>
+            </BrowserRouter>
+          </Provider>
+        </LoggerContexProvider>
+      </SearchContextProvider>
+    </ProfileContexProvider>
+  </AdminDashboardContextProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -11,7 +11,8 @@ import {
     UPDATE_CART_ERROR, UPDATE_CART_LOADING, UPDATE_CART_SUCCESS,
     GET_WISHLIST_ERROR, GET_WISHLIST_LOADING, GET_WISHLIST_SUCCESS,
     DELETE_CART_ERROR, DELETE_CART_LOADING, DELETE_CART_SUCCESS,
-    DELETE_WISHLIST_LOADING, DELETE_WISHLIST_ERROR, DELETE_WISHLIST_SUCCESS
+    DELETE_WISHLIST_LOADING, DELETE_WISHLIST_ERROR, DELETE_WISHLIST_SUCCESS,
+    GET_CHECKOUT_LOADING, GET_CHECKOUT_ERROR, GET_CHECKOUT_SUCCESS
 } from './action.type'
 
 
@@ -187,6 +188,21 @@ export const getWishlist = async (dispatch, token) => {
         dispatch({ type: GET_WISHLIST_SUCCESS, payload: actualwishlist })
     } catch (e) {
         dispatch({ type: GET_WISHLIST_ERROR, payload: e.message })
+    }
+}
+
+export const getCheckout = async (dispatch, token) => {
+    dispatch({ type: GET_CHECKOUT_LOADING })
+    try {
+        const checkoutList = await fetch('https://proud-lamb-suspenders.cyclic.app/checkouts', {
+            headers: {
+                'Authorization': token
+            }
+        })
+        const actualCheckoutList = await checkoutList.json()
+        dispatch({ type: GET_CHECKOUT_SUCCESS, payload: actualCheckoutList })
+    } catch (e) {
+        dispatch({ type: GET_CHECKOUT_ERROR, payload: e.message })
     }
 }
 

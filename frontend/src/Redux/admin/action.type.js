@@ -50,6 +50,10 @@ export const DELETE_WISHLIST_LOADING = 'delete/wishlist/loading'
 export const DELETE_WISHLIST_ERROR = 'delete/wishlist/error'
 export const DELETE_WISHLIST_SUCCESS = 'delete/wishlist/success'
 
+export const GET_CHECKOUT_LOADING = 'get/checkout/loading'
+export const GET_CHECKOUT_ERROR = 'get/checkout/error'
+export const GET_CHECKOUT_SUCCESS = 'get/checkout/success'
+
 
 
 

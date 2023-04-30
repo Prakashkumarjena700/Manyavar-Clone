@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 import styles from "./Styles/AdminDashboard.module.css"
 
@@ -22,18 +22,16 @@ import Cart from './Cart'
 import Wishlist from './Wishlist'
 
 import Cookies from 'js-cookie';
+import Checkout from './Checkout'
+import { AdminDashboardContext } from '../Context/AdminDashboardContext'
 
 export default function AdminDashboard() {
 
   const user = JSON.parse(localStorage.getItem('Manyavaruser'))
 
-  const [dashBoard, setDashBoard] = useState(true)
-  const [addProduct, setAddProduct] = useState(false)
-  const [inventory, setInventory] = useState(false)
-  const [users, setUsers] = useState(false)
-  const [admins, setAdmins] = useState(false)
-  const [cart, setCart] = useState(false)
-  const [wishlist, setWishlist] = useState(false)
+  const { dashBoard, setDashBoard, addProduct, setAddProduct, inventory, setInventory,
+    users, setUsers, admins, setAdmins, cart, setCart, wishlist, setWishlist,
+    checkout, setCheckout } = useContext(AdminDashboardContext)
 
   const navigate = useNavigate()
 
@@ -67,6 +65,7 @@ export default function AdminDashboard() {
             setAdmins(false)
             setCart(false)
             setWishlist(false)
+            setCheckout(false)
           }}
             className={dashBoard && styles.activeonAdmin}
           ><p>Dashboard</p><span><MdOutlineDashboard /></span> </button>
@@ -78,6 +77,7 @@ export default function AdminDashboard() {
             setUsers(false)
             setCart(false)
             setWishlist(false)
+            setCheckout(false)
           }}
             className={addProduct && styles.activeonAdmin}
           ><p>Add Product</p><span><MdOutlineDashboardCustomize /></span> </button>
@@ -89,6 +89,7 @@ export default function AdminDashboard() {
             setAdmins(false)
             setCart(false)
             setWishlist(false)
+            setCheckout(false)
           }}
             className={inventory && styles.activeonAdmin}
           ><p>Inventory</p><span><FaList /></span> </button>
@@ -100,6 +101,7 @@ export default function AdminDashboard() {
             setAdmins(false)
             setCart(false)
             setWishlist(false)
+            setCheckout(false)
           }}
             className={users && styles.activeonAdmin}
           ><p>Users</p><span><HiOutlineUsers /></span> </button>
@@ -111,6 +113,7 @@ export default function AdminDashboard() {
             setAdmins(true)
             setCart(false)
             setWishlist(false)
+            setCheckout(false)
           }}
             className={admins && styles.activeonAdmin}
           ><p>Admins</p><span><RiAdminLine /></span> </button>
@@ -122,6 +125,7 @@ export default function AdminDashboard() {
             setAdmins(false)
             setCart(true)
             setWishlist(false)
+            setCheckout(false)
           }}
             className={cart && styles.activeonAdmin}
           ><p>Cart</p><span><AiOutlineShoppingCart /></span> </button>
@@ -133,9 +137,22 @@ export default function AdminDashboard() {
             setAdmins(false)
             setCart(false)
             setWishlist(true)
+            setCheckout(false)
           }}
             className={wishlist && styles.activeonAdmin}
-          ><p>Wish List</p><span><AiOutlineHeart /></span> </button>
+          ><p>Wishlist</p><span><AiOutlineHeart /></span> </button>
+          <button onClick={() => {
+            setAddProduct(false)
+            setDashBoard(false)
+            setInventory(false)
+            setUsers(false)
+            setAdmins(false)
+            setCart(false)
+            setWishlist(false)
+            setCheckout(true)
+          }}
+            className={checkout && styles.activeonAdmin}
+          ><p>Checkout</p><span><AiOutlineHeart /></span> </button>
         </div>
       </div>
       {
@@ -146,7 +163,8 @@ export default function AdminDashboard() {
                 admins ? <Admins /> :
                   cart ? <Cart /> :
                     wishlist ? <Wishlist /> :
-                      <div></div>
+                      checkout ? <Checkout /> :
+                        <div></div>
       }
     </div>
   )

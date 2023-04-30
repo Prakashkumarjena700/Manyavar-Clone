@@ -11,7 +11,8 @@ import {
     UPDATE_CART_ERROR, UPDATE_CART_LOADING, UPDATE_CART_SUCCESS,
     GET_WISHLIST_ERROR, GET_WISHLIST_LOADING, GET_WISHLIST_SUCCESS,
     DELETE_CART_ERROR, DELETE_CART_LOADING, DELETE_CART_SUCCESS,
-    DELETE_WISHLIST_LOADING, DELETE_WISHLIST_ERROR, DELETE_WISHLIST_SUCCESS
+    DELETE_WISHLIST_LOADING, DELETE_WISHLIST_ERROR, DELETE_WISHLIST_SUCCESS,
+    GET_CHECKOUT_LOADING, GET_CHECKOUT_ERROR, GET_CHECKOUT_SUCCESS
 } from './action.type'
 
 const initialState = {
@@ -53,7 +54,10 @@ const initialState = {
     wishList: [],
     deleteWishlistLoading: false,
     deleteWishlistError: false,
-    deleteWishlistResult: false
+    deleteWishlistResult: false,
+    checkoutList: [],
+    checkoutLoading: false,
+    checkoutError: false
 }
 
 export const adminReducer = (state = initialState, { type, payload }) => {
@@ -318,7 +322,6 @@ export const adminReducer = (state = initialState, { type, payload }) => {
                 deleteCartResult: payload
             }
         }
-
         case DELETE_WISHLIST_LOADING: {
             return {
                 ...state,
@@ -339,6 +342,29 @@ export const adminReducer = (state = initialState, { type, payload }) => {
                 deleteWishlistLoading: false,
                 deleteWishlistError: false,
                 deleteWishlistResult: payload
+            }
+        }
+
+        case GET_CHECKOUT_LOADING: {
+            return {
+                ...state,
+                checkoutLoading: true,
+                checkoutError: false
+            }
+        }
+        case GET_CHECKOUT_ERROR: {
+            return {
+                ...state,
+                checkoutLoading: false,
+                checkoutError: true
+            }
+        }
+        case GET_CHECKOUT_SUCCESS: {
+            return {
+                ...state,
+                checkoutList: payload,
+                checkoutLoading: false,
+                checkoutError: false
             }
         }
         default: {
