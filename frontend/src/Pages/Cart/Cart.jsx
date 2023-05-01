@@ -140,6 +140,8 @@ export default function Cart() {
                 console.log(err)
             })
     }
+
+
     return (
         <div style={{ backgroundColor: '#FFFBF2' }} >
             <img onClick={() => navigate('/')} className={styles.cartPageLogo} src={logo} alt="" />
@@ -208,7 +210,7 @@ export default function Cart() {
 
                                 </div>
                                 <div>
-                                    <p className={remove && styles.processforRemove } onClick={() => removeFromCart(ele._id)} >REMOVE</p>
+                                    <p className={remove && styles.processforRemove} onClick={() => removeFromCart(ele._id)} >REMOVE</p>
                                 </div>
                             </div>
                         )}
@@ -231,7 +233,7 @@ export default function Cart() {
                             <span>Inclusive of all taxes</span>
                         </div>
                     </div>
-                    <button>
+                    <button onClick={() => navigate('/checkout')} >
                         <p>CHECKOUT</p>
                         <p>₹ {sum}.00</p>
                     </button>

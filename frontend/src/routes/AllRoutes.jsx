@@ -16,6 +16,7 @@ import Cart from '../Pages/Cart/Cart'
 import PrivateRouteForAdmin from './PrivateRouteForAdmin'
 import NotAutherished from '../Pages/NotAutherishied/NotAutherished'
 import PrivateRouteForAuth from './PrivateRouteForAuth'
+import Checkout from '../Pages/Checkout/Checkout'
 
 
 
@@ -45,6 +46,7 @@ export default function AllRoutes() {
                     <Cart />
                 </PrivateRouteForAuth>
             } ></Route>
+            <Route path='/checkout' element={<Checkout />} ></Route>
             <Route path='*' element={<NotAutherished />} ></Route>
         </Routes>
     )

@@ -128,10 +128,10 @@ export default function Dashboard() {
                     <CChart className={styles.chart}
                         type="polarArea"
                         data={{
-                            labels: ['Red', 'Green', 'Yellow', 'Grey', 'Blue', 'Pink'],
+                            labels: ['Users', 'Admin', 'Product', 'Cart', 'Wishlist', 'Checkout'],
                             datasets: [
                                 {
-                                    data: [11, 9, 7, 3, 14, 10],
+                                    data: [adminList.usersList.length, adminList.adminList.length, adminList.productsList.length, adminList.cartList.length, adminList.wishList.length, adminList.checkoutList.length],
                                     backgroundColor: ['#FF6384', '#4BC0C0', '#FFCE56', '#E7E9ED', '#36A2EB', 'pink'],
                                 },
                             ],

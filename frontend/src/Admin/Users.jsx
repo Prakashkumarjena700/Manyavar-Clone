@@ -84,7 +84,7 @@ export default function Users() {
             <div>
                 <p></p>
             </div>
-            <img src={mehelLogo} alt="" />
+            <img className={styles.mehelLogo} src={mehelLogo} alt="" />
             {
                 adminManager.usersListLoading ? <ProductsSkeliton /> :
                     <div className={styles.UserResultContainer}  >

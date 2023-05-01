@@ -169,7 +169,10 @@
     padding: 10px;
     justify-content: space-between;
 }
-
+.paymentContainer button:hover{
+    background-color: gray;
+    transition: all 700ms;
+}
 .paymentContainer button p {
     font-size: medium;
 }

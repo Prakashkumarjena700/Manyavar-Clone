@@ -26,8 +26,6 @@ export default function Checkout() {
   
     const checkout = useSelector((store) => store.adminManager)
 
-    console.log(checkout.checkoutList)
-
 
     useEffect(() => {
         getCheckout(dispatch, token)
@@ -36,7 +34,7 @@ export default function Checkout() {
 
     return (
         <div className={styles.InventoryContainer} >
-            <img src={mehelLogo} alt="" />
+            <img className={styles.mehelLogo} src={mehelLogo} alt="" />
             <div className={styles.InventoryCardContainer} >
                 {
                     checkout.checkoutLoading ? <ProductsSkeliton /> :

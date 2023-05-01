@@ -83,7 +83,7 @@ export default function Cart() {
 
     return (
         <div className={styles.InventoryContainer} >
-            <img src={mehelLogo} alt="" />
+            <img className={styles.mehelLogo} src={mehelLogo} alt="" />
             <div className={styles.InventoryCardContainer} >
                 {
                     cart.cartListLoading ? <ProductsSkeliton /> :
