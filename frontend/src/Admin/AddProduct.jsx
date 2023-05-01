@@ -104,7 +104,7 @@ export default function AddProduct() {
 
   return (
     <div className={styles.AddProductContainer}>
-      <img src={mehelLogo} alt="" />
+      <img className={styles.mehelLogo} src={mehelLogo} alt="" />
       <div className={styles.FormContainer} >
         <input type="text" value={name} placeholder='Name' onChange={(e) => setName(e.target.value)} />
         <select value={category} onChange={(e) => setCategory(e.target.value)} >

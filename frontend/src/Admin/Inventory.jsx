@@ -97,7 +97,7 @@ export default function Inventory() {
 
   return (
     <div className={styles.InventoryContainer} >
-      <img src={mehelLogo} alt="" />
+      <img className={styles.mehelLogo} src={mehelLogo} alt="" />
       <div className={styles.InventoryCardContainer} >
         {
           products.productsListLoading ? <ProductsSkeliton /> :

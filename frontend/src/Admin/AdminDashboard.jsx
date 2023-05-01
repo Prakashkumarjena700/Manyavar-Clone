@@ -155,17 +155,19 @@ export default function AdminDashboard() {
           ><p>Checkout</p><span><AiOutlineHeart /></span> </button>
         </div>
       </div>
-      {
-        dashBoard ? <Dashboard /> :
-          addProduct ? <AddProduct /> :
-            inventory ? <Inventory /> :
-              users ? <Users /> :
-                admins ? <Admins /> :
-                  cart ? <Cart /> :
-                    wishlist ? <Wishlist /> :
-                      checkout ? <Checkout /> :
-                        <div></div>
-      }
+      <div>
+        {
+          dashBoard ? <Dashboard /> :
+            addProduct ? <AddProduct /> :
+              inventory ? <Inventory /> :
+                users ? <Users /> :
+                  admins ? <Admins /> :
+                    cart ? <Cart /> :
+                      wishlist ? <Wishlist /> :
+                        checkout ? <Checkout /> :
+                          <div></div>
+        }
+      </div>
     </div>
   )
 }

@@ -14,6 +14,7 @@ import { ProfileContex } from '../../Context/ProfileContex'
 
 import Cookies from 'js-cookie';
 import { LoggerContext } from '../../Context/LoggerContex'
+import Orders from './Orders'
 
 export default function UserProfile() {
 
@@ -264,7 +265,7 @@ export default function UserProfile() {
                             </div>
                         )}
                     </div> : ""}
-                    {order ? <div>ORDERS</div> : ""}
+                    {order ? <div><Orders/></div> : ""}
                     {wishlist ? <div><Wishlist /></div> : ""}
                     {password ? <div>PASSWORD</div> : ""}
                 </div>
