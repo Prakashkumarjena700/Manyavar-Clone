@@ -120,6 +120,7 @@ export default function Checkout() {
                     isClosable: true,
                     position: 'top'
                 })
+                navigate('/')
             }
         } else {
             let obj = {
@@ -139,8 +140,7 @@ export default function Checkout() {
                 isClosable: true,
                 position: 'top'
             })
-
-
+            navigate('/')
         }
     }
 

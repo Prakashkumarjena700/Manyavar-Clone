@@ -24,6 +24,7 @@ export default function Orders() {
 
     return (
         <div>
+            <p className={styles.title} >MY ORDER</p>
             <div className={styles.orderHeading} >
                 <p>ITEM</p>
                 <p>DESCRIPTION</p>
