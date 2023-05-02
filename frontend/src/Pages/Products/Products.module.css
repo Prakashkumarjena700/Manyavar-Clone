@@ -307,7 +307,8 @@
     display: flex;
     justify-content: center;
     gap: 2%;
-    margin: 40px 0px;
+    padding: 40px 0px;
+    background-color: #FFFBF2;
 }
 
 .paginationBtns button {

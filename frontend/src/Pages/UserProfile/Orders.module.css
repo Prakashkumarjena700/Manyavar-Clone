@@ -22,3 +22,26 @@
     text-align: left;
     padding-left: 10px;
 }
+
+.title {
+    font-weight: 500;
+    font-size: larger;
+    margin-bottom: 20px;
+}
+
+@media (max-width:600px) {
+    .orderHeading {
+        font-size: x-small;
+    }
+
+    .orderCard {
+        font-size: x-small;
+    }
+}
+
+@media (max-width:400px) {
+    .orderHeading {
+        font-size: xx-small;
+    }
+
+}
