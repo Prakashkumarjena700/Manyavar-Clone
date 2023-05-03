@@ -1,5 +1,10 @@
 .IntroDiv>img:nth-child(2) {
     display: none;
+
+}
+
+.IntroDiv {
+    cursor: pointer;
 }
 
 .Womenheading {
@@ -25,6 +30,7 @@
 .engagementToreception>img {
     border: 1px solid #AA8531;
     padding: 3px;
+    cursor: pointer;
 }
 
 .headingImgs {
@@ -83,6 +89,7 @@
     color: maroon;
     font-family: 'Times New Roman', Times, serif;
 }
+
 .taiyaarHokarAiyeImg {
     width: 65%;
     margin: auto;
@@ -92,6 +99,7 @@
     right: 0;
     margin-bottom: -350px;
 }
+
 @media (max-width:760px) {
     .IntroDiv>img:nth-child(1) {
         display: none;

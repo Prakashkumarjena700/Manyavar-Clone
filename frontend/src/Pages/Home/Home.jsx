@@ -1,11 +1,10 @@
 import React, { useContext } from 'react'
 import styles from './Home.module.css'
 import HomeBannerSlider from './HomeBannerSlider'
-import { menData, womenData } from './data'
 
 import { useState } from 'react'
 import Navbar from '../../Components/Navbar/Navbar'
-import HomeCardSlider from './HomeCardSlider'
+// import HomeCardSlider from './HomeCardSlider'
 import Footer from '../../Components/Footer/Footer'
 import { SearchContext } from '../../Context/SearchContext'
 import { useNavigate } from 'react-router-dom'
@@ -27,6 +26,7 @@ export default function Home() {
   const [indoWestorn, setindoWestorn] = useState([])
   const [sherwani, setSherwani] = useState([])
   const [jacket, setJacket] = useState([])
+  const [mendata, setMenData] = useState([])
 
 
   const navigate = useNavigate()
@@ -58,6 +58,7 @@ export default function Home() {
     GetData('Sherwani', setSherwani)
     GetData('Jackets', setJacket)
     GetData('Indo-Western', setindoWestorn)
+    GetDataMenData()
   }, [])
 
 
@@ -66,6 +67,15 @@ export default function Home() {
       .then((res) => res.json())
       .then((res) => {
         set(res)
+      })
+      .catch((err) => console.log(err))
+  }
+
+  const GetDataMenData = async () => {
+    await fetch(`https://proud-lamb-suspenders.cyclic.app/products/?gender=men`)
+      .then((res) => res.json())
+      .then((res) => {
+        setMenData(res)
       })
       .catch((err) => console.log(err))
   }
@@ -122,10 +132,10 @@ export default function Home() {
         <div>{newArrivalToggle ?
           <div className={styles.newArrival_card_con}>
             {
-              menData.map((ele) => <div onClick={() => GotoparticularPage(ele.id)} className={styles.container_1_cards} key={ele.image}>
+              mendata.map((ele) => <div onClick={() => GotoparticularPage(ele._id)} className={styles.container_1_cards} key={ele._id}>
                 <div className={styles.HomeCard}>
                   <div className={styles.HomeCardImg_Div}>
-                    <img src={ele.image} alt="" />
+                    <img src={ele.img1} alt="" />
                   </div>
 
                   <div className={styles.HomeCardoverlay}>
@@ -134,8 +144,8 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <p>{ele.title}</p>
-                <h5>{ele.price}</h5>
+                <p>{ele.name}</p>
+                <h5>₹ {ele.price}.00</h5>
               </div>)
             }
           </div>
@@ -156,8 +166,8 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <p>{ele.title}</p>
-                <h5>Rs {ele.price}</h5>
+                <p>{ele.name}</p>
+                <h5 style={{ fontWeight: '500', color: 'black' }} >₹ {ele.price}.00</h5>
               </div>)
             }
           </div>
@@ -240,8 +250,8 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                  <p>{ele.title}</p>
-                  <h5>Rs {ele.price}</h5>
+                  <p>{ele.name}</p>
+                  <h5 style={{ fontWeight: '500', color: 'black' }} >₹ {ele.price}.00</h5>
                 </div>)
               }
             </div>
@@ -262,8 +272,8 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <p>{ele.title}</p>
-                    <h5>Rs {ele.price}</h5>
+                    <p>{ele.name}</p>
+                    <h5 style={{ fontWeight: '500', color: 'black' }} >₹ {ele.price}.00</h5>
                   </div>)
                 }
               </div>
@@ -282,8 +292,8 @@ export default function Home() {
                           </div>
                         </div>
                       </div>
-                      <p>{ele.title}</p>
-                      <h5>Rs {ele.price}</h5>
+                      <p>{ele.name}</p>
+                      <h5 style={{ fontWeight: '500', color: 'black' }} >₹ {ele.price}.00</h5>
                     </div>)
                   }
                 </div>
@@ -302,8 +312,8 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <p>{ele.title}</p>
-                        <h5>Rs {ele.price}</h5>
+                        <p>{ele.name}</p>
+                        <h5 style={{ fontWeight: '500', color: 'black' }} >₹ {ele.price}.00</h5>
                       </div>)
                     }
 
@@ -322,8 +332,8 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <p>{ele.title}</p>
-                        <h5>Rs {ele.price}</h5>
+                        <p>{ele.name}</p>
+                        <h5 style={{ fontWeight: '500', color: 'black' }} >₹ {ele.price}.00</h5>
                       </div>)
                     }
 
@@ -393,8 +403,8 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <p>{ele.title}</p>
-              <h5>Rs {ele.price}</h5>
+              <p>{ele.name}</p>
+              <h5 style={{ fontWeight: '500', color: 'black' }} >₹ {ele.price}.00</h5>
             </div>)
           }
         </div>

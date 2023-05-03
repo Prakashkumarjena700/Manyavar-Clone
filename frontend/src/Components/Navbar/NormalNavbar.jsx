@@ -79,7 +79,7 @@ export default function NormalNavbar() {
             <div style={{ top: isFixed ? 0 : 200, position: isFixed ? "fixed" : "static" }} className={styles.normalNavbarContainer} >
                 <div><motion.img
                     whileInView={{ y: [-10, 0] }}
-                    src={isFixed && SmallLogo} alt="" /></div>
+                    src={isFixed && SmallLogo} alt="" style={{cursor:'pointer'}} onClick={()=> navigate('/')} /></div>
                 <div style={!isFixed ? { paddingBottom: '5px' } : {}} className={styles.dropDownMainMenue} >
                     {
                         mainItem.map((ele) => {
