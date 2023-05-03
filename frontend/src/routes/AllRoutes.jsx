@@ -17,6 +17,7 @@ import PrivateRouteForAdmin from './PrivateRouteForAdmin'
 import NotAutherished from '../Pages/NotAutherishied/NotAutherished'
 import PrivateRouteForAuth from './PrivateRouteForAuth'
 import Checkout from '../Pages/Checkout/Checkout'
+import Blog from '../Pages/Blog/Blog'
 
 
 
@@ -47,6 +48,7 @@ export default function AllRoutes() {
                 </PrivateRouteForAuth>
             } ></Route>
             <Route path='/checkout' element={<Checkout />} ></Route>
+            <Route path='/blog' element={<Blog />} ></Route>
             <Route path='*' element={<NotAutherished />} ></Route>
         </Routes>
     )

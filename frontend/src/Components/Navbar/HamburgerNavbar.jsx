@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import styles from "./Navbar.module.css"
 
 import { FiSearch, FiShoppingCart } from 'react-icons/fi';
@@ -14,6 +14,7 @@ import manyavarFullLogo from '../../Assets/manyavarFullLogo.webp'
 import { Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, useDisclosure, Button, Input } from '@chakra-ui/react'
 import { AccessoriesContainer, KidsContainer, MenContainer, WomenContainer } from './DifferentContainerInHB';
 import { useNavigate } from 'react-router-dom';
+import { ProfileContex } from '../../Context/ProfileContex';
 
 export default function HamburgerNavbar() {
 
@@ -25,15 +26,28 @@ export default function HamburgerNavbar() {
     const [Accessories, showAccessories] = useState(false)
 
 
+    const { profile, setProfile, address, setAddress, order, setOrder, wishlist, setWishlist, password, setPassword, } = useContext(ProfileContex)
+
+
+
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef()
-    
+
 
     const navigate = useNavigate()
 
     const closeDrawer = () => {
         onClose()
         setHamburger(!hamburger)
+    }
+
+    const goToWishlistPage = () => {
+        setProfile(false)
+        setAddress(false)
+        setOrder(false)
+        setWishlist(true)
+        setPassword(false)
+        navigate('/userprofile')
     }
 
     return (
@@ -86,12 +100,10 @@ export default function HamburgerNavbar() {
                                     showKids(false)
                                     showAccessories(true)
                                 }} >ACCESSORIES</p>
-                                <p>BLOG</p>
-                                <p>BOOK AN APPOINTMENT</p>
-                                <p>SIGN IN</p>
-                                <p>WISHLIST</p>
-                                <p>STORE LOCATOR</p>
-                                <p>CUSTOMER SUPPORT</p>
+                                <p onClick={() => navigate('/blog')} >BLOG</p>
+                                <p onClick={() => navigate('/login')} >SIGN IN</p>
+                                <p onClick={goToWishlistPage} >WISHLIST</p>
+                                <p onClick={()=> navigate('/userprofile')} >MY PROFILE</p>
                                 <div className={styles.socialMediainHB} >
                                     <a href="https://www.facebook.com/Manyavar/" target='_blank' ><FaFacebookF /></a>
                                     <a href="https://twitter.com/Manyavar_" target="_blank" ><BsTwitter /></a>
@@ -112,7 +124,7 @@ export default function HamburgerNavbar() {
                     </DrawerContent >
                 </Drawer >
             </div >
-            <div><img onClick={()=> navigate('/')} src={manyavarFullLogo} alt="" /></div>
+            <div><img onClick={() => navigate('/')} src={manyavarFullLogo} alt="" /></div>
             <div> <FiSearch onClick={() => navigate('/search')} /><FiShoppingCart onClick={() => navigate('/cart')} /></div>
 
         </div >

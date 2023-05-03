@@ -87,50 +87,135 @@ export const MenContainer = () => {
 }
 
 export const WomenContainer = () => {
+    const navigate = useNavigate()
+
+    const { setGender, setCategory, setOccasion, setCollection, setBreadCrum2, setBreadCrum3, setHeading, setColor, setSize, setSkip, setPage } = useContext(SearchContext)
+
+    const goToProductwithCat = (cat) => {
+        setGender('women')
+        setCategory(cat)
+        setOccasion('')
+        setCollection('')
+        setBreadCrum2('Women')
+        setBreadCrum3(cat)
+        setHeading('Women' + ' ' + cat)
+        setColor('')
+        setSize('')
+        setSkip(0)
+        setPage(1)
+        navigate('/products')
+    }
+
+    const goToProductwithColl = (col) => {
+        setGender('women')
+        setCategory('')
+        setOccasion('')
+        setCollection(col)
+        setBreadCrum2('Women')
+        setBreadCrum3(col)
+        setHeading('Women' + ' ' + col)
+        setColor('')
+        setSize('')
+        setSkip(0)
+        setPage(1)
+        navigate('/products')
+    }
     return (
         <div className={styles.mainContainerOfsubMenueHB} >
             <h3> Shop by Product</h3>
-            <p>View All</p>
-            <p>Lehenga</p>
-            <p>Gown</p>
-            <p>Saree</p>
-            <p>Stitched Suits</p>
-            <p>Kurti / Suit</p>
+            <p onClick={() => goToProductwithCat('Lehenga')} >Lehenga</p>
+            <p onClick={() => goToProductwithCat('Gown')} >Gown</p>
+            <p onClick={() => goToProductwithCat('Saree')} >Saree</p>
+            <p onClick={() => goToProductwithCat('Stitched Suits')} >Stitched Suits</p>
+            <p onClick={() => goToProductwithCat('Kurti / Suit')} >Kurti / Suit</p>
             <h3>Shop by Collection</h3>
-            <p>Bridal</p>
-            <p>Casual</p>
-            <p>Festive</p>
+            <p onClick={() => goToProductwithColl('Bridal')} >Bridal</p>
+            <p onClick={() => goToProductwithColl('Casual')} >Casual</p>
+            <p onClick={() => goToProductwithColl('Festive')} >Festive</p>
         </div>
     )
 }
 
 
 export const KidsContainer = () => {
+    const navigate = useNavigate()
+
+    const { setGender, setCategory, setOccasion, setCollection, setBreadCrum2, setBreadCrum3, setHeading, setColor, setSize, setSkip, setPage } = useContext(SearchContext)
+
+    const goToProductwithCat = (cat) => {
+        setGender('kids')
+        setCategory(cat)
+        setOccasion('')
+        setCollection('')
+        setBreadCrum2('Kids')
+        setBreadCrum3(cat)
+        setHeading('Kids' + ' ' + cat)
+        setColor('')
+        setSize('')
+        setSkip(0)
+        setPage(1)
+        navigate('/products')
+    }
+
+    const goToProductwithAll = () => {
+        setGender('kids')
+        setCategory('')
+        setOccasion('')
+        setCollection('')
+        setBreadCrum2('Kids')
+        setBreadCrum3('')
+        setHeading('Kid')
+        setColor('')
+        setSize('')
+        setSkip(0)
+        setPage(1)
+        navigate('/products')
+    }
+
+
     return (
         <div className={styles.mainContainerOfsubMenueHB} >
-            <h3>View All</h3>
-            <p>Kurta</p>
-            <p>Kurta Jacket</p>
-            <p>Indo-Western</p>
-            <p>Juti</p>
-            <h3>Occasion</h3>
+            <h3 onClick={goToProductwithAll} >View All</h3>
+            <p onClick={() => goToProductwithCat('Kurta')} >Kurta</p>
+            <p onClick={() => goToProductwithCat('Kurta Jacket')} >Kurta Jacket</p>
+            <p onClick={() => goToProductwithCat('Indo-Western')} >Indo-Western</p>
+            <p onClick={() => goToProductwithCat('Juti')} >Juti</p>
         </div>
     )
 }
 
 export const AccessoriesContainer = () => {
+
+    const navigate = useNavigate()
+
+    const { setGender, setCategory, setOccasion, setCollection, setBreadCrum2, setBreadCrum3, setHeading, setColor, setSize, setSkip, setPage } = useContext(SearchContext)
+
+    const goToProductwithCat = (cat) => {
+        setGender('')
+        setCategory(cat)
+        setOccasion('')
+        setCollection('')
+        setBreadCrum2('Accessories')
+        setBreadCrum3(cat)
+        setHeading(cat)
+        setColor('')
+        setSize('')
+        setSkip(0)
+        setPage(1)
+        navigate('/products')
+    }
+
     return (
         <div className={styles.mainContainerOfsubMenueHB} >
             <h3>Shop by Product</h3>
-            <p>View All</p>
-            <p>Juti</p>
-            <p>Brooch</p>
-            <p>Pocket Square</p>
-            <p>Safa</p>
-            <p>Mala</p>
-            <p>Bandanna</p>
-            <p>Sherwani Inner Kurta</p>
-            <p>Socks</p>
+            <p onClick={() => goToProductwithCat('Juti')} >Juti</p>
+            <p onClick={() => goToProductwithCat('Brooch')} >Brooch</p>
+            <p onClick={() => goToProductwithCat('Pocket Square')} >Pocket Square</p>
+            <p onClick={() => goToProductwithCat('Safa')} >Safa</p>
+            <p onClick={() => goToProductwithCat('Mala')} >Mala</p>
+            <p onClick={() => goToProductwithCat('Bandanna')} >Bandanna</p>
+            <p onClick={() => goToProductwithCat('Sherwani Inner Kurta')} >Sherwani Inner Kurta</p>
+            <p onClick={() => goToProductwithCat('Socks')} >Socks</p>
         </div>
     )
 }

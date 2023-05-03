@@ -147,6 +147,7 @@ export default function AddProduct() {
           <option value="Engagement">Engagement</option>
           <option value="Sangeet">Sangeet</option>
           <option value="Haldi">Haldi</option>
+          <option value="Mehendi">Mehendi</option>
         </select>
         <select value={collections} onChange={(e) => setCollections(e.target.value)} >
           <option value="">Collection</option>

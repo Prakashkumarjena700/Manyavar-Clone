@@ -8,7 +8,7 @@ import { SearchContext } from "../../Context/SearchContext"
 
 
 export const MenDropDown = () => {
-    const { setGender, setCategory, setOccasion, setCollection, setBreadCrum2, setBreadCrum3, setHeading, setColor, setSize, setSkip , setPage} = useContext(SearchContext)
+    const { setGender, setCategory, setOccasion, setCollection, setBreadCrum2, setBreadCrum3, setHeading, setColor, setSize, setSkip, setPage } = useContext(SearchContext)
     const [dropDown, setDropdown] = React.useState(false)
 
     const navigate = useNavigate()
@@ -46,6 +46,20 @@ export const MenDropDown = () => {
         navigate('/products')
     }
 
+    const gotoProductWthCat = (cat) => {
+        setGender('men')
+        setBreadCrum2('Men')
+        setSkip(0)
+        setPage(1)
+        setBreadCrum3('Only ' + cat)
+        setCategory(cat)
+        setOccasion('')
+        setCollection('')
+        setHeading(cat)
+        setSize('')
+        setColor('')
+        navigate('/products')
+    }
 
     return (
         <div className={styles.subMenue} onClick={() => setDropdown(!dropDown)} >
@@ -53,14 +67,14 @@ export const MenDropDown = () => {
                 Men.map((ele) => <p key={ele.id} onClick={() => GoToProductPage(ele)} className={ele.type === 'heading' ? styles.headingFromSubmenue : styles.normalSubmenue} >{ele.title}</p>)
             }
             <div className={styles.submenueImagesContainer} >
-                <img src="https://static01.manyavar.com/uploads/homepagetemplates/images/rs-kurta-jacket-megamenu-creative.jpg" alt="" />
-                <img src="https://static01.manyavar.com/uploads/homepagetemplates/images/meer-kurta-set-megamenu-creative.jpg" alt="" />
+                <img onClick={() => gotoProductWthCat('Kurta Jacket Set')} style={{ cursor: 'pointer' }} src="https://static01.manyavar.com/uploads/homepagetemplates/images/rs-kurta-jacket-megamenu-creative.jpg" alt="" />
+                <img onClick={() => gotoProductWthCat('Kurta Sets')} style={{ cursor: 'pointer' }} src="https://static01.manyavar.com/uploads/homepagetemplates/images/meer-kurta-set-megamenu-creative.jpg" alt="" />
             </div>
         </div>
     )
 }
 export const WomenDropDown = () => {
-    const { setGender, setCategory, setOccasion, setCollection, setBreadCrum2, setBreadCrum3, setHeading, setColor, setSize, setSkip ,setPage} = useContext(SearchContext)
+    const { setGender, setCategory, setOccasion, setCollection, setBreadCrum2, setBreadCrum3, setHeading, setColor, setSize, setSkip, setPage } = useContext(SearchContext)
     const [dropDown, setDropdown] = React.useState(false)
 
     const navigate = useNavigate()
@@ -91,6 +105,21 @@ export const WomenDropDown = () => {
         navigate('/products')
     }
 
+    const gotoProductWthCat = (cat) => {
+        setGender('women')
+        setBreadCrum2('Women')
+        setSkip(0)
+        setPage(1)
+        setBreadCrum3('Only ' + cat)
+        setCategory(cat)
+        setOccasion('')
+        setCollection('')
+        setHeading(cat)
+        setSize('')
+        setColor('')
+        navigate('/products')
+    }
+
 
     return (
         <div className={styles.subMenue} id={styles.PaddingForWomenSubmenue} onClick={() => setDropdown(!dropDown)} >
@@ -98,14 +127,14 @@ export const WomenDropDown = () => {
                 Women.map((ele) => <p key={ele.id} onClick={() => GoToProductPage(ele)} className={ele.type === 'heading' ? styles.headingFromSubmenue : styles.normalSubmenue} >{ele.title}</p>)
             }
             <div className={styles.submenueImagesContainer} >
-                <img src="https://static01.manyavar.com/uploads/homepagetemplates/images/lehenga-mega-menu.jpg" alt="" />
-                <img src="https://static01.manyavar.com/uploads/homepagetemplates/images/saree-megamenu-creative.jpg" alt="" />
+                <img onClick={() => gotoProductWthCat('Lehenga')} style={{ cursor: 'pointer' }} src="https://static01.manyavar.com/uploads/homepagetemplates/images/lehenga-mega-menu.jpg" alt="" />
+                <img onClick={() => gotoProductWthCat('Saree')} style={{ cursor: 'pointer' }} src="https://static01.manyavar.com/uploads/homepagetemplates/images/saree-megamenu-creative.jpg" alt="" />
             </div>
         </div>
     )
 }
 export const KidsDropDown = () => {
-    const { setGender, setCategory, setOccasion, setCollection, setBreadCrum2, setBreadCrum3, setHeading, setSize, setColor, setSkip ,setPage} = useContext(SearchContext)
+    const { setGender, setCategory, setOccasion, setCollection, setBreadCrum2, setBreadCrum3, setHeading, setSize, setColor, setSkip, setPage } = useContext(SearchContext)
     const [dropDown, setDropdown] = React.useState(false)
 
     const navigate = useNavigate()
@@ -135,6 +164,20 @@ export const KidsDropDown = () => {
         navigate('/products')
     }
 
+    const gotoProductWthCat = (cat) => {
+        setGender('kids')
+        setBreadCrum2('Kids')
+        setSkip(0)
+        setPage(1)
+        setBreadCrum3('Only ' + cat)
+        setCategory(cat)
+        setOccasion('')
+        setCollection('')
+        setHeading(cat)
+        setSize('')
+        setColor('')
+        navigate('/products')
+    }
 
     return (
         <div className={styles.subMenue} id={styles.PaddingForKidsSubmenue} onClick={() => setDropdown(!dropDown)} >
@@ -142,14 +185,14 @@ export const KidsDropDown = () => {
                 Kids.map((ele) => <p key={ele.id} onClick={() => GoToProductPage(ele)} className={ele.id === 1 ? styles.headingFromSubmenue : styles.normalSubmenue} >{ele.title}</p>)
             }
             <div className={styles.submenueImagesContainer} >
-                <img src="https://static01.manyavar.com/uploads/homepagetemplates/images/kurta-jacket-megamenu-creative.jpg" alt="" />
-                <img src="https://static01.manyavar.com/uploads/homepagetemplates/images/kurta-set-megamenu-creative.jpg" alt="" />
+                <img onClick={() => gotoProductWthCat('Kurta Jacket')} style={{ cursor: 'pointer' }} src="https://static01.manyavar.com/uploads/homepagetemplates/images/kurta-jacket-megamenu-creative.jpg" alt="" />
+                <img onClick={() => gotoProductWthCat('Kurta')} style={{ cursor: 'pointer' }} src="https://static01.manyavar.com/uploads/homepagetemplates/images/kurta-set-megamenu-creative.jpg" alt="" />
             </div>
         </div>
     )
 }
 export const AccessoriesDropDown = () => {
-    const { setGender, setCategory, setOccasion, setCollection, setBreadCrum2, setBreadCrum3, setHeading, setSize, setColor, setSkip,setPage } = useContext(SearchContext)
+    const { setGender, setCategory, setOccasion, setCollection, setBreadCrum2, setBreadCrum3, setHeading, setSize, setColor, setSkip, setPage } = useContext(SearchContext)
     const [dropDown, setDropdown] = React.useState(false)
 
     const navigate = useNavigate()
@@ -171,6 +214,19 @@ export const AccessoriesDropDown = () => {
         }
 
     }
+    const gotoProductWthCat = (cat) => {
+        setBreadCrum2('Manyavar Accessories')
+        setSkip(0)
+        setPage(1)
+        setBreadCrum3('Only ' + cat)
+        setCategory(cat)
+        setOccasion('')
+        setCollection('')
+        setHeading(cat)
+        setSize('')
+        setColor('')
+        navigate('/products')
+    }
 
     return (
         <div className={styles.subMenue} id={styles.PaddingForAccessoriesSubmenue} onClick={() => setDropdown(!dropDown)} >
@@ -178,8 +234,8 @@ export const AccessoriesDropDown = () => {
                 Accessories.map((ele) => <p key={ele.id} onClick={() => GoToProductPage(ele)} className={ele.id === 1 ? styles.headingFromSubmenue : styles.normalSubmenue} >{ele.title}</p>)
             }
             <div className={styles.submenueImagesContainer} >
-                <img src="https://static01.manyavar.com/uploads/homepagetemplates/images/mala-megamenu-creative.jpg" alt="" />
-                <img src="https://static01.manyavar.com/uploads/homepagetemplates/images/safa-megamenu-creative.jpg" alt="" />
+                <img onClick={() => gotoProductWthCat('Mala')} style={{ cursor: 'pointer' }} src="https://static01.manyavar.com/uploads/homepagetemplates/images/mala-megamenu-creative.jpg" alt="" />
+                <img onClick={() => gotoProductWthCat('Safa')} style={{ cursor: 'pointer' }} src="https://static01.manyavar.com/uploads/homepagetemplates/images/safa-megamenu-creative.jpg" alt="" />
             </div>
         </div>
     )
