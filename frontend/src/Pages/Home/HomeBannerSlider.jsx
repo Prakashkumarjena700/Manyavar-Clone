@@ -52,16 +52,60 @@ export default function HomeBannerSlider() {
                     }}>
                         <img src="https://manyavar.scene7.com/is/image/manyavarstage/Kiara%20HP%20Banner%20_Desktop%20_04-01-2023-07-29?$R%2DD%2DHP%2DB$" alt="" />
                     </SwiperSlide>
-                    <SwiperSlide>
+                    <SwiperSlide onClick={() => {
+                        setGender("men")
+                        setCategory('')
+                        setCollection("")
+                        setOccasion('Wedding')
+                        setHeading("Wedding")
+                        setBreadCrum2("Men")
+                        setBreadCrum3("Wedding")
+                        setSkip(0)
+                        setPage(1)
+                        navigate('/products')
+                    }} >
                         <img src="https://manyavar.scene7.com/is/image/manyavarstage/RS%20Kurta%20Jacket%20Hero%20Banner_Desktop%20jpg_09-11-2022-09-29?$R%2DD%2DHP%2DB$" alt="" />
                     </SwiperSlide>
-                    <SwiperSlide>
+                    <SwiperSlide onClick={() => {
+                        setGender("men")
+                        setCategory('')
+                        setCollection("Festive")
+                        setOccasion("")
+                        setHeading("Festive")
+                        setBreadCrum2("Men")
+                        setBreadCrum3("Festive")
+                        setSkip(0)
+                        setPage(1)
+                        navigate('/products')
+                    }} >
                         <img src="https://manyavar.scene7.com/is/image/manyavarstage/Taiyari_Desktop%20jpg_09-11-2022-09-29?$R%2DD%2DHP%2DB$" alt="" />
                     </SwiperSlide>
-                    <SwiperSlide>
+                    <SwiperSlide onClick={() => {
+                        setGender("women")
+                        setCategory('Lehenga')
+                        setCollection("")
+                        setOccasion("")
+                        setHeading("Lehenga")
+                        setBreadCrum2("Women")
+                        setBreadCrum3("Lehenga")
+                        setSkip(0)
+                        setPage(1)
+                        navigate('/products')
+                    }}  >
                         <img src="https://manyavar.scene7.com/is/image/manyavarstage/Lehenga%20Hero%20Banner%20chnages%202_Desktop%20jpg_09-11-2022-09-29?$R%2DD%2DHP%2DB$" alt="" />
                     </SwiperSlide>
-                    <SwiperSlide>
+                    <SwiperSlide onClick={() => {
+                        setGender("men")
+                        setCategory('Kurta Jacket Set')
+                        setCollection("")
+                        setOccasion("")
+                        setHeading("Kurta Jackets Set")
+                        setBreadCrum2("Men")
+                        setBreadCrum3("Kurta Jackets Set")
+                        setSkip(0)
+                        setPage(1)
+                        navigate('/products')
+                    }}   >
                         <img src="https://manyavar.scene7.com/is/image/manyavarstage/Kurta%20Jacket%20SM%20image_Desktop%20jpg_09-11-2022-09-29?$R%2DD%2DHP%2DB$" alt="" />
                     </SwiperSlide>
 
