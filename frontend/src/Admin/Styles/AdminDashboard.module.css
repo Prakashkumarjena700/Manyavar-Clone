@@ -90,7 +90,7 @@
     padding: 20px;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-    height: 60%;
+    height: 80%;
 }
 
 .DashboardContainerFirstDiv>div:nth-child(1)>div h2 {

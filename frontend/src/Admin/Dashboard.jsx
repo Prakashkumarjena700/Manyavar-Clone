@@ -41,7 +41,6 @@ export default function Dashboard() {
     return (
         <div className={styles.DashboardContainer} >
             <img style={{ marginTop: '20px' }} src={mehelLogo} alt="" />
-
             <div className={styles.DashboardContainerFirstDiv} >
                 <div>
                     <div onClick={() => {
@@ -122,7 +121,12 @@ export default function Dashboard() {
                         <h2>Checkout<MdShoppingCartCheckout /></h2>
                         <p>{adminList.checkoutList.length}</p>
                     </div>
-
+                    <div>
+                        Total Revenue
+                    </div>
+                    <div>
+                    ₹ 0.00
+                    </div>
                 </div>
                 <div>
                     <CChart className={styles.chart}
