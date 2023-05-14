@@ -41,10 +41,12 @@ export default function Dashboard() {
 
 
     const allTotal = (arr) => {
-        const totalAmount = arr.reduce((accumulator, item) => {
-            return accumulator + item.price * item.quantity
-        }, 0)
-        setRevenue(totalAmount)
+        setTimeout(() => {
+            const totalAmount = arr.reduce((accumulator, item) => {
+                return accumulator + item.price * item.quantity
+            }, 0)
+            setRevenue(totalAmount)
+        }, 3000);
     }
 
 

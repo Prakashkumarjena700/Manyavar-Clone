@@ -19,6 +19,7 @@ import {
 } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 import { SearchContext } from '../../Context/SearchContext'
+import FilterDrower from './FilterDrower'
 
 export default function Products() {
     const [read, setRead] = useState(false)
@@ -163,7 +164,7 @@ export default function Products() {
                         </DrawerBody>
                     </DrawerContent>
                 </Drawer>
-                <div className={styles.filterContainer_child2}>FILTER</div>
+                <div className={styles.filterContainer_child2}><FilterDrower/></div>
                 <div className={styles.grid_filter}>
                     <div onClick={singleGrid} className={styles.single_grid}>
                         <div></div>
