@@ -66,14 +66,13 @@ export default function NormalNavbar() {
         < >
             <div style={{ cursor: 'pointer' }} className={styles.headingLogoContainer} >
                 <div></div>
-                <img onClick={() => navigate('/')} src={FullLogo} alt="" />
+                <img onClick={() => navigate('/')} style={{cursor:'pointer'}} src={FullLogo} alt="" />
                 <div>
                     <Link to='/search' > <FiSearch /></Link>
                     {/* <Link to='/register'><FiUser /></Link> */}
                     <Link className={styles.Nav_userIcon_div} to={isAuth ? '/userprofile' : '/register'}><FiUser />{isAuth ? <BsFillCheckCircleFill color='green' size='12' className={styles.nav_user_tick} /> : ""}</Link>
                     <AiOutlineHeart onClick={goToWishlistPage} />
                     <Link to='/cart' > <FiShoppingCart /></Link>
-
                 </div>
             </div>
             <div style={{ top: isFixed ? 0 : 200, position: isFixed ? "fixed" : "static" }} className={styles.normalNavbarContainer} >

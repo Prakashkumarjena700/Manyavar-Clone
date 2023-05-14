@@ -19,8 +19,10 @@ import { AdminDashboardContext } from '../Context/AdminDashboardContext'
 export default function Dashboard() {
     const { token } = useContext(LoggerContext)
 
-    const { dashBoard, setDashBoard, addProduct, setAddProduct, inventory, setInventory,
-        users, setUsers, admins, setAdmins, cart, setCart, wishlist, setWishlist,
+    const [revenue, setRevenue] = useState(0)
+
+    const { setDashBoard, setAddProduct, setInventory,
+        setUsers, setAdmins, setCart, setWishlist,
         checkout, setCheckout } = useContext(AdminDashboardContext)
 
     const adminList = useSelector((store) => store.adminManager)
@@ -34,14 +36,23 @@ export default function Dashboard() {
         getCart(dispatch, token)
         getWishlist(dispatch, token)
         getCheckout(dispatch, token)
+        allTotal(adminList.checkoutList)
     }, [])
 
+
+    const allTotal = (arr) => {
+        setTimeout(() => {
+            const totalAmount = arr.reduce((accumulator, item) => {
+                return accumulator + item.price * item.quantity
+            }, 0)
+            setRevenue(totalAmount)
+        }, 3000);
+    }
 
 
     return (
         <div className={styles.DashboardContainer} >
             <img style={{ marginTop: '20px' }} src={mehelLogo} alt="" />
-
             <div className={styles.DashboardContainerFirstDiv} >
                 <div>
                     <div onClick={() => {
@@ -122,7 +133,12 @@ export default function Dashboard() {
                         <h2>Checkout<MdShoppingCartCheckout /></h2>
                         <p>{adminList.checkoutList.length}</p>
                     </div>
-
+                    <div>
+                        Total Revenue
+                    </div>
+                    <div>
+                        ₹ {revenue}.00
+                    </div>
                 </div>
                 <div>
                     <CChart className={styles.chart}
