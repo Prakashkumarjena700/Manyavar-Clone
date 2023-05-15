@@ -142,8 +142,7 @@ export default function Products() {
                     isOpen={isOpen}
                     placement='bottom'
                     onClose={onClose}
-                    finalFocusRef={btnRef}
-                >
+                    finalFocusRef={btnRef}>
                     <DrawerOverlay />
                     <DrawerContent bg="#FEFBF2">
                         <DrawerCloseButton />
