@@ -13,6 +13,8 @@ import {
     Input
 } from '@chakra-ui/react'
 
+import styles from './Products.module.css'
+
 export default function FilterDrower() {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -30,20 +32,20 @@ export default function FilterDrower() {
                 finalFocusRef={btnRef}
             >
                 <DrawerOverlay />
-                <DrawerContent>
+                <DrawerContent bg='#FFFBF2' >
                     <DrawerCloseButton />
-                    <DrawerHeader>Create your account</DrawerHeader>
+                    <DrawerHeader>Filter</DrawerHeader>
 
-                    <DrawerBody>
-                        <Input placeholder='Type here...' />
+                    <DrawerBody className={styles.filterdrawerBody}  >
+
+                        <button>
+                            CLOSE
+                        </button>
+                        <button>
+                            APPLY
+                        </button>
                     </DrawerBody>
 
-                    <DrawerFooter>
-                        <Button variant='outline' mr={3} onClick={onClose}>
-                            Cancel
-                        </Button>
-                        <Button colorScheme='blue'>Save</Button>
-                    </DrawerFooter>
                 </DrawerContent>
             </Drawer>
         </>

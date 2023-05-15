@@ -325,6 +325,9 @@
     cursor: text;
 }
 
+.filterdrawerBody{
+    border: 1px solid red;
+}
 @media (max-width:1180px) {
     .routes_mobile {
         display: contents;
