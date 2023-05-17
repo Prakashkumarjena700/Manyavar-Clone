@@ -325,8 +325,13 @@
     cursor: text;
 }
 
-.filterdrawerBody{
+.filterdrawerBody {
     border: 1px solid red;
+
+}
+
+.bottonsDiv{
+    border: 1px solid blue;
 }
 @media (max-width:1180px) {
     .routes_mobile {
