@@ -330,9 +330,27 @@
 
 }
 
-.bottonsDiv{
+.bottonsDiv {
     border: 1px solid blue;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
+
+.bottonsDiv button {
+    border: 1px solid rgb(153, 255, 0);
+    padding: 15px 0px;
+    color: #e95827;
+}
+
+.bottonsDiv button:hover {
+    color: white;
+    background-color: #e95827;
+}
+
 @media (max-width:1180px) {
     .routes_mobile {
         display: contents;
