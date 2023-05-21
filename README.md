@@ -2,7 +2,7 @@
 
 Manyavar is a popular ethnic wear brand in India, known for its exquisite collection of traditional men's clothing such as sherwanis, kurtas, and suits. The brand has a website, www.manyavar.com, where customers can browse and purchase their products online.
 
-<p><img src="https://cdn.zeebiz.com/sites/default/files/styles/zeebiz_850x478/public/2022/01/24/173604-untitled-design-2022-01-24t181432925.jpg?itok=azeEHQGW" width='200' /> </p>
+<p><img src="https://cdn.zeebiz.com/sites/default/files/styles/zeebiz_850x478/public/2022/01/24/173604-untitled-design-2022-01-24t181432925.jpg?itok=azeEHQGW" width='400' /> </p>
 
 <h2>Tech Stacks</h2>
 <p><img src="https://cdn.iconscout.com/icon/free/png-256/html-2752158-2284975.png?w=256&f=avif" width='80' alt="HTML" /> 
