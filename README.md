@@ -24,8 +24,6 @@ Manyavar is a popular ethnic wear brand in India, known for its exquisite collec
 </p>
 
 
-
-
 </p>
 <h2>Deployment</h2>
 <p>
