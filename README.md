@@ -4,6 +4,7 @@ Manyavar is a popular ethnic wear brand in India, known for its exquisite collec
 
 <p><img src="https://manyavar-clone-nine.vercel.app/static/media/manyavarFullLogo.3395bcf9230e803521d3.webp" width='400' /> </p>
 
+
 <h2>Tech Stacks</h2>
 <p><img src="https://cdn.iconscout.com/icon/free/png-256/html-2752158-2284975.png?w=256&f=avif" width='80' alt="HTML" /> 
 <img src="https://cdn.iconscout.com/icon/free/png-256/css-alt-3521367-2944811.png?w=256&f=avif" width='80' alt="CSS" />
