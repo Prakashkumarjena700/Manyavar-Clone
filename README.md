@@ -20,16 +20,16 @@ Manyavar is a popular ethnic wear brand in India, known for its exquisite collec
  </p>
 <h2>functionality</h2>
 <p>
-<img src="https://img.freepik.com/premium-vector/authentication-icon-simple-element-illustration-authentication-concept-symbol-design-can-be-used-web-mobile_159242-6853.jpg?w=2000" width='100' alt="Cyclic"/>
-<img src="https://t3.ftcdn.net/jpg/03/91/34/12/360_F_391341245_KZoIHUJSA4NpdQhjlfPxEtKTQVF4eDfp.jpg" width='150' alt="Vercel"/>
+<img src="https://img.freepik.com/premium-vector/authentication-icon-simple-element-illustration-authentication-concept-symbol-design-can-be-used-web-mobile_159242-6853.jpg?w=2000" width='100' height='100px' alt="Cyclic"/>
+<img src="https://t3.ftcdn.net/jpg/03/91/34/12/360_F_391341245_KZoIHUJSA4NpdQhjlfPxEtKTQVF4eDfp.jpg" width='100' height='100px' alt="Vercel"/>
 </p>
 
 
 </p>
 <h2>Deployment</h2>
 <p>
-<img src="https://www.cyclic.sh/og/summary_large_image.png" width='100' alt="Cyclic"/>
-<img src="https://miro.medium.com/max/1400/1*Rv6kW7EnWmShq7DKEb9-_A@2x.jpeg" width='150' alt="Vercel"/>
+<img src="https://www.cyclic.sh/og/summary_large_image.png" width='100' height='50px' alt="Cyclic"/>
+<img src="https://miro.medium.com/max/1400/1*Rv6kW7EnWmShq7DKEb9-_A@2x.jpeg" width='150' height='50px' alt="Vercel"/>
 </p>
 
 
