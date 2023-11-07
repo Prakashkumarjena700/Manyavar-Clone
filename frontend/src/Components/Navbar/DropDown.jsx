@@ -67,8 +67,8 @@ export const MenDropDown = () => {
                 Men.map((ele) => <p key={ele.id} onClick={() => GoToProductPage(ele)} className={ele.type === 'heading' ? styles.headingFromSubmenue : styles.normalSubmenue} >{ele.title}</p>)
             }
             <div className={styles.submenueImagesContainer} >
-                <img onClick={() => gotoProductWthCat('Kurta Jacket Set')} style={{ cursor: 'pointer' }} src="https://static01.manyavar.com/uploads/homepagetemplates/images/rs-kurta-jacket-megamenu-creative.jpg" alt="" />
-                <img onClick={() => gotoProductWthCat('Kurta Sets')} style={{ cursor: 'pointer' }} src="https://static01.manyavar.com/uploads/homepagetemplates/images/meer-kurta-set-megamenu-creative.jpg" alt="" />
+                <img onClick={() => gotoProductWthCat('Kurta Jacket Set')} style={{ cursor: 'pointer' }} src="https://s7ap1.scene7.com/is/image/VedantFashionsDM/Shop%20as%20the%20Groom_Desktop%20revised%20dimension%20jpg?$Desktop%20Collectible$" alt="" />
+                <img onClick={() => gotoProductWthCat('Kurta Sets')} style={{ cursor: 'pointer' }} src="https://s7ap1.scene7.com/is/image/VedantFashionsDM/Shop%20as%20the%20Guest_Desktop%20revised%20dimension%20jpg?$Desktop%20Collectible$" alt="" />
             </div>
         </div>
     )
