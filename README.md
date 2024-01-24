@@ -27,4 +27,15 @@ Manyavar is a popular ethnic wear brand in India, known for its exquisite collec
 <img src="https://miro.medium.com/max/1400/1*Rv6kW7EnWmShq7DKEb9-_A@2x.jpeg" width='150' height='50px' alt="Vercel"/>
 </p>
 
+<p>
+ <img src="https://res.cloudinary.com/dkwrlyeva/image/upload/v1706076766/Screenshot_2024-01-24_111237_v1x261.png" />
+ <img src="https://res.cloudinary.com/dkwrlyeva/image/upload/v1706076793/Screenshot_2024-01-24_111644_x7kprx.png" />
+ <img src="https://res.cloudinary.com/dkwrlyeva/image/upload/v1706076706/Screenshot_2024-01-24_111043_hzntsi.png" />
+ <img src="https://res.cloudinary.com/dkwrlyeva/image/upload/v1706076662/Screenshot_2024-01-24_111853_my3tkd.png" />
+ <img src="https://res.cloudinary.com/dkwrlyeva/image/upload/v1706076630/Screenshot_2024-01-24_112000_ownbai.png" />
+<img src="https://res.cloudinary.com/dkwrlyeva/image/upload/v1706076621/Screenshot_2024-01-24_111001_styapq.png"/>
+ <img src="https://res.cloudinary.com/dkwrlyeva/image/upload/v1706076634/Screenshot_2024-01-24_111324_izjndi.png" />
+</p>
+<h3>Thank you for visiting</h3>
+
 
